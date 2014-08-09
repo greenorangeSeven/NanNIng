@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>9A56B62C-75BA-4236-B173-3B5F8A64101E</string>
+	<string>41B2C793-43E5-4604-86D8-B47162F8DF15</string>
 	<key>IDESourceControlProjectName</key>
 	<string>NanNIng</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>8FD2BECF-73B5-47B1-A785-4A596D38A2D4</key>
-		<string>ssh://github.com/greenorangeSeven/NanNlng.git</string>
+		<key>72C47913-683C-470F-BA76-6775BB69858E</key>
+		<string>https://github.com/greenorangeSeven/NanNIng.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>NanNIng.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>8FD2BECF-73B5-47B1-A785-4A596D38A2D4</key>
+		<key>72C47913-683C-470F-BA76-6775BB69858E</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/greenorangeSeven/NanNlng.git</string>
+	<string>https://github.com/greenorangeSeven/NanNIng.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>8FD2BECF-73B5-47B1-A785-4A596D38A2D4</string>
+	<string>72C47913-683C-470F-BA76-6775BB69858E</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>8FD2BECF-73B5-47B1-A785-4A596D38A2D4</string>
+			<string>72C47913-683C-470F-BA76-6775BB69858E</string>
 			<key>IDESourceControlWCCName</key>
 			<string>NanNIng</string>
 		</dict>
