@@ -12,6 +12,7 @@
 #import "StewardPageView.h"
 #import "LifePageView.h"
 #import "SettingView.h"
+#import "CityPageView.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) MainPageView *mainPage;
 @property (strong, nonatomic) StewardPageView *stewardPage;
 @property (strong, nonatomic) LifePageView *lifePage;
+@property (strong, nonatomic) CityPageView *cityPage;
 @property (strong, nonatomic) SettingView *settingPage;
 
 @end

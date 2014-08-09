@@ -51,14 +51,13 @@
 
 - (void)settingAction
 {
-    
+    [Tool pushToSettingView:self.navigationController];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width, self.view.frame.size.height);
-    [Tool roundView:self.menuBg andCornerRadius:3.0];
     [Tool roundView:self.telBg andCornerRadius:3.0];
 }
 

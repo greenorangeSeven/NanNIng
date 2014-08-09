@@ -22,13 +22,13 @@
         titleLabel.font = [UIFont boldSystemFontOfSize:18];
         titleLabel.text = @"小区选择";
         titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.textColor = [UIColor whiteColor];
+        titleLabel.textColor = [Tool getColorForGreen];
         titleLabel.textAlignment = UITextAlignmentCenter;
         self.navigationItem.titleView = titleLabel;
         
         UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
         [lBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-        [lBtn setImage:[UIImage imageNamed:@"backBtn"] forState:UIControlStateNormal];
+        [lBtn setImage:[UIImage imageNamed:@"head_back"] forState:UIControlStateNormal];
         UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
         self.navigationItem.leftBarButtonItem = btnBack;
     }
@@ -44,7 +44,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    //适配iOS7uinavigationbar遮挡tableView的问题
+    if(IS_IOS7)
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning

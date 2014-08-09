@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>337D64A9-48FB-4EFD-99FF-DBBB2ABD1B9F</string>
+	<string>9A56B62C-75BA-4236-B173-3B5F8A64101E</string>
 	<key>IDESourceControlProjectName</key>
 	<string>NanNIng</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>8FD2BECF-73B5-47B1-A785-4A596D38A2D4</key>
-		<string>https://github.com/greenorangeSeven/NanNIng.git</string>
+		<string>ssh://github.com/greenorangeSeven/NanNlng.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>NanNIng.xcodeproj/project.xcworkspace</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/greenorangeSeven/NanNIng.git</string>
+	<string>ssh://github.com/greenorangeSeven/NanNlng.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

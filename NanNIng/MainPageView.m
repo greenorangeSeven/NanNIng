@@ -55,7 +55,7 @@
 
 - (void)settingAction
 {
-    
+    [Tool pushToSettingView:self.navigationController];
 }
 
 - (void)viewDidLoad

@@ -1,24 +1,18 @@
 //
-//  LifePageView.m
-//  BeautyLife
+//  CityPageView.m
+//  NanNIng
 //
-//  Created by Seven on 14-7-30.
-//  Copyright (c) 2014年 Seven. All rights reserved.
+//  Created by Seven on 14-8-9.
+//  Copyright (c) 2014年 greenorange. All rights reserved.
 //
 
-#import "LifePageView.h"
-#import "ConvView.h"
-#import "RechargeView.h"
-#import "SubtleView.h"
-#import "BusinessView.h"
+#import "CityPageView.h"
 
-@interface LifePageView ()
+@interface CityPageView ()
 
 @end
 
-@implementation LifePageView
-
-@synthesize scrollView;
+@implementation CityPageView
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +20,7 @@
     if (self) {
         UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 150, 44)];
         titleLabel.font = [UIFont boldSystemFontOfSize:18];
-        titleLabel.text = @"智慧生活";
+        titleLabel.text = @"智慧南宁";
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.textColor = [Tool getColorForGreen];
         titleLabel.textAlignment = UITextAlignmentCenter;
@@ -45,7 +39,6 @@
         self.navigationItem.rightBarButtonItem = btnSetting;
     }
     return self;
-    
 }
 
 - (void)myAction
@@ -61,7 +54,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width, self.view.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width, self.view.frame.size.height);
     [Tool roundView:self.telBg andCornerRadius:3.0];
 }
 
@@ -71,41 +64,4 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = NO;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-}
-
-- (IBAction)clickService:(UIButton *)sender
-{
-    ConvView *convView = [[ConvView alloc] init];
-    convView.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:convView animated:YES];
-}
-
-- (IBAction)clickRecharge:(UIButton *)sender
-{
-    RechargeView *rechargeView = [[RechargeView alloc] init];
-    rechargeView.hidesBottomBarWhenPushed = YES;
-    
-    [self.navigationController pushViewController:rechargeView animated:YES];
-}
-
-- (IBAction)clickSubtle:(UIButton *)sender
-{
-    SubtleView *subtleView = [[SubtleView alloc] init];
-    subtleView.hidesBottomBarWhenPushed = YES;
-    
-    [self.navigationController pushViewController:subtleView animated:YES];
-}
-
-- (IBAction)clickBusiness:(UIButton *)sender
-{
-    BusinessView *businessView = [[BusinessView alloc] init];
-    businessView.hidesBottomBarWhenPushed = YES;
-    
-    [self.navigationController pushViewController:businessView animated:YES];
-}
 @end

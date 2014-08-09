@@ -14,6 +14,7 @@
 @synthesize lifePage;
 @synthesize settingPage;
 @synthesize tabBarController;
+@synthesize cityPage;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -36,18 +37,18 @@
     lifePage.tabBarItem.image = [UIImage imageNamed:@"tab_life"];
     lifePage.tabBarItem.title = @"智慧生活";
     UINavigationController *lifePageNav = [[UINavigationController alloc] initWithRootViewController:self.lifePage];
-    //我
-    self.settingPage = [[SettingView alloc] initWithNibName:@"SettingView" bundle:nil];
-    settingPage.tabBarItem.image = [UIImage imageNamed:@"tab_nanning"];
-    settingPage.tabBarItem.title = @"智慧南宁";
-    UINavigationController *settingPageNav = [[UINavigationController alloc] initWithRootViewController:self.settingPage];
+    //智慧城市
+    self.cityPage = [[CityPageView alloc] initWithNibName:@"CityPageView" bundle:nil];
+    cityPage.tabBarItem.image = [UIImage imageNamed:@"tab_nanning"];
+    cityPage.tabBarItem.title = @"智慧南宁";
+    UINavigationController *cityPageNav = [[UINavigationController alloc] initWithRootViewController:self.cityPage];
     
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:
                                              mainPageNav,
                                              stewardPageNav,
                                              lifePageNav,
-                                             settingPageNav,
+                                             cityPageNav,
                                              nil];
     [[self.tabBarController tabBar] setSelectedImageTintColor:[Tool getColorForGreen]];
     [[self.tabBarController tabBar] setBackgroundImage:[UIImage imageNamed:@"tabbar_bg"]];

@@ -525,6 +525,11 @@
                             }];
 }
 
-
++ (void)pushToSettingView:(UINavigationController *)navigationController
+{
+    SettingView *settingView = [[SettingView alloc] init];
+    settingView.hidesBottomBarWhenPushed = YES;
+    [navigationController pushViewController:settingView animated:YES];
+}
 
 @end

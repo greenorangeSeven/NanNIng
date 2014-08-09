@@ -13,6 +13,7 @@
 #import "MBProgressHUD.h"
 #import <CommonCrypto/CommonCryptor.h>
 #import "RMMapper.h"
+#import "SettingView.h"
 #import <ShareSDK/ShareSDK.h>
 
 @interface Tool : NSObject
@@ -92,5 +93,7 @@
 + (void)saveCache:(NSString *)catalog andType:(int)type andID:(int)_id andString:(NSString *)str;
 + (NSString *)getCache:(NSString *)catalog andType:(int)type andID:(int)_id;
 + (void)shareAction:(UIButton *)sender andShowView:(UIView *)view andContent:(NSDictionary *)shareContent;
+
++ (void)pushToSettingView:(UINavigationController *)navigationController;
 
 @end
