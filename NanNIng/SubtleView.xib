@@ -30,6 +30,9 @@
                             <state key="normal" image="subtle_day_special.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="goDetails" destination="-1" eventType="touchUpInside" id="8Mg-Ec-k9T"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="F7w-Xj-n4J">
                             <rect key="frame" x="154" y="173" width="156" height="70"/>
@@ -37,6 +40,9 @@
                             <state key="normal" image="subtle_new.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="goDetails" destination="-1" eventType="touchUpInside" id="oh2-4s-0Do"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="q4P-X0-Gmf">
                             <rect key="frame" x="154" y="252" width="156" height="66"/>
@@ -44,6 +50,9 @@
                             <state key="normal" image="subtle_hot.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="goDetails" destination="-1" eventType="touchUpInside" id="il7-ed-1Di"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8tj-8M-vYX">
                             <rect key="frame" x="7" y="333" width="303" height="88"/>
@@ -51,6 +60,9 @@
                             <state key="normal" image="subtle_ supermarket.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="goDetails" destination="-1" eventType="touchUpInside" id="cWU-5E-DVl"/>
+                            </connections>
                         </button>
                     </subviews>
                 </scrollView>

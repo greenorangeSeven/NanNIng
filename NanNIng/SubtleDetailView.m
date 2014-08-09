@@ -20,27 +20,32 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 44)];
+        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 150, 44)];
         titleLabel.font = [UIFont boldSystemFontOfSize:18];
-        titleLabel.text = @"联盟商家";
+        titleLabel.text = @"特价超市";
         titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.textColor = [UIColor whiteColor];
+        titleLabel.textColor = [Tool getColorForGreen];
         titleLabel.textAlignment = UITextAlignmentCenter;
         self.navigationItem.titleView = titleLabel;
         
-        UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
+        UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 31, 28)];
         [lBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-        [lBtn setImage:[UIImage imageNamed:@"backBtn"] forState:UIControlStateNormal];
-        UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
-        self.navigationItem.leftBarButtonItem = btnBack;
+        [lBtn setImage:[UIImage imageNamed:@"head_back"] forState:UIControlStateNormal];
+        UIBarButtonItem *btnMy = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
+        self.navigationItem.leftBarButtonItem = btnMy;
         
-        UIButton *rBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 63, 22)];
-        //[rBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-        [rBtn setImage:[UIImage imageNamed:@"business_map"] forState:UIControlStateNormal];
-        UIBarButtonItem *btnSearch = [[UIBarButtonItem alloc]initWithCustomView:rBtn];
-        self.navigationItem.rightBarButtonItem = btnSearch;
+        UIButton *rBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 52, 28)];
+        [rBtn addTarget:self action:@selector(sortAction) forControlEvents:UIControlEventTouchUpInside];
+        [rBtn setImage:[UIImage imageNamed:@"head_sort"] forState:UIControlStateNormal];
+        UIBarButtonItem *btnSetting = [[UIBarButtonItem alloc]initWithCustomView:rBtn];
+        self.navigationItem.rightBarButtonItem = btnSetting;
     }
     return self;
+    
+}
+
+- (void)sortAction
+{
     
 }
 
@@ -54,8 +59,6 @@
     [super viewDidLoad];
     
     cellIndex = 0;
-    
-    self.collectionView.backgroundColor = [UIColor colorWithRed:0.74 green:0.78 blue:0.81 alpha:1];
     
     [self.collectionView registerClass:[BusinessDetailCell class] forCellWithReuseIdentifier:BusinessDetailCellIdentifier];
     self.collectionView.dataSource = self;

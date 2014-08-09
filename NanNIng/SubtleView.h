@@ -10,5 +10,5 @@
 
 @interface SubtleView : UIViewController
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
+- (IBAction)goDetails;
 @end
