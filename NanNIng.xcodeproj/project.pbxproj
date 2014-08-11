@@ -954,8 +954,8 @@
 				14B8F30D1994696000537505 /* SinaWeiboConnection.framework in Frameworks */,
 				14B8F3181994696000537505 /* libTCWeiboSDK.a in Frameworks */,
 				14B8F3161994696000537505 /* libSinaWeiboSDK.a in Frameworks */,
-				14B8F0F51994636F00537505 /* Foundation.framework in Frameworks */,
 				14B8F2D91994696000537505 /* KeyboardManager.framework in Frameworks */,
+				14B8F0F51994636F00537505 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2032,7 +2032,7 @@
 				14B8F45A1994732900537505 /* repairspic@2x.png in Resources */,
 				040CDF5A1995B37600E02EE4 /* head_back.png in Resources */,
 				0476061719984C4B007BED4C /* cm_phone@2x.png in Resources */,
-				040CDF5A1995B37600E02EE4 /* head_back@2x.png in Resources */,
+				040CDF5A1995B37600E02EE4 /* head_back.png in Resources */,
 				14B8F4B61994732900537505 /* main_topimage.png in Resources */,
 				14B8F47A1994732900537505 /* recharge_bg@2x.png in Resources */,
 				04A142E6199609FC00E44FEE /* conv_order_online@2x.png in Resources */,
@@ -2508,6 +2508,8 @@
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NanNIng/NanNIng-Prefix.pch";
@@ -2552,6 +2554,8 @@
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/Extend/QQConnectSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/UI",
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",

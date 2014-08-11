@@ -49,6 +49,7 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    self.view.backgroundColor = [Tool getBackgroundColor];
     [Tool roundView:self.bgView andCornerRadius:3.0];
     self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width, self.view.frame.size.height - 56);
 }

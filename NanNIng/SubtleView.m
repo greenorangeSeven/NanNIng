@@ -28,7 +28,7 @@
         titleLabel.textAlignment = UITextAlignmentCenter;
         self.navigationItem.titleView = titleLabel;
         
-        UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 31, 28)];
+        UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
         [lBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
         [lBtn setImage:[UIImage imageNamed:@"head_back"] forState:UIControlStateNormal];
         UIBarButtonItem *btnMy = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
@@ -57,6 +57,7 @@
 {
     [super viewDidLoad];
     self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width, self.view.frame.size.height);
+    self.view.backgroundColor = [Tool getBackgroundColor];
 }
 
 
