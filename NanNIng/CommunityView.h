@@ -10,6 +10,14 @@
 
 @interface CommunityView : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *item1Btn;
+@property (weak, nonatomic) IBOutlet UIButton *item2Btn;
+@property (weak, nonatomic) IBOutlet UIButton *item3Btn;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+- (IBAction)item1Action:(id)sender;
+- (IBAction)item2Action:(id)sender;
+- (IBAction)item3Action:(id)sender;
 
 @end
