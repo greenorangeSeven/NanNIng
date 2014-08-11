@@ -15,6 +15,10 @@
 
 @implementation CommunityView
 
+@synthesize item1Btn;
+@synthesize item2Btn;
+@synthesize item3Btn;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,7 +31,7 @@
         titleLabel.textAlignment = UITextAlignmentCenter;
         self.navigationItem.titleView = titleLabel;
         
-        UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 31, 28)];
+        UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
         [lBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
         [lBtn setImage:[UIImage imageNamed:@"head_back"] forState:UIControlStateNormal];
         UIBarButtonItem *btnMy = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
@@ -46,10 +50,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    //适配iOS7uinavigationbar遮挡tableView的问题
+    if(IS_IOS7)
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    self.view.backgroundColor = [Tool getBackgroundColor];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
+    self.tableView.backgroundColor = [Tool getBackgroundColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,7 +98,25 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 150;
+    return 124;
+}
+
+- (IBAction)item1Action:(id)sender {
+    [self.item1Btn setTitleColor:[Tool getColorForGreen] forState:UIControlStateNormal];
+    [self.item2Btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.item3Btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+}
+
+- (IBAction)item2Action:(id)sender {
+    [self.item1Btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.item2Btn setTitleColor:[Tool getColorForGreen] forState:UIControlStateNormal];
+    [self.item3Btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+}
+
+- (IBAction)item3Action:(id)sender {
+    [self.item1Btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.item2Btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.item3Btn setTitleColor:[Tool getColorForGreen] forState:UIControlStateNormal];
 }
 
 @end

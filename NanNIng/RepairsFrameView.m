@@ -49,6 +49,7 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    self.view.backgroundColor = [Tool getBackgroundColor];
     //下属控件初始化
     self.repairsView = [[RepairsFormView alloc] init];
     self.myRepairsView = [[MyRepairsView alloc] init];

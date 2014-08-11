@@ -27,7 +27,7 @@
         titleLabel.textAlignment = UITextAlignmentCenter;
         self.navigationItem.titleView = titleLabel;
         
-        UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 31, 28)];
+        UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
         [lBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
         [lBtn setImage:[UIImage imageNamed:@"head_back"] forState:UIControlStateNormal];
         UIBarButtonItem *btnMy = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
@@ -48,8 +48,8 @@
     [super viewDidLoad];
     
     cellIndex = 0;
-    
-    self.collectionView.backgroundColor = [UIColor colorWithRed:0.74 green:0.78 blue:0.81 alpha:1];
+    self.view.backgroundColor = [Tool getBackgroundColor];
+    self.collectionView.backgroundColor = [Tool getBackgroundColor];
     
     [self.collectionView registerClass:[BusinessDetailCell class] forCellWithReuseIdentifier:BusinessDetailCellIdentifier];
     self.collectionView.dataSource = self;

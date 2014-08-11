@@ -49,6 +49,7 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    self.view.backgroundColor = [Tool getBackgroundColor];
     //下属控件初始化
     self.ticeView = [[NewsTableView alloc] init];
     self.activityView = [[NewsTableView alloc] init];
