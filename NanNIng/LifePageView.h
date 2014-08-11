@@ -18,4 +18,6 @@
 - (IBAction)clickSubtle:(UIButton *)sender;
 - (IBAction)clickBusiness:(UIButton *)sender;
 
+- (IBAction)clickCommunity:(UIButton *)sender;
+
 @end
