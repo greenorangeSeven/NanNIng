@@ -1804,6 +1804,9 @@
 			children = (
 				143246771995F45D008ECFF6 /* city_dongmeng@2x.png */,
 				14B8F4C51994BB7700537505 /* main_btn_bg.png */,
+				0476061819984C50007BED4C /* cm_community_temp@2x.png */,
+				0476061419984C4A007BED4C /* cm_ attention@2x.png */,
+				0476061519984C4A007BED4C /* cm_phone@2x.png */,
 				04A143031996185900E44FEE /* xm_tianqi.png */,
 				04A143041996185900E44FEE /* xm_wannian.png */,
 				04A143051996185900E44FEE /* xm_shenfen.png */,
@@ -2028,6 +2031,8 @@
 				14B8F3D61994730200537505 /* BusinessCell.xib in Resources */,
 				14B8F45A1994732900537505 /* repairspic@2x.png in Resources */,
 				040CDF5A1995B37600E02EE4 /* head_back.png in Resources */,
+				0476061719984C4B007BED4C /* cm_phone@2x.png in Resources */,
+				040CDF5A1995B37600E02EE4 /* head_back@2x.png in Resources */,
 				14B8F4B61994732900537505 /* main_topimage.png in Resources */,
 				14B8F47A1994732900537505 /* recharge_bg@2x.png in Resources */,
 				04A142E6199609FC00E44FEE /* conv_order_online@2x.png in Resources */,
