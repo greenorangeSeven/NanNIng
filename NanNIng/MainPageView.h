@@ -23,9 +23,6 @@
 #pragma mark 便民服务
 - (IBAction)clickService:(UIButton *)sender;
 
-#pragma mark 在线充值
-- (IBAction)clickRecharge:(UIButton *)sender;
-
 - (IBAction)stewardFeeAction:(id)sender;
 - (IBAction)repairsAction:(id)sender;
 - (IBAction)noticeAction:(id)sender;

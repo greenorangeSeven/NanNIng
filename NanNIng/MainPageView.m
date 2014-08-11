@@ -106,14 +106,6 @@
     [self.navigationController pushViewController:convView animated:YES];
 }
 
-- (IBAction)clickRecharge:(UIButton *)sender
-{
-    RechargeView *rechargeView = [[RechargeView alloc] init];
-    rechargeView.hidesBottomBarWhenPushed = YES;
-    
-    [self.navigationController pushViewController:rechargeView animated:YES];
-}
-
 - (IBAction)stewardFeeAction:(id)sender {
     StewardFeeFrameView *feeFrame = [[StewardFeeFrameView alloc] init];
     feeFrame.hidesBottomBarWhenPushed = YES;

@@ -158,9 +158,6 @@
                             <state key="normal" image="main_city.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                            <connections>
-                                <action selector="clickSubtle:" destination="-1" eventType="touchUpInside" id="GiY-fI-6GW"/>
-                            </connections>
                         </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="城市文化" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y5S-Df-DaT">
                             <rect key="frame" x="30" y="484" width="59" height="21"/>
@@ -191,7 +188,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="clickRecharge:" destination="-1" eventType="touchUpInside" id="SL0-MQ-Nib"/>
+                                <action selector="clickSubtle:" destination="-1" eventType="touchUpInside" id="23p-s4-lgl"/>
                             </connections>
                         </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="精选特价" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e4F-YQ-klV">
@@ -222,7 +219,7 @@
         <image name="share.png" width="22" height="19"/>
         <image name="wuye_baoxiu.png" width="47" height="48"/>
         <image name="wuye_jiaofei.png" width="48" height="48"/>
-        <image name="wuye_notification.png" width="97" height="94"/>
+        <image name="wuye_notification.png" width="48" height="47"/>
         <image name="wuye_parkjiaofei.png" width="48" height="48"/>
         <image name="wuye_send.png" width="48" height="48"/>
     </resources>

@@ -33,6 +33,13 @@
 		0446CE3B19951B3D00D6C015 /* main_business@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0446CE3A19951B3D00D6C015 /* main_business@2x.png */; };
 		0446CE3D19951B9700D6C015 /* main_city@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0446CE3C19951B9700D6C015 /* main_city@2x.png */; };
 		0446CE3F19951BE900D6C015 /* main_subtle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0446CE3E19951BE900D6C015 /* main_subtle@2x.png */; };
+		0476060D1998472B007BED4C /* CommunityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476060B1998472B007BED4C /* CommunityView.m */; };
+		0476060E1998472B007BED4C /* CommunityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0476060C1998472B007BED4C /* CommunityView.xib */; };
+		047606121998498E007BED4C /* CommunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047606101998498E007BED4C /* CommunityCell.m */; };
+		047606131998498E007BED4C /* CommunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047606111998498E007BED4C /* CommunityCell.xib */; };
+		0476061619984C4B007BED4C /* cm_ attention@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476061419984C4A007BED4C /* cm_ attention@2x.png */; };
+		0476061719984C4B007BED4C /* cm_phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476061519984C4A007BED4C /* cm_phone@2x.png */; };
+		0476061919984C50007BED4C /* cm_community_temp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476061819984C50007BED4C /* cm_community_temp@2x.png */; };
 		04A142A91995CE2D00E44FEE /* SubtleDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A142A71995CE2D00E44FEE /* SubtleDetailView.m */; };
 		04A142B21995EF7A00E44FEE /* SubtleDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A142B11995EF7A00E44FEE /* SubtleDetailView.xib */; };
 		04A142B41995EF8C00E44FEE /* business_detail_temp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A142B31995EF8C00E44FEE /* business_detail_temp@2x.png */; };
@@ -401,6 +408,15 @@
 		0446CE3A19951B3D00D6C015 /* main_business@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_business@2x.png"; sourceTree = "<group>"; };
 		0446CE3C19951B9700D6C015 /* main_city@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_city@2x.png"; sourceTree = "<group>"; };
 		0446CE3E19951BE900D6C015 /* main_subtle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_subtle@2x.png"; sourceTree = "<group>"; };
+		0476060A1998472B007BED4C /* CommunityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityView.h; sourceTree = "<group>"; };
+		0476060B1998472B007BED4C /* CommunityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityView.m; sourceTree = "<group>"; };
+		0476060C1998472B007BED4C /* CommunityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityView.xib; sourceTree = "<group>"; };
+		0476060F1998498E007BED4C /* CommunityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityCell.h; sourceTree = "<group>"; };
+		047606101998498E007BED4C /* CommunityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityCell.m; sourceTree = "<group>"; };
+		047606111998498E007BED4C /* CommunityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityCell.xib; sourceTree = "<group>"; };
+		0476061419984C4A007BED4C /* cm_ attention@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cm_ attention@2x.png"; sourceTree = "<group>"; };
+		0476061519984C4A007BED4C /* cm_phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cm_phone@2x.png"; sourceTree = "<group>"; };
+		0476061819984C50007BED4C /* cm_community_temp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cm_community_temp@2x.png"; sourceTree = "<group>"; };
 		04A142A61995CE2D00E44FEE /* SubtleDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubtleDetailView.h; sourceTree = "<group>"; };
 		04A142A71995CE2D00E44FEE /* SubtleDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubtleDetailView.m; sourceTree = "<group>"; };
 		04A142B11995EF7A00E44FEE /* SubtleDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtleDetailView.xib; sourceTree = "<group>"; };
@@ -929,8 +945,8 @@
 				14B8F30D1994696000537505 /* SinaWeiboConnection.framework in Frameworks */,
 				14B8F3181994696000537505 /* libTCWeiboSDK.a in Frameworks */,
 				14B8F3161994696000537505 /* libSinaWeiboSDK.a in Frameworks */,
-				14B8F0F51994636F00537505 /* Foundation.framework in Frameworks */,
 				14B8F2D91994696000537505 /* KeyboardManager.framework in Frameworks */,
+				14B8F0F51994636F00537505 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1720,6 +1736,12 @@
 				14B8F3B31994730200537505 /* SubtleCell.h */,
 				14B8F3B41994730200537505 /* SubtleCell.m */,
 				14B8F3B51994730200537505 /* SubtleCell.xib */,
+				0476060A1998472B007BED4C /* CommunityView.h */,
+				0476060B1998472B007BED4C /* CommunityView.m */,
+				0476060C1998472B007BED4C /* CommunityView.xib */,
+				0476060F1998498E007BED4C /* CommunityCell.h */,
+				047606101998498E007BED4C /* CommunityCell.m */,
+				047606111998498E007BED4C /* CommunityCell.xib */,
 				14B8F3B61994730200537505 /* BusinessView.h */,
 				14B8F3B71994730200537505 /* BusinessView.m */,
 				14B8F3B81994730200537505 /* BusinessView.xib */,
@@ -1761,6 +1783,9 @@
 		14B8F355199471E000537505 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				0476061819984C50007BED4C /* cm_community_temp@2x.png */,
+				0476061419984C4A007BED4C /* cm_ attention@2x.png */,
+				0476061519984C4A007BED4C /* cm_phone@2x.png */,
 				04A143031996185900E44FEE /* xm_tianqi.png */,
 				04A143041996185900E44FEE /* xm_wannian.png */,
 				04A143051996185900E44FEE /* xm_shenfen.png */,
@@ -1983,6 +2008,7 @@
 				14B8F398199472F100537505 /* NewsTableView.xib in Resources */,
 				14B8F3D61994730200537505 /* BusinessCell.xib in Resources */,
 				14B8F45A1994732900537505 /* repairspic@2x.png in Resources */,
+				0476061719984C4B007BED4C /* cm_phone@2x.png in Resources */,
 				040CDF5A1995B37600E02EE4 /* head_back@2x.png in Resources */,
 				14B8F4B61994732900537505 /* main_topimage.png in Resources */,
 				14B8F47A1994732900537505 /* recharge_bg@2x.png in Resources */,
@@ -1991,6 +2017,7 @@
 				14B8F48F1994732900537505 /* backBtn.png in Resources */,
 				14B8F3DC1994730200537505 /* GoodsDetailView.xib in Resources */,
 				04A142B21995EF7A00E44FEE /* SubtleDetailView.xib in Resources */,
+				0476061619984C4B007BED4C /* cm_ attention@2x.png in Resources */,
 				0446CE381995180A00D6C015 /* subtleprice@2x.png in Resources */,
 				14B8F35A199472E500537505 /* MainPageView.xib in Resources */,
 				14B8F38C199472F100537505 /* ParkFeeView.xib in Resources */,
@@ -2068,6 +2095,7 @@
 				04A142C91995FC4800E44FEE /* lm_dianqi@2x.png in Resources */,
 				04A142CF1995FC4800E44FEE /* lm_xiyu@2x.png in Resources */,
 				14B8F4A01994732900537505 /* setting_logout@2x.png in Resources */,
+				0476061919984C50007BED4C /* cm_community_temp@2x.png in Resources */,
 				14B8F48D1994732900537505 /* areaarrows@2x.png in Resources */,
 				14B8F48B1994732900537505 /* areaBtnBg.png in Resources */,
 				14B8F45D1994732900537505 /* repairslogo@2x.png in Resources */,
@@ -2097,6 +2125,7 @@
 				14B8F4BA1994732900537505 /* tab_life@2x.png in Resources */,
 				14B8F4BE1994A3DD00537505 /* tab_nanning@2x.png in Resources */,
 				14B8F46D1994732900537505 /* conv_cell_left.png in Resources */,
+				0476060E1998472B007BED4C /* CommunityView.xib in Resources */,
 				0446CE391995180A00D6C015 /* taosao@2x.png in Resources */,
 				14B8F4A21994732900537505 /* top_bg7@2x.png in Resources */,
 				14B8F4A11994732900537505 /* tabbar_bg@2x.png in Resources */,
@@ -2105,6 +2134,7 @@
 				14B8F49E1994732900537505 /* setting_update@2x.png in Resources */,
 				0446CE331995180000D6C015 /* onlineservice@2x.png in Resources */,
 				14B8F4731994732900537505 /* online_title.png in Resources */,
+				047606131998498E007BED4C /* CommunityCell.xib in Resources */,
 				14B8F3EA1994731000537505 /* SettingView.xib in Resources */,
 				04A1430A1996185900E44FEE /* xm_fangdai.png in Resources */,
 				14B8F390199472F100537505 /* RepairsFormView.xib in Resources */,
@@ -2172,6 +2202,7 @@
 				14B8F2C71994696000537505 /* ASINetworkQueue.m in Sources */,
 				14B8F2CB1994696000537505 /* ImgRecord.m in Sources */,
 				14B8F2CF1994696000537505 /* JSONKit.m in Sources */,
+				047606121998498E007BED4C /* CommunityCell.m in Sources */,
 				14B8F2F11994696000537505 /* SDWebImageDecoder.m in Sources */,
 				14B8F2B71994696000537505 /* AFJSONUtilities.m in Sources */,
 				14B8F2F51994696000537505 /* SDWebImagePrefetcher.m in Sources */,
@@ -2208,6 +2239,7 @@
 				14B8F2D31994696000537505 /* EGOImageButton.m in Sources */,
 				14B8F3051994696000537505 /* NSObject+RMArchivable.m in Sources */,
 				14B8F2AF1994696000537505 /* AESCrypt.m in Sources */,
+				0476060D1998472B007BED4C /* CommunityView.m in Sources */,
 				14B8F2D61994696000537505 /* EGOImageView.m in Sources */,
 				14B8F3ED1994731000537505 /* UserInfoView.m in Sources */,
 				14B8F395199472F100537505 /* NoticeFrameView.m in Sources */,
@@ -2445,6 +2477,8 @@
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NanNIng/NanNIng-Prefix.pch";
@@ -2489,6 +2523,8 @@
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/Extend/QQConnectSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/UI",
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",

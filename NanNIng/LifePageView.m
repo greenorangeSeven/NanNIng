@@ -11,6 +11,7 @@
 #import "RechargeView.h"
 #import "SubtleView.h"
 #import "BusinessView.h"
+#import "CommunityView.h"
 
 @interface LifePageView ()
 
@@ -108,5 +109,12 @@
     businessView.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:businessView animated:YES];
+}
+
+- (IBAction)clickCommunity:(UIButton *)sender
+{
+    CommunityView *communityView = [[CommunityView alloc] init];
+    communityView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:communityView animated:YES];
 }
 @end

@@ -100,7 +100,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="clickRecharge:" destination="-1" eventType="touchUpInside" id="q5Q-KO-3hP"/>
+                                <action selector="clickCommunity:" destination="-1" eventType="touchUpInside" id="u2A-M1-Om7"/>
                             </connections>
                         </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="跳骚市场" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hdv-cU-MGa">
