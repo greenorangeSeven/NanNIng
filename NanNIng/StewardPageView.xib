@@ -169,7 +169,7 @@
         <image name="wuye_bg.png" width="320" height="133"/>
         <image name="wuye_jiaofei.png" width="48" height="48"/>
         <image name="wuye_juweihui.png" width="48" height="48"/>
-        <image name="wuye_notification.png" width="97" height="94"/>
+        <image name="wuye_notification.png" width="48" height="47"/>
         <image name="wuye_parkjiaofei.png" width="48" height="48"/>
         <image name="wuye_send.png" width="48" height="48"/>
     </resources>
