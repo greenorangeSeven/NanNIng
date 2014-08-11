@@ -22,13 +22,13 @@
         titleLabel.font = [UIFont boldSystemFontOfSize:18];
         titleLabel.text = @"美世界 美生活";
         titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.textColor = [UIColor whiteColor];
+        titleLabel.textColor = [Tool getColorForGreen];
         titleLabel.textAlignment = UITextAlignmentCenter;
         self.navigationItem.titleView = titleLabel;
         
         UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
         [lBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-        [lBtn setImage:[UIImage imageNamed:@"backBtn"] forState:UIControlStateNormal];
+        [lBtn setImage:[UIImage imageNamed:@"head_back"] forState:UIControlStateNormal];
         UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
         self.navigationItem.leftBarButtonItem = btnBack;
     }
@@ -42,6 +42,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //适配iOS7uinavigationbar遮挡tableView的问题
+    if(IS_IOS7)
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    
     //下属控件初始化
     self.stewardView = [[StewardFeeView alloc] init];
     self.parkView = [[ParkFeeView alloc] init];

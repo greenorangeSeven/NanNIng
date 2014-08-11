@@ -22,13 +22,13 @@
         titleLabel.font = [UIFont boldSystemFontOfSize:18];
         titleLabel.text = @"美世界 美生活";
         titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.textColor = [UIColor whiteColor];
+        titleLabel.textColor = [Tool getColorForGreen];
         titleLabel.textAlignment = UITextAlignmentCenter;
         self.navigationItem.titleView = titleLabel;
         
         UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
         [lBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-        [lBtn setImage:[UIImage imageNamed:@"backBtn"] forState:UIControlStateNormal];
+        [lBtn setImage:[UIImage imageNamed:@"head_back"] forState:UIControlStateNormal];
         UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
         self.navigationItem.leftBarButtonItem = btnBack;
     }
