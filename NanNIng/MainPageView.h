@@ -23,13 +23,17 @@
 #pragma mark 便民服务
 - (IBAction)clickService:(UIButton *)sender;
 
-- (IBAction)stewardFeeAction:(id)sender;
-- (IBAction)repairsAction:(id)sender;
-- (IBAction)noticeAction:(id)sender;
-- (IBAction)expressAction:(id)sender;
+#pragma mark 城市文化
+- (IBAction)clickCityCulture:(UIButton *)sender;
+
 #pragma mark 精选特价
 - (IBAction)clickSubtle:(UIButton *)sender;
 
 #pragma mark 联盟商家
 - (IBAction)clickBusiness:(UIButton *)sender;
+
+- (IBAction)stewardFeeAction:(id)sender;
+- (IBAction)repairsAction:(id)sender;
+- (IBAction)noticeAction:(id)sender;
+- (IBAction)expressAction:(id)sender;
 @end

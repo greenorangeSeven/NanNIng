@@ -11,6 +11,7 @@
 #import "RechargeView.h"
 #import "SubtleView.h"
 #import "BusinessView.h"
+#import "CityCultureView.h"
 
 @interface MainPageView ()
 
@@ -104,6 +105,13 @@
     convView.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:convView animated:YES];
+}
+
+- (IBAction)clickCityCulture:(UIButton *)sender
+{
+    CityCultureView *cityView = [[CityCultureView alloc] init];
+    cityView.hidesBottomBarWhenPushed = NO;
+    [self.navigationController pushViewController:cityView animated:YES];
 }
 
 - (IBAction)stewardFeeAction:(id)sender {

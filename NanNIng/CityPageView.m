@@ -7,6 +7,7 @@
 //
 
 #import "CityPageView.h"
+#import "CityCultureView.h"
 
 @interface CityPageView ()
 
@@ -64,4 +65,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)clickCity:(UIButton *)sender
+{
+    CityCultureView *cityView = [[CityCultureView alloc] init];
+    cityView.hidesBottomBarWhenPushed = NO;
+    [self.navigationController pushViewController:cityView animated:YES];
+}
 @end

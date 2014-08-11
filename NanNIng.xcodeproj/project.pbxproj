@@ -40,6 +40,12 @@
 		0476061619984C4B007BED4C /* cm_ attention@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476061419984C4A007BED4C /* cm_ attention@2x.png */; };
 		0476061719984C4B007BED4C /* cm_phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476061519984C4A007BED4C /* cm_phone@2x.png */; };
 		0476061919984C50007BED4C /* cm_community_temp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476061819984C50007BED4C /* cm_community_temp@2x.png */; };
+		0476061D19986390007BED4C /* CityCultureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476061B19986390007BED4C /* CityCultureView.m */; };
+		0476061E19986390007BED4C /* CityCultureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0476061C19986390007BED4C /* CityCultureView.xib */; };
+		0476062019986423007BED4C /* city_temp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476061F19986423007BED4C /* city_temp@2x.png */; };
+		0476062419986616007BED4C /* CityCultureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476062219986616007BED4C /* CityCultureCell.m */; };
+		0476062519986616007BED4C /* CityCultureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0476062319986616007BED4C /* CityCultureCell.xib */; };
+		047606271998664F007BED4C /* city_cell_temp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 047606261998664F007BED4C /* city_cell_temp@2x.png */; };
 		04A142A91995CE2D00E44FEE /* SubtleDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A142A71995CE2D00E44FEE /* SubtleDetailView.m */; };
 		04A142B21995EF7A00E44FEE /* SubtleDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A142B11995EF7A00E44FEE /* SubtleDetailView.xib */; };
 		04A142B41995EF8C00E44FEE /* business_detail_temp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A142B31995EF8C00E44FEE /* business_detail_temp@2x.png */; };
@@ -421,6 +427,14 @@
 		0476061419984C4A007BED4C /* cm_ attention@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cm_ attention@2x.png"; sourceTree = "<group>"; };
 		0476061519984C4A007BED4C /* cm_phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cm_phone@2x.png"; sourceTree = "<group>"; };
 		0476061819984C50007BED4C /* cm_community_temp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cm_community_temp@2x.png"; sourceTree = "<group>"; };
+		0476061A19986390007BED4C /* CityCultureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityCultureView.h; sourceTree = "<group>"; };
+		0476061B19986390007BED4C /* CityCultureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityCultureView.m; sourceTree = "<group>"; };
+		0476061C19986390007BED4C /* CityCultureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityCultureView.xib; sourceTree = "<group>"; };
+		0476061F19986423007BED4C /* city_temp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "city_temp@2x.png"; sourceTree = "<group>"; };
+		0476062119986616007BED4C /* CityCultureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityCultureCell.h; sourceTree = "<group>"; };
+		0476062219986616007BED4C /* CityCultureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityCultureCell.m; sourceTree = "<group>"; };
+		0476062319986616007BED4C /* CityCultureCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityCultureCell.xib; sourceTree = "<group>"; };
+		047606261998664F007BED4C /* city_cell_temp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "city_cell_temp@2x.png"; sourceTree = "<group>"; };
 		04A142A61995CE2D00E44FEE /* SubtleDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubtleDetailView.h; sourceTree = "<group>"; };
 		04A142A71995CE2D00E44FEE /* SubtleDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubtleDetailView.m; sourceTree = "<group>"; };
 		04A142B11995EF7A00E44FEE /* SubtleDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtleDetailView.xib; sourceTree = "<group>"; };
@@ -954,8 +968,8 @@
 				14B8F30D1994696000537505 /* SinaWeiboConnection.framework in Frameworks */,
 				14B8F3181994696000537505 /* libTCWeiboSDK.a in Frameworks */,
 				14B8F3161994696000537505 /* libSinaWeiboSDK.a in Frameworks */,
-				14B8F0F51994636F00537505 /* Foundation.framework in Frameworks */,
 				14B8F2D91994696000537505 /* KeyboardManager.framework in Frameworks */,
+				14B8F0F51994636F00537505 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -978,6 +992,12 @@
 				143246721995F240008ECFF6 /* CityPageView.h */,
 				143246731995F240008ECFF6 /* CityPageView.m */,
 				143246741995F240008ECFF6 /* CityPageView.xib */,
+				0476061A19986390007BED4C /* CityCultureView.h */,
+				0476061B19986390007BED4C /* CityCultureView.m */,
+				0476061C19986390007BED4C /* CityCultureView.xib */,
+				0476062119986616007BED4C /* CityCultureCell.h */,
+				0476062219986616007BED4C /* CityCultureCell.m */,
+				0476062319986616007BED4C /* CityCultureCell.xib */,
 			);
 			name = WisdomCity;
 			sourceTree = "<group>";
@@ -1802,6 +1822,8 @@
 		14B8F355199471E000537505 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				047606261998664F007BED4C /* city_cell_temp@2x.png */,
+				0476061F19986423007BED4C /* city_temp@2x.png */,
 				143246771995F45D008ECFF6 /* city_dongmeng@2x.png */,
 				14B8F4C51994BB7700537505 /* main_btn_bg.png */,
 				0476061819984C50007BED4C /* cm_community_temp@2x.png */,
@@ -2032,7 +2054,7 @@
 				14B8F45A1994732900537505 /* repairspic@2x.png in Resources */,
 				040CDF5A1995B37600E02EE4 /* head_back.png in Resources */,
 				0476061719984C4B007BED4C /* cm_phone@2x.png in Resources */,
-				040CDF5A1995B37600E02EE4 /* head_back@2x.png in Resources */,
+				040CDF5A1995B37600E02EE4 /* head_back.png in Resources */,
 				14B8F4B61994732900537505 /* main_topimage.png in Resources */,
 				14B8F47A1994732900537505 /* recharge_bg@2x.png in Resources */,
 				04A142E6199609FC00E44FEE /* conv_order_online@2x.png in Resources */,
@@ -2056,6 +2078,7 @@
 				14B8F4931994732900537505 /* registerbtn@2x.png in Resources */,
 				14B8F4691994732900537505 /* bdetail_temp.png in Resources */,
 				04A142BA1995F0E100E44FEE /* head_sort@2x.png in Resources */,
+				0476062519986616007BED4C /* CityCultureCell.xib in Resources */,
 				04A142C01995F8CB00E44FEE /* goods_buy@2x.png in Resources */,
 				14B8F4891994732900537505 /* feelogo@2x.png in Resources */,
 				14B8F39E199472F100537505 /* MySendExpressView.xib in Resources */,
@@ -2108,6 +2131,7 @@
 				14B8F4A81994732900537505 /* mail@2x.png in Resources */,
 				0446CE231995158B00D6C015 /* wuye_jiaofei@2x.png in Resources */,
 				0446CE2B199515BE00D6C015 /* wuye_send@2x.png in Resources */,
+				047606271998664F007BED4C /* city_cell_temp@2x.png in Resources */,
 				04A142CD1995FC4800E44FEE /* lm_muyin@2x.png in Resources */,
 				14B8F3F01994731000537505 /* ChooseAreaView.xib in Resources */,
 				14B8F394199472F100537505 /* MyRepairsCell.xib in Resources */,
@@ -2121,6 +2145,7 @@
 				04A142C91995FC4800E44FEE /* lm_dianqi@2x.png in Resources */,
 				04A142CF1995FC4800E44FEE /* lm_xiyu@2x.png in Resources */,
 				14B8F4A01994732900537505 /* setting_logout@2x.png in Resources */,
+				0476062019986423007BED4C /* city_temp@2x.png in Resources */,
 				0476061919984C50007BED4C /* cm_community_temp@2x.png in Resources */,
 				14B8F48D1994732900537505 /* areaarrows@2x.png in Resources */,
 				14B8F48B1994732900537505 /* areaBtnBg.png in Resources */,
@@ -2137,6 +2162,7 @@
 				040CDF5E1995B37600E02EE4 /* subtle_ supermarket@2x.png in Resources */,
 				14B8F46A1994732900537505 /* business_map.png in Resources */,
 				14B8F4A51994732900537505 /* rightarrows@2x.png in Resources */,
+				0476061E19986390007BED4C /* CityCultureView.xib in Resources */,
 				0446CE3D19951B9700D6C015 /* main_city@2x.png in Resources */,
 				14B8F3EC1994731000537505 /* RegisterView.xib in Resources */,
 				14B8F39A199472F100537505 /* NoticeTableCell.xib in Resources */,
@@ -2287,6 +2313,7 @@
 				14B8F2D51994696000537505 /* EGOImageLoader.m in Sources */,
 				14B8F33B19946C8100537505 /* LoadingCell.m in Sources */,
 				14B8F3091994696000537505 /* SGFocusImageFrame.m in Sources */,
+				0476061D19986390007BED4C /* CityCultureView.m in Sources */,
 				14B8F2E81994696000537505 /* PSTGridLayoutRow.m in Sources */,
 				14B8F2BF1994696000537505 /* ASIWebPageRequest.m in Sources */,
 				14B8F2D21994696000537505 /* EGOCache.m in Sources */,
@@ -2328,6 +2355,7 @@
 				14B8F2B81994696000537505 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				14B8F2FD1994696000537505 /* MWGridViewController.m in Sources */,
 				14B8F2C51994696000537505 /* ASIHTTPRequest.m in Sources */,
+				0476062419986616007BED4C /* CityCultureCell.m in Sources */,
 				14B8F2E91994696000537505 /* PSTGridLayoutSection.m in Sources */,
 				14B8F2C31994696000537505 /* ASIDownloadCache.m in Sources */,
 				14B8F33A19946C8100537505 /* ImageStore.m in Sources */,
@@ -2508,6 +2536,8 @@
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NanNIng/NanNIng-Prefix.pch";
@@ -2552,6 +2582,8 @@
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/Extend/QQConnectSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/UI",
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",

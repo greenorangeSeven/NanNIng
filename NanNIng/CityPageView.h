@@ -13,4 +13,6 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UILabel *telBg;
 
+- (IBAction)clickCity:(UIButton *)sender;
+
 @end
