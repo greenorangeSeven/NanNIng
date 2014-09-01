@@ -11,8 +11,9 @@
 @interface ConvCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIView *cellbackgroudView;
-
-+ (id)initWith;
-+ (NSString *)ID;
+@property (weak, nonatomic) IBOutlet UILabel *titleLb;
+@property (weak, nonatomic) IBOutlet UILabel *adressLb;
+@property (weak, nonatomic) IBOutlet UILabel *telLb;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLb;
 
 @end

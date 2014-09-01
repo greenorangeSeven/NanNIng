@@ -12,6 +12,8 @@
 
 @interface StewardFeeFrameView : UIViewController
 
+@property (strong, nonatomic) NSString * viewType;
+
 @property (strong, nonatomic) StewardFeeView * stewardView;
 @property (strong, nonatomic) ParkFeeView * parkView;
 

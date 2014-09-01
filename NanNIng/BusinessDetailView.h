@@ -7,12 +7,33 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BusinessGoods.h"
+#import "Coupons.h"
+#import "Goods.h"
+#import "SGFocusImageFrame.h"
+#import "SGFocusImageItem.h"
+#import "StrikeThroughLabel.h"
+#import "BusinessGoodCell.h"
+#import "GoodsDetailView.h"
+#import "CouponDetailView.h"
 
-@interface BusinessDetailView : UIViewController
+@interface BusinessDetailView : UIViewController<SGFocusImageFrameDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 {
-    int cellIndex;
+    UIWebView *phoneCallWebView;
+    NSMutableArray *goods;
+    NSMutableArray *coupons;
+    MBProgressHUD *hud;
+    NSString *orderByStr;
+    SGFocusImageFrame *bannerView;
+    int couponIndex;
 }
 
+@property (weak, nonatomic) Shop *shop;
+@property (weak, nonatomic) NSString *tjTitle;
+@property (weak, nonatomic) NSString *tjCatId;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *orderSegmented;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIImageView *couponIv;
+- (IBAction)segnebtedChangeAction:(id)sender;
 
 @end

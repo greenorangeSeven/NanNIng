@@ -42,23 +42,52 @@
 
 #pragma mark - View lifecycle
 
+#pragma mark - View lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    
     if (!IS_IOS7) {
         [self.tableSettings setBackgroundColor:[Tool getBackgroundColor]];
     }
+    
+    if ([self.typeView isEqualToString:@"setting"]) {
+        ((UILabel *)self.navigationItem.titleView).text = @"设置";
+        [self initSettingData];
+    }
+    else if ([self.typeView isEqualToString:@"my"]) {
+        ((UILabel *)self.navigationItem.titleView).text = @"我的";
+        [self initMyData];
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:Notification_RefreshSetting object:nil];
+}
 
-    self.settingsInSection = [[NSMutableDictionary alloc] initWithCapacity:3];
+- (void)initSettingData
+{
+    bool islogin = [[UserModel Instance] isLogin];
+    self.settingsInSection = [[NSMutableDictionary alloc] initWithCapacity:2];
     NSArray *first = [[NSArray alloc] initWithObjects:
                       [[SettingModel alloc] initWith:@"注册" andImg:@"setting_register" andTag:1 andTitle2:nil],
-                      [[SettingModel alloc] initWith: @"登录" andImg:@"setting_login" andTag:2 andTitle2:nil],
+                      [[SettingModel alloc] initWith: islogin?@"注销":@"登录" andImg:islogin?@"setting_logout":@"setting_login" andTag:2 andTitle2:nil],
                       [[SettingModel alloc] initWith: @"个人信息" andImg:@"setting_info" andTag:3 andTitle2:nil],
                       [[SettingModel alloc] initWith: @"修改密码" andImg:@"setting_update" andTag:4 andTitle2:nil],
                       nil];
+
+    NSArray *third = [[NSArray alloc] initWithObjects:
+                      [[SettingModel alloc] initWith:@"版本更新" andImg:@"setting_update" andTag:10 andTitle2:nil],
+                      [[SettingModel alloc] initWith:@"推送消息" andImg:@"setting_push" andTag:11 andTitle2:nil],
+                      nil];
+    
+    [self.settingsInSection setObject:first forKey:@"帐号"];
+    [self.settingsInSection setObject:third forKey:@"设置"];
+    self.settings = [[NSArray alloc] initWithObjects:@"帐号",@"设置",nil];
+}
+
+- (void)initMyData
+{
+    self.settingsInSection = [[NSMutableDictionary alloc] initWithCapacity:1];
+
     NSArray *second = [[NSArray alloc] initWithObjects:
                        [[SettingModel alloc] initWith:@"我的订单" andImg:@"setting_order" andTag:5 andTitle2:nil],
                        [[SettingModel alloc] initWith:@"我的物业费" andImg:@"setting_propertyfee" andTag:6 andTitle2:nil],
@@ -66,22 +95,22 @@
                        [[SettingModel alloc] initWith:@"我的寄件箱" andImg:@"setting_mail" andTag:8 andTitle2:nil],
                        [[SettingModel alloc] initWith:@"我的收藏" andImg:@"setting_collect" andTag:9 andTitle2:nil],
                        nil];
-    NSArray *third = [[NSArray alloc] initWithObjects:
-                      [[SettingModel alloc] initWith:@"版本更新" andImg:@"setting_update" andTag:10 andTitle2:nil],
-                      [[SettingModel alloc] initWith:@"推送消息" andImg:@"setting_push" andTag:11 andTitle2:nil],
-                      [[SettingModel alloc] initWith:@"注销" andImg:@"setting_logout" andTag:12 andTitle2:nil],
-                      nil];
 
-        [self.settingsInSection setObject:first forKey:@"帐号"];
-        [self.settingsInSection setObject:third forKey:@"设置"];
-        [self.settingsInSection setObject:second forKey:@"我的"];
-        self.settings = [[NSArray alloc] initWithObjects:@"帐号",@"我的",@"设置",nil];
+    
+    [self.settingsInSection setObject:second forKey:@"我的"];
+    self.settings = [[NSArray alloc] initWithObjects:@"我的",nil];
+}
+
+- (void)refresh
+{
+    [self initSettingData];
+    [tableSettings reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-//    [self.tableSettings reloadData];
+    //    [self.tableSettings reloadData];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 - (void)viewDidUnload
@@ -109,11 +138,28 @@
             break;
         case 2:
         {
-
+            if ([[UserModel Instance] isLogin]) {
+                [ASIHTTPRequest setSessionCookies:nil];
+                [ASIHTTPRequest clearSession];
+                [[UserModel Instance] saveIsLogin:NO];
+                [self refresh];
+                [Tool showCustomHUD:@"注销成功" andView:self.view andImage:@"37x-Checkmark.png" andAfterDelay:2];
+            }
+            else
+            {
+                LoginView *loginView = [[LoginView alloc] init];
+                loginView.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:loginView animated:YES];
+            }
         }
             break;
         case 3:
         {
+            if (![[UserModel Instance] isLogin])
+            {
+                [Tool showCustomHUD:@"请先登录" andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
+                return;
+            }
             UserInfoView *userinfoView = [[UserInfoView alloc] init];
             userinfoView.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:userinfoView animated:YES];
@@ -121,33 +167,88 @@
             break;
         case 4:
         {
-            ChooseAreaView *chooseView = [[ChooseAreaView alloc] init];
-            chooseView.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:chooseView animated:YES];
+            //            ChooseAreaView *chooseView = [[ChooseAreaView alloc] init];
+            //            chooseView.hidesBottomBarWhenPushed = YES;
+            //            [self.navigationController pushViewController:chooseView animated:YES];
         }
             break;
         case 5:
         {
-
+            if (![[UserModel Instance] isLogin])
+            {
+                [Tool showCustomHUD:@"请先登录" andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
+                return;
+            }
+            ShoppingCartView *careView = [[ShoppingCartView alloc] init];
+            careView.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:careView animated:YES];
         }
             break;
         case 6:
         {
-            
+            if (![[UserModel Instance] isLogin])
+            {
+                [Tool showCustomHUD:@"请先登录" andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
+                return;
+            }
+            FeeHistoryView *feeHistoryView = [[FeeHistoryView alloc] init];
+            feeHistoryView.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:feeHistoryView animated:YES];
         }
             break;
         case 7:
         {
-
+            if (![[UserModel Instance] isLogin])
+            {
+                [Tool showCustomHUD:@"请先登录" andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
+                return;
+            }
+            FeeHistoryView *feeHistoryView = [[FeeHistoryView alloc] init];
+            feeHistoryView.hidesBottomBarWhenPushed = YES;
+            feeHistoryView.isShowPark = YES;
+            [self.navigationController pushViewController:feeHistoryView animated:YES];
         }
             break;
         case 8:
         {
-
+            if (![[UserModel Instance] isLogin])
+            {
+                [Tool showCustomHUD:@"请先登录" andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
+                return;
+            }
+            ExpressView *expressView = [[ExpressView alloc] init];
+            expressView.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:expressView animated:YES];
         }
+            break;
         case 9:
         {
-
+            
+        }
+            break;
+        case 10:
+        {
+            
+        }
+            break;
+        case 11:
+        {
+            
+        }
+            break;
+        case 12:
+        {
+            if (![[UserModel Instance] isLogin])
+            {
+                [Tool showCustomHUD:@"请先登录" andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
+            }
+            else
+            {
+                [ASIHTTPRequest setSessionCookies:nil];
+                [ASIHTTPRequest clearSession];
+                [[UserModel Instance] saveIsLogin:NO];
+                [Tool showCustomHUD:@"注销成功" andView:self.view andImage:@"37x-Checkmark.png" andAfterDelay:2];
+            }
         }
             break;
         default:
@@ -177,30 +278,30 @@
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 //{
 //    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(10, 0, 300, 30)];//创建一个视图
-//    
+//
 //    UIImageView *headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 300, 30)];
-//    
+//
 //    UIImage *image = [UIImage imageNamed:@"top_bg.png"];
-//    
+//
 //    [headerImageView setImage:image];
-//    
+//
 //    [headerView addSubview:headerImageView];
-//    
-//    
+//
+//
 //    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 5, 150, 20)];
-//    
+//
 //    headerLabel.backgroundColor = [UIColor clearColor];
-//    
+//
 //    headerLabel.font = [UIFont boldSystemFontOfSize:15.0];
-//    
+//
 //    headerLabel.textColor = [UIColor blueColor];
-//    
+//
 //    headerLabel.text = @"Section";
-//    
+//
 //    [headerView addSubview:headerLabel];
-//  
+//
 //    return headerView;
-//    
+//
 //}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

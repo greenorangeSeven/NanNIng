@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "MyRepairsCell.h"
+#import "RepairsList.h"
 #import "AMRatingControl.h"
+#import "RepairsItemView.h"
+#import "RepairsRateView.h"
 
 @interface MyRepairsView : UIViewController<UITableViewDataSource, UITableViewDelegate>
+{
+    NSArray *myRepairsData;
+}
 
 @property (strong, nonatomic) IBOutlet UIView *bgView;
 @property (strong, nonatomic) IBOutlet UITableView *myRepairsTable;

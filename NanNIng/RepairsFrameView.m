@@ -43,26 +43,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //适配iOS7uinavigationbar遮挡tableView的问题
-    if(IS_IOS7)
-    {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-        self.automaticallyAdjustsScrollViewInsets = NO;
-    }
-    self.view.backgroundColor = [Tool getBackgroundColor];
     //下属控件初始化
     self.repairsView = [[RepairsFormView alloc] init];
+    self.repairsView.parentView = self.view;
     self.myRepairsView = [[MyRepairsView alloc] init];
     self.myRepairsView.view.hidden = YES;
     [self addChildViewController:self.repairsView];
     [self addChildViewController:self.myRepairsView];
     [self.mainView addSubview:self.repairsView.view];
     [self.mainView addSubview:self.myRepairsView.view];
+    
+    //适配iOS7  scrollView计算uinavigationbar高度的问题
+    if(IS_IOS7)
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
 }
 
 - (IBAction)repairsAction:(id)sender
 {
-    [self.repairsBtn setTitleColor:[UIColor colorWithRed:255.0/255.0 green:127.0/255.0 blue:0.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [self.repairsBtn setTitleColor:[Tool getColorForGreen] forState:UIControlStateNormal];
     [self.myRepairsBtn setTitleColor:[UIColor scrollViewTexturedBackgroundColor] forState:UIControlStateNormal];
     self.repairsView.view.hidden = NO;
     self.myRepairsView.view.hidden = YES;
@@ -71,7 +72,7 @@
 - (IBAction)myRepairsAction:(id)sender
 {
     [self.repairsBtn setTitleColor:[UIColor scrollViewTexturedBackgroundColor] forState:UIControlStateNormal];
-    [self.myRepairsBtn setTitleColor:[UIColor colorWithRed:255.0/255.0 green:127.0/255.0 blue:0.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [self.myRepairsBtn setTitleColor:[Tool getColorForGreen] forState:UIControlStateNormal];
     self.repairsView.view.hidden = YES;
     self.myRepairsView.view.hidden = NO;
 }

@@ -7,8 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BusinessDetailView.h"
 
-@interface SubtleView : UIViewController
+@interface SubtleView : UIViewController<SGFocusImageFrameDelegate>
+{
+    MBProgressHUD *hud;
+    NSMutableArray *goods;
+    SGFocusImageFrame *bannerView;
+    int goodIndex;
+}
+
+@property (weak, nonatomic) IBOutlet UIImageView *recommendIv;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-- (IBAction)goDetails;
+
+- (IBAction)newProductAction:(id)sender;
+- (IBAction)saleProductAction:(id)sender;
+- (IBAction)hotProductAction:(id)sender;
+- (IBAction)allProductAction:(id)sender;
+
 @end

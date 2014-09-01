@@ -11,12 +11,23 @@
 #import "RepairsFrameView.h"
 #import "NoticeFrameView.h"
 #import "ExpressView.h"
+#import "SGFocusImageFrame.h"
+#import "SGFocusImageItem.h"
+#import "ADVDetailView.h"
 
 
-@interface MainPageView : UIViewController
+@interface MainPageView : UIViewController<SGFocusImageFrameDelegate, UIActionSheetDelegate>
+{
+    NSMutableArray *advDatas;
+    SGFocusImageFrame *bannerView;
+    int advIndex;
+    
+    MBProgressHUD *hud;
+}
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) IBOutlet UILabel *menuBg;
+@property (weak, nonatomic) IBOutlet UIButton *pointsBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *advIv;
 
 #pragma mark -按钮点击事件
 
@@ -36,4 +47,9 @@
 - (IBAction)repairsAction:(id)sender;
 - (IBAction)noticeAction:(id)sender;
 - (IBAction)expressAction:(id)sender;
+
+- (IBAction)shareAction:(id)sender;
+- (IBAction)advDetailAction:(id)sender;
+- (IBAction)pointsAction:(id)sender;
+
 @end

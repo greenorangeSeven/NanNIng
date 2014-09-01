@@ -12,6 +12,10 @@
 #import "RegisterView.h"
 #import "UserInfoView.h"
 #import "ChooseAreaView.h"
+#import "LoginView.h"
+#import "ShoppingCartView.h"
+#import "FeeHistoryView.h"
+#import "ExpressView.h"
 
 @interface SettingView : UIViewController<UITableViewDataSource, UITableViewDelegate,UIAlertViewDelegate>
 {
@@ -20,6 +24,7 @@
     NSMutableDictionary * settingsInSection;
 }
 
+@property (strong, nonatomic) NSString *typeView;
 @property (strong, nonatomic) IBOutlet UITableView *tableSettings;
 @property (retain,nonatomic) NSArray * settings;
 @property (retain,nonatomic) NSMutableDictionary * settingsInSection;

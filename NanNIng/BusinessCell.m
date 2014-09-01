@@ -9,21 +9,7 @@
 #import "BusinessCell.h"
 
 @implementation BusinessCell
-+ (id)initWith
-{
-    UINib *nib = [UINib nibWithNibName:@"BusinessCell" bundle:nil];
-    BusinessCell *cell = [nib instantiateWithOwner:nil options:nil][0];
-    
-    //将图层的边框设置为圆脚
-    cell.cellbackgroudView.layer.cornerRadius = 8;
-    cell.cellbackgroudView.layer.masksToBounds = YES;
-    return cell;
-}
 
-+ (NSString *)ID
-{
-    return @"BusinessCell";
-}
 - (void)awakeFromNib
 {
 }

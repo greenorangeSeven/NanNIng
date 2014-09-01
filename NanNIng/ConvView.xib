@@ -7,7 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConvView">
             <connections>
-                <outlet property="tableView" destination="frl-xI-agz" id="c9A-M6-sCK"/>
+                <outlet property="cateCollection" destination="9DH-ff-s46" id="qgr-PO-4F9"/>
+                <outlet property="tableView" destination="frl-xI-agz" id="DVT-Gn-PaI"/>
                 <outlet property="view" destination="hCI-n5-6oN" id="eIp-2k-8eH"/>
             </connections>
         </placeholder>
@@ -17,68 +18,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="business_bg.png" id="wAR-Rt-v3E">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="158"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="167"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JZN-BZ-GHO">
-                    <rect key="frame" x="11" y="9" width="59" height="60"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="bm_water.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PaJ-HQ-qjT">
-                    <rect key="frame" x="91" y="11" width="49" height="58"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="bm_zhuangxiu.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Lif-ea-0st">
-                    <rect key="frame" x="177" y="11" width="49" height="58"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="bm_luyou.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IGg-CU-xzT">
-                    <rect key="frame" x="261" y="11" width="49" height="58"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="bm_weixiu.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JSc-uP-miJ">
-                    <rect key="frame" x="11" y="90" width="49" height="58"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="bm_jiazheng.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uTX-JP-2Ud">
-                    <rect key="frame" x="91" y="90" width="49" height="58"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="bm_more.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="frl-xI-agz">
-                    <rect key="frame" x="0.0" y="157" width="319" height="411"/>
+                    <rect key="frame" x="0.0" y="167" width="319" height="401"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="sectionIndexBackgroundColor" red="0.93333333333333335" green="0.91764705882352937" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
+                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" id="9DH-ff-s46">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="167"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="1Ad-Ie-0uq">
+                        <size key="itemSize" width="80" height="80"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <cells/>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
         </view>
     </objects>
     <resources>
-        <image name="bm_jiazheng.png" width="54" height="64"/>
-        <image name="bm_luyou.png" width="54" height="64"/>
-        <image name="bm_more.png" width="54" height="64"/>
-        <image name="bm_water.png" width="54" height="64"/>
-        <image name="bm_weixiu.png" width="54" height="64"/>
-        <image name="bm_zhuangxiu.png" width="54" height="64"/>
         <image name="business_bg.png" width="320" height="152"/>
     </resources>
 </document>

@@ -11,8 +11,10 @@
 #import "RepairsFrameView.h"
 #import "NoticeFrameView.h"
 #import "ExpressView.h"
+#import "SGFocusImageFrame.h"
+#import "SGFocusImageItem.h"
 
-@interface StewardPageView : UIViewController
+@interface StewardPageView : UIViewController<SGFocusImageFrameDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UILabel *telBg;

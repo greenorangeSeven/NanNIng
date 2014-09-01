@@ -13,8 +13,16 @@
 #import "LifePageView.h"
 #import "SettingView.h"
 #import "CityPageView.h"
+#import "ShoppingCartView.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+#import "BMapKit.h"
+#import <sys/xattr.h>
+#import "WXApi.h"
+#import "WeiboApi.h"
+#import "AlixPayResult.h"
+#import "DataVerifier.h"
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate, BMKGeneralDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UITabBarController *tabBarController;
@@ -23,6 +31,6 @@
 @property (strong, nonatomic) StewardPageView *stewardPage;
 @property (strong, nonatomic) LifePageView *lifePage;
 @property (strong, nonatomic) CityPageView *cityPage;
-@property (strong, nonatomic) SettingView *settingPage;
+@property (strong, nonatomic) ShoppingCartView *shopCarPage;
 
 @end

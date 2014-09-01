@@ -106,8 +106,6 @@
     return [UIColor colorWithRed:18.0/255 green:144.0/255 blue:2.0/255 alpha:1.0];
 }
 
-
-
 + (void)clearWebViewBackground:(UIWebView *)webView
 {
     UIWebView *web = webView;
@@ -162,13 +160,13 @@
 {
     NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
     if ([buttonTitle isEqualToString:@"登录"]) {
-//        LoginView *loginView = [[LoginView alloc] init];
-//        [nav pushViewController:loginView animated:YES];
+        LoginView *loginView = [[LoginView alloc] init];
+        [nav pushViewController:loginView animated:YES];
     }
     else if([buttonTitle isEqualToString:@"注册"])
     {
-//        RegisterView *regView = [[RegisterView alloc] init];
-//        [nav pushViewController:regView animated:YES];
+        RegisterView *regView = [[RegisterView alloc] init];
+        [nav pushViewController:regView animated:YES];
     }
 }
 
@@ -256,11 +254,11 @@
 + (UIColor *)getBackgroundColor
 {
 //    return [UIColor colorWithPatternImage:[UIImage imageNamed:@"fb_bg.jpg"]];
-    return [UIColor colorWithRed:234.0/255 green:234.0/255 blue:234.0/255 alpha:1.0];
+    return [UIColor colorWithRed:189.0/255 green:196.0/255 blue:204.0/255 alpha:1.0];
 }
 + (UIColor *)getCellBackgroundColor
 {
-    return [UIColor colorWithRed:234.0/255 green:234.0/255 blue:234.0/255 alpha:1.0];
+    return [UIColor colorWithRed:235.0/255 green:235.0/255 blue:243.0/255 alpha:1.0];
 }
 
 + (void)saveCache:(int)type andID:(int)_id andString:(NSString *)str
@@ -401,6 +399,17 @@
     return value;
 }
 
++ (NSString *)notRounding:(float)price afterPoint:(int)position
+{
+    NSDecimalNumberHandler* roundingBehavior = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown scale:position raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+    NSDecimalNumber *ouncesDecimal;
+    NSDecimalNumber *roundedOunces;
+    
+    ouncesDecimal = [[NSDecimalNumber alloc] initWithFloat:price];
+    roundedOunces = [ouncesDecimal decimalNumberByRoundingAccordingToBehavior:roundingBehavior];
+    return [NSString stringWithFormat:@"%@",roundedOunces];
+}
+
 + (void)shareAction:(UIButton *)sender andShowView:(UIView *)view andContent:(NSDictionary *)shareContent {
 //    Activity *activity = [[Activity alloc] init];
     //构造分享内容
@@ -408,7 +417,7 @@
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithUrl:[shareContent objectForKey:@"thumb"]]
                                                 title:[shareContent objectForKey:@"title"]
-                                                  url:@"http://house.nwclhn.com"
+                                                  url:@"http://www.best-world.net"
                                           description:[shareContent objectForKey:@"summary"]
                                             mediaType:SSPublishContentMediaTypeNews];
     
@@ -525,11 +534,325 @@
                             }];
 }
 
++ (NSString* )databasePath
+{
+    NSString* path=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* dbPath=[path stringByAppendingPathComponent:@"beautylife.db"];
+    return dbPath;
+}
+
 + (void)pushToSettingView:(UINavigationController *)navigationController
 {
     SettingView *settingView = [[SettingView alloc] init];
     settingView.hidesBottomBarWhenPushed = YES;
+    settingView.typeView = @"setting";
     [navigationController pushViewController:settingView animated:YES];
+}
+
++ (void)pushToMyView:(UINavigationController *)navigationController
+{
+    SettingView *settingView = [[SettingView alloc] init];
+    settingView.hidesBottomBarWhenPushed = YES;
+    settingView.typeView = @"my";
+    [navigationController pushViewController:settingView animated:YES];
+}
+
++ (User *)readJsonStrToUser:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *detailDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( detailDic == nil) {
+        return nil;
+    }
+    User *user = [RMMapper objectWithClass:[User class] fromDictionary:detailDic];
+    return user;
+}
+
++ (OrdersNum *)readJsonStrToOrdersNum:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *detailDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( detailDic == nil) {
+        return nil;
+    }
+    OrdersNum *num = [RMMapper objectWithClass:[OrdersNum class] fromDictionary:detailDic];
+    return num;
+}
+
+
++ (AlipayInfo *)readJsonStrToAliPay:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *detailDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( detailDic == nil) {
+        return nil;
+    }
+    AlipayInfo *alipay = [RMMapper objectWithClass:[AlipayInfo class] fromDictionary:detailDic];
+    return alipay;
+}
+
++ (NSMutableArray *)readJsonStrToRegionArray:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *areaArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( [areaArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *provinceArray;
+    if ([areaArray count] >= 1) {
+        NSDictionary *areaDic = [areaArray objectAtIndex:0];
+        id areaJSON = [areaDic objectForKey:@"_child"];
+        provinceArray = [RMMapper mutableArrayOfClass:[ProvinceModel class]
+                                                fromArrayOfDictionary:areaJSON];
+        for (ProvinceModel *p in provinceArray) {
+            NSMutableArray *cityArray = [RMMapper mutableArrayOfClass:[CityModel class]
+                                                fromArrayOfDictionary:p._child];
+            for (CityModel *c in cityArray) {
+                NSMutableArray *regionArray = [RMMapper mutableArrayOfClass:[RegionModel class]
+                                                    fromArrayOfDictionary:c._child];
+                c.regionArray = regionArray;
+            }
+            p.cityArray = cityArray;
+        }
+    }
+    return provinceArray;
+}
+
++ (NSMutableArray *)readJsonStrToCommunityArray:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *commJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( [commJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *commArray = [RMMapper mutableArrayOfClass:[CommunityModel class]
+                                fromArrayOfDictionary:commJsonArray];
+        for (CommunityModel *c in commArray) {
+            NSMutableArray *buildArray = [RMMapper mutableArrayOfClass:[BuildModel class]
+                                                fromArrayOfDictionary:c.build_list];
+            for (BuildModel *b in buildArray) {
+                if ([b.house_list isKindOfClass:[NSArray class]]) {
+                    NSMutableArray *houseArray = [RMMapper mutableArrayOfClass:[HouseModel class]
+                                                         fromArrayOfDictionary:b.house_list];
+                    b.houseArray = houseArray;
+                }
+                
+            }
+            c.buildArray = buildArray;
+        }
+
+    return commArray;
+}
+
++ (NSMutableArray *)readJsonStrToADV:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *advJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( advJsonArray == nil || [advJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *advs = [RMMapper mutableArrayOfClass:[Advertisement class] fromArrayOfDictionary:advJsonArray];
+    return advs;
+}
+
++ (NSMutableArray *)readJsonStrToNews:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *newsJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( newsJsonArray == nil || [newsJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *newsArray = [RMMapper mutableArrayOfClass:[News class] fromArrayOfDictionary:newsJsonArray];
+    return newsArray;
+}
+
++ (NSMutableArray *)readJsonStrToRepairsCate:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *cateJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( cateJsonArray == nil || [cateJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *cateArray = [RMMapper mutableArrayOfClass:[RepairsCate class] fromArrayOfDictionary:cateJsonArray];
+    return cateArray;
+}
+
++ (NSMutableArray *)readJsonStrToMyRepairs:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *myJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( myJsonArray == nil || [myJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *myArray = [RMMapper mutableArrayOfClass:[RepairsList class] fromArrayOfDictionary:myJsonArray];
+    return myArray;
+}
+
++ (NSMutableArray *)readJsonStrToRepairItems:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *itemJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( itemJsonArray == nil || [itemJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *itemArray = [RMMapper mutableArrayOfClass:[RepairsItem class] fromArrayOfDictionary:itemJsonArray];
+    return itemArray;
+}
+
++ (PropertyFeeInfo *)readJsonStrToPropertyFeeInfo:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *feeJsondDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( feeJsondDic == nil ) {
+        return nil;
+    }
+    PropertyFeeInfo *feeInfo = [RMMapper objectWithClass:[PropertyFeeInfo class] fromDictionary:feeJsondDic];
+    return feeInfo;
+}
+
++ (NSMutableArray *)readJsonStrToPropertyCarFeeInfo:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *feeJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( feeJsonArray == nil || [feeJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *feeInfoArray = [RMMapper mutableArrayOfClass:[CarFeeInfo class] fromArrayOfDictionary:feeJsonArray];
+    return feeInfoArray;
+}
+
++ (NSMutableArray *)readJsonStrToMyOutBox:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *myJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( myJsonArray == nil || [myJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *myArray = [RMMapper mutableArrayOfClass:[OutExpress class] fromArrayOfDictionary:myJsonArray];
+    return myArray;
+}
+
++ (NSMutableArray *)readJsonStrToShopArray:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *shopJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( shopJsonArray == nil || [shopJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *shops = [RMMapper mutableArrayOfClass:[Shop class] fromArrayOfDictionary:shopJsonArray];
+    return shops;
+}
+
++ (NSMutableArray *)readJsonStrToShopsCate:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *cateJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( cateJsonArray == nil || [cateJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *shops = [RMMapper mutableArrayOfClass:[ShopsCate class] fromArrayOfDictionary:cateJsonArray];
+    return shops;
+}
+
+#pragma mark 将缴费历史记录转换为bean
++ (NSMutableArray *)readJsonStrToFeeHistory:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *cateJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( cateJsonArray == nil || [cateJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *feeHistorys = [RMMapper mutableArrayOfClass:[FeeHistory class] fromArrayOfDictionary:cateJsonArray];
+    return feeHistorys;
+}
+
+
++ (BusinessGoods *)readJsonStrBusinessGoods:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *businessGoodsDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    BusinessGoods *businessGoods = [[BusinessGoods alloc] init] ;
+    if ([NSNull null] == businessGoodsDic) {
+        return nil;
+    }
+    if([NSNull null] != [businessGoodsDic objectForKey:@"coupons"]) {
+        id couponsJSON = [businessGoodsDic objectForKey:@"coupons"];
+        NSMutableArray *coupons = [RMMapper mutableArrayOfClass:[Coupons class]
+                                          fromArrayOfDictionary:couponsJSON];
+        businessGoods.coupons = coupons;
+    }
+    if([NSNull null] != [businessGoodsDic objectForKey:@"goodlist"]) {
+        id goodsJSON = [businessGoodsDic objectForKey:@"goodlist"];
+        NSMutableArray *goods = [RMMapper mutableArrayOfClass:[Goods class]
+                                        fromArrayOfDictionary:goodsJSON];
+        businessGoods.goodlist = goods;
+    }
+    return businessGoods;
+}
+
++ (Goods *)readJsonStrToGoodsInfo:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *goodJsondDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( goodJsondDic == nil ) {
+        return nil;
+    }
+    Goods *goodInfo = [RMMapper objectWithClass:[Goods class] fromDictionary:goodJsondDic];
+    return goodInfo;
+}
+
++ (Coupons *)readJsonStrToCouponDetail:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *detailDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( detailDic == nil) {
+        return nil;
+    }
+    Coupons *detail = [RMMapper objectWithClass:[Coupons class] fromDictionary:detailDic];
+    return detail;
+}
+
++ (NSMutableArray *)readJsonStrToGoodsArray:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *goodsJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( goodsJsonArray == nil || [goodsJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *goods = [RMMapper mutableArrayOfClass:[Goods class] fromArrayOfDictionary:goodsJsonArray];
+    return goods;
+}
+
++ (Shop *)readJsonStrToShopInfo:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *shopJsondDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( shopJsondDic == nil ) {
+        return nil;
+    }
+    Shop *shopInfo = [RMMapper objectWithClass:[Shop class] fromDictionary:shopJsondDic];
+    return shopInfo;
 }
 
 @end

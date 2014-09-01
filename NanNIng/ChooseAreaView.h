@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SelectHomeAddressView.h"
 
 @interface ChooseAreaView : UIViewController
+
+@property (weak, nonatomic) IBOutlet UILabel *communityLb;
+@property (weak, nonatomic) IBOutlet UILabel *regionLb;
+
+- (IBAction)selectHomeAddressForCityAction:(id)sender;
 
 @end

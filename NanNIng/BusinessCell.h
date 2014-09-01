@@ -11,8 +11,9 @@
 @interface BusinessCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIView *cellbackgroudView;
-
-+ (id)initWith;
-+ (NSString *)ID;
+@property (weak, nonatomic) IBOutlet UIImageView *logo;
+@property (weak, nonatomic) IBOutlet UILabel *shopTitleLb;
+@property (weak, nonatomic) IBOutlet UILabel *summaryLb;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLb;
 
 @end

@@ -26,7 +26,7 @@
                         <rect key="frame" x="20" y="5" width="280" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.070588235289999995" green="0.56470588239999997" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您好，由于本区域自来水供水主管道漏水，物管中心协调总包方决定于2014年5月21日上午岁小区停水维修。" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OCn-Xu-XNC">
@@ -40,6 +40,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.74117647058823533" green="0.76862745098039209" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
+                <outlet property="summaryLb" destination="OCn-Xu-XNC" id="s79-Zf-eAg"/>
                 <outlet property="titleLb" destination="p95-Rg-Jdc" id="dYS-bp-h22"/>
             </connections>
         </tableViewCell>

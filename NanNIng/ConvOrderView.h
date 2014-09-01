@@ -8,7 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ConvOrderView : UIViewController
+@interface ConvOrderView : UIViewController<UIWebViewDelegate>
+{
+    Shop *shopDetail;
+    MBProgressHUD *hud;
+    UIWebView *phoneCallWebView;
+}
+
+@property (weak, nonatomic) Shop *shop;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLb;
+@property (weak, nonatomic) IBOutlet UILabel *addressLb;
+@property (weak, nonatomic) IBOutlet UILabel *telLb;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+- (IBAction)telAction:(id)sender;
+- (IBAction)telShopAction:(id)sender;
 
 @end
