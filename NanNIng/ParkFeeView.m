@@ -244,7 +244,7 @@
             pro.partnerPrivKey = [usermodel getUserValueForKey:@"PRIVATE"];
             pro.sellerID = [usermodel getUserValueForKey:@"DEFAULT_SELLER"];
             
-            [AlipayUtils doPay:pro NotifyURL:api_park_notify AndScheme:@"BeautyLifeAlipay" seletor:nil target:nil];
+            [AlipayUtils doPay:pro NotifyURL:api_park_notify AndScheme:@"NanNIngAlipay" seletor:nil target:nil];
         }
             break;
         case 0:
