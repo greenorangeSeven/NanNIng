@@ -88,6 +88,6 @@
         <image name="goods_btn_bg.png" width="320" height="33"/>
         <image name="goods_buy.png" width="91" height="18"/>
         <image name="goods_name_bg.png" width="319" height="28"/>
-        <image name="loadingpic4.png" width="97" height="98"/>
+        <image name="loadingpic4.png" width="300" height="200"/>
     </resources>
 </document>

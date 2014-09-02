@@ -61,7 +61,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor = [UIColor colorWithRed:0.74 green:0.77 blue:0.8 alpha:1];
+    self.tableView.backgroundColor = [UIColor colorWithRed:234.0/255 green:234.0/255 blue:234.0/255 alpha:1.0];
     hud = [[MBProgressHUD alloc] initWithView:self.view];
 
     //加载缴费历史记录

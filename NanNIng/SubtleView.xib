@@ -68,7 +68,7 @@
                     </subviews>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" red="0.75294117647058822" green="0.77647058823529413" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>

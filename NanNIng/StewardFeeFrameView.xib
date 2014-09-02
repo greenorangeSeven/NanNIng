@@ -51,7 +51,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.74117647058823533" green="0.76862745098039209" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
