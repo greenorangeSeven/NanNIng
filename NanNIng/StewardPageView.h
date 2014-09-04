@@ -13,6 +13,7 @@
 #import "ExpressView.h"
 #import "SGFocusImageFrame.h"
 #import "SGFocusImageItem.h"
+#import "ArticleView.h"
 
 @interface StewardPageView : UIViewController<SGFocusImageFrameDelegate, UIActionSheetDelegate>
 
@@ -23,5 +24,6 @@
 - (IBAction)repairsAction:(id)sender;
 - (IBAction)noticeAction:(id)sender;
 - (IBAction)expressAction:(id)sender;
+- (IBAction)arttileAction:(id)sender;
 
 @end

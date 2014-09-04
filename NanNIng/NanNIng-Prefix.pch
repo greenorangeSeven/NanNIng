@@ -35,8 +35,8 @@
 #import "AFHTTPRequestOperation.h"
 #import "AFXMLRequestOperation.h"
 
-#define appkey @"UfeTdaI9m2esqgHQZfKT1xTsUqdwTs2z"
-#define api_base_url @"http://114.215.145.29:8900/api"
+#define appkey @"Pyb0BO876aoMFb7b0JFaF5y9cHt80QSm"
+#define api_base_url @"http://121.40.84.65:8900/api"
 #define api_register @"/register"
 #define api_login @"/login"
 #define api_getuserinfo @"/get_member_info"
@@ -76,33 +76,41 @@
 #define api_lifeinfo @"/get_life_info"
 #define api_points @"/points"
 #define api_baoming @"/baoming"
+#define api_articlepiclist @"/get_article_piclist"
+#define api_articlelist @"/get_article_list"
 
 //商品下单地址
 #define api_send_order @"/send_order"
 
 //商品付款返回url
-#define api_goods_return @"http://114.215.145.29:8900/api/order_returnurl"
+#define api_goods_return @"http://121.40.84.65:8900/api/order_returnurl"
 //商品付款通知url
-#define api_goods_notify @"http://114.215.145.29:8900/api/order_notifyurl"
+#define api_goods_notify @"http://121.40.84.65:8900/api/order_notifyurl"
 
 //物业缴费订单提交地址
 #define api_pay_property_fee @"/pay_property_fee"
 //物业缴费返回url
-#define api_property_return @"http://114.215.145.29:8900/api/property_returnurl"
+#define api_property_return @"http://121.40.84.65:8900/api/property_returnurl"
 //物业缴费通知url
-#define api_property_notify @"http://114.215.145.29:8900/api/property_notifyurl"
+#define api_property_notify @"http://121.40.84.65:8900/api/property_notifyurl"
 
 //停车缴费订单提交地址
 #define api_pay_park_fee @"/pay_park_fee"
 //停车缴费返回url
-#define api_park_return @"http://114.215.145.29:8900/api/park_returnurl"
+#define api_park_return @"http://121.40.84.65:8900/api/park_returnurl"
 //停车缴费通知url
-#define api_park_notify @"http://114.215.145.29:8900/api/park_notifyurl"
+#define api_park_notify @"http://121.40.84.65:8900/api/park_notifyurl"
 
 //物业缴费历史
 #define api_pay_property_fee_record @"/pay_property_fee_record"
 //停车缴费历史
 #define api_pay_park_fee_record @"/pay_park_fee_record"
+//我的订单
+#define api_my_order_list @"/my_order_list"
+//确认收货
+#define api_take_my_order @"/take_my_order"
+//取消订单
+#define api_cancel_my_order @"/cancel_my_order"
 
 
 #define AreaListKey @"AreList"
@@ -121,6 +129,7 @@
 #define ShoppingCartCellIdentifier @"ShoppingCartCellIdentifier"
 #define ConvCellIdentifier @"ConvCellIdentifier"
 #define FeeHistoryIdentifier @"FeeHistoryIdentifier"
+#define ArticleCellIdentifier @"ArticleCellIdentifier"
 
 #define createshoppingcart @"create table shoppingcart (id integer primary key autoincrement not null,goodid text,title text,thumb text,price text,store_name text,business_id text,number int,user_id text)"
 
@@ -139,7 +148,7 @@
 #define noNetworkTip @"网络无连接"
 
 //html头部
-#define HTML_Style @"<meta name='viewport' content='width=decice-width,uer-scalable=no'><style>#web_title {color: #F78022; margin-top: 15px; margin-bottom: 10px; font-weight:bold; text-align:center; font-size:20px;}#web_title img{vertical-align:middle;margin-right:6px;}#web_title a{color:#0D6DA8;}#web_summary {margin-top: 15px; margin-bottom: 10px; font-size:16px;}#web_summaryred {color: #c7252b;margin-top: 15px; margin-bottom: 10px; font-size:16px;}#web_column {background-color:#e5e5e5; padding-top: 5px; padding-bottom: 5px; padding-left: 10px; font-size:16px; margin-right: -7px; margin-left: -7px;}#web_date {color: #000000; margin-top: 15px; margin-bottom: 10px; font-size:14px;text-align:center;}#web_outline {color: #707070; font-size: 12px;}#web_outline a{color:#0D6DA8;}#web_software{color:#808080;font-size:12px}#web_body img {max-width: 300px;}#web_body {font-size:14px;max-width:320px;line-height:24px; margin-top: 5px} #web_body table{max-width:320px;}#web_body pre { font-size:9pt;font-family:Courier New,Arial;border:1px solid #ddd;border-left:5px solid #6CE26C;background:#f6f6f6;padding:5px;}</style>"
+#define HTML_Style @"<meta name='viewport' content='width=decice-width,uer-scalable=no'><style>#web_title {color: #249A08; margin-top: 15px; margin-bottom: 10px; font-weight:bold; text-align:center; font-size:20px;}#web_title img{vertical-align:middle;margin-right:6px;}#web_title a{color:#0D6DA8;}#web_summary {margin-top: 15px; margin-bottom: 10px; font-size:16px;}#web_summaryred {color: #c7252b;margin-top: 15px; margin-bottom: 10px; font-size:16px;}#web_column {background-color:#e5e5e5; padding-top: 5px; padding-bottom: 5px; padding-left: 10px; font-size:16px; margin-right: -7px; margin-left: -7px;}#web_date {color: #000000; margin-top: 15px; margin-bottom: 10px; font-size:14px;text-align:center;}#web_outline {color: #707070; font-size: 12px;}#web_outline a{color:#0D6DA8;}#web_software{color:#808080;font-size:12px}#web_body img {max-width: 300px;}#web_body {font-size:14px;max-width:320px;line-height:24px; margin-top: 5px} #web_body table{max-width:320px;}#web_body pre { font-size:9pt;font-family:Courier New,Arial;border:1px solid #ddd;border-left:5px solid #6CE26C;background:#f6f6f6;padding:5px;}</style>"
 #define HTML_Splitline @"<hr style='height:0.5px; background-color:#0D6DA8; margin-bottom:5px'/>"
 #define HTML_Bottom @"<div style='margin-bottom:60px'/>"
 

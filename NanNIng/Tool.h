@@ -40,6 +40,10 @@
 #import "Goods.h"
 #import "OrdersNum.h"
 #import "FeeHistory.h"
+#import "Article.h"
+#import "MyOrder.h"
+#import "MyGoods.h"
+#import "ResponseCode.h"
 
 @interface Tool : NSObject
 
@@ -145,5 +149,8 @@
 + (NSMutableArray *)readJsonStrToGoodsArray:(NSString *)str;
 + (Shop *)readJsonStrToShopInfo:(NSString *)str;
 + (NSMutableArray *)readJsonStrToFeeHistory:(NSString *)str;
++ (NSMutableArray *)readJsonStrToMyOrder:(NSString *)str;
++ (ResponseCode *)readJsonStrToResponseCode:(NSString *)str;
++ (NSMutableArray *)readJsonStrToArticleArray:(NSString *)str;
 
 @end

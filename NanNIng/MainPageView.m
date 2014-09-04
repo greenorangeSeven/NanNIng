@@ -143,10 +143,12 @@
 {
     NSLog(@"%s \n click===>%@",__FUNCTION__,item.title);
     Advertisement *adv = (Advertisement *)[advDatas objectAtIndex:advIndex];
-    ADVDetailView *advDetail = [[ADVDetailView alloc] init];
-    advDetail.hidesBottomBarWhenPushed = YES;
-    advDetail.adv = adv;
-    [self.navigationController pushViewController:advDetail animated:YES];
+    if (adv) {
+        ADVDetailView *advDetail = [[ADVDetailView alloc] init];
+        advDetail.hidesBottomBarWhenPushed = YES;
+        advDetail.adv = adv;
+        [self.navigationController pushViewController:advDetail animated:YES];
+    }
 }
 
 //顶部图片自动滑动委托协议实现事件
@@ -301,10 +303,12 @@
 
 - (IBAction)advDetailAction:(id)sender {
     Advertisement *adv = (Advertisement *)[advDatas objectAtIndex:advIndex];
-    ADVDetailView *advDetail = [[ADVDetailView alloc] init];
-    advDetail.hidesBottomBarWhenPushed = YES;
-    advDetail.adv = adv;
-    [self.navigationController pushViewController:advDetail animated:YES];
+    if (adv) {
+        ADVDetailView *advDetail = [[ADVDetailView alloc] init];
+        advDetail.hidesBottomBarWhenPushed = YES;
+        advDetail.adv = adv;
+        [self.navigationController pushViewController:advDetail animated:YES];
+    }
 }
 
 - (IBAction)pointsAction:(id)sender {

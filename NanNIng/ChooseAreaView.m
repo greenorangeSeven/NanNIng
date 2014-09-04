@@ -82,4 +82,11 @@
     selectForCityView.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:selectForCityView animated:YES];
 }
+
+- (IBAction)searchAddressAction:(id)sender {
+    SearchAdderssView *searchView = [[SearchAdderssView alloc] init];
+    searchView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:searchView animated:YES];
+}
+
 @end

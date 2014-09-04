@@ -111,6 +111,12 @@
     [self.navigationController pushViewController:expressView animated:YES];
 }
 
+- (IBAction)arttileAction:(id)sender {
+    ArticleView *artView = [[ArticleView alloc] init];
+    artView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:artView animated:YES];
+}
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [Tool processLoginNotice:actionSheet andButtonIndex:buttonIndex andNav:self.navigationController andParent:nil];

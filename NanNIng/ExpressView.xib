@@ -115,7 +115,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jhb-Tk-9s1">
                                     <rect key="frame" x="9" y="281" width="136" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="telorderbtn.png">
+                                    <state key="normal" image="conv_order_phone.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
@@ -171,12 +171,12 @@
         </view>
     </objects>
     <resources>
+        <image name="conv_order_phone.png" width="136" height="50"/>
         <image name="cuttingline.png" width="9" height="7"/>
         <image name="maillogo.png" width="20" height="19"/>
         <image name="onlineorderbtn.png" width="136" height="50"/>
         <image name="prepayBtnBg.png" width="498" height="55"/>
         <image name="queryImg.png" width="22" height="22"/>
-        <image name="telorderbtn.png" width="136" height="50"/>
         <image name="topBtnBg2.png" width="603" height="61"/>
         <image name="userface.png" width="131" height="130"/>
     </resources>

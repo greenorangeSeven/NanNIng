@@ -179,9 +179,9 @@
                 [Tool showCustomHUD:@"请先登录" andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
                 return;
             }
-            ShoppingCartView *careView = [[ShoppingCartView alloc] init];
-            careView.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:careView animated:YES];
+            MyOrderView *myOrderView = [[MyOrderView alloc] init];
+            myOrderView.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:myOrderView animated:YES];
         }
             break;
         case 6:

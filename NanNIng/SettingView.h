@@ -16,6 +16,7 @@
 #import "ShoppingCartView.h"
 #import "FeeHistoryView.h"
 #import "ExpressView.h"
+#import "MyOrderView.h"
 
 @interface SettingView : UIViewController<UITableViewDataSource, UITableViewDelegate,UIAlertViewDelegate>
 {

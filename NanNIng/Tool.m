@@ -843,6 +843,36 @@
     return goods;
 }
 
++ (NSMutableArray *)readJsonStrToMyOrder:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *orderJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( orderJsonArray == nil || [orderJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *orders = [RMMapper mutableArrayOfClass:[MyOrder class] fromArrayOfDictionary:orderJsonArray];
+    for (MyOrder *o in orders)
+    {
+        NSMutableArray *goodsArray = [RMMapper mutableArrayOfClass:[MyGoods class]
+                                             fromArrayOfDictionary:o.goodlist];
+        o.goodArray = goodsArray;
+    }
+    return orders;
+}
+
++ (ResponseCode *)readJsonStrToResponseCode:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *detailDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( detailDic == nil) {
+        return nil;
+    }
+    ResponseCode *responseCode = [RMMapper objectWithClass:[ResponseCode class] fromDictionary:detailDic];
+    return responseCode;
+}
+
 + (Shop *)readJsonStrToShopInfo:(NSString *)str
 {
     NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
@@ -853,6 +883,18 @@
     }
     Shop *shopInfo = [RMMapper objectWithClass:[Shop class] fromDictionary:shopJsondDic];
     return shopInfo;
+}
+
++ (NSMutableArray *)readJsonStrToArticleArray:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *artJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( artJsonArray == nil || [artJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *arts = [RMMapper mutableArrayOfClass:[Article class] fromArrayOfDictionary:artJsonArray];
+    return arts;
 }
 
 @end

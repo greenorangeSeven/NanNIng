@@ -1,20 +1,18 @@
 //
-//  ADVDetailView.m
-//  BeautyLife
+//  ArticleDetailView.m
+//  NanNIng
 //
-//  Created by Seven on 14-8-14.
-//  Copyright (c) 2014年 Seven. All rights reserved.
+//  Created by Seven on 14-9-4.
+//  Copyright (c) 2014年 greenorange. All rights reserved.
 //
 
-#import "ADVDetailView.h"
+#import "ArticleDetailView.h"
 
-@interface ADVDetailView ()
+@interface ArticleDetailView ()
 
 @end
 
-@implementation ADVDetailView
-
-@synthesize webView;
+@implementation ArticleDetailView
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -22,7 +20,7 @@
     if (self) {
         UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 44)];
         titleLabel.font = [UIFont boldSystemFontOfSize:18];
-        titleLabel.text = @"详情";
+        titleLabel.text = @"通知详情";
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.textColor = [Tool getColorForGreen];
         titleLabel.textAlignment = UITextAlignmentCenter;
@@ -50,9 +48,9 @@
 
 - (IBAction)shareAction:(id)sender {
     NSDictionary *contentDic = [NSDictionary dictionaryWithObjectsAndKeys:
-                                _adv.content , @"title",
-                                _adv.content, @"summary",
-                                _adv.pic, @"thumb",
+                                _art.summary , @"title",
+                                _art.summary, @"summary",
+                                _art.thumb, @"thumb",
                                 nil];
     [Tool shareAction:sender andShowView:self.view andContent:contentDic];
 }
@@ -65,7 +63,7 @@
     //    [self.webView setScalesPageToFit:YES];
     [self.webView sizeToFit];
     
-    NSString *html = [NSString stringWithFormat:@"<body>%@<div id='web_title'>%@</div>%@<div id='web_body'>%@</div></body>", HTML_Style, self.adv.title, HTML_Splitline, self.adv.content];
+    NSString *html = [NSString stringWithFormat:@"<body>%@<div id='web_title'>%@</div>%@<div id='web_body'>%@</div></body>", HTML_Style, self.art.title, HTML_Splitline, self.art.content];
     NSString *result = [Tool getHTMLString:html];
     [self.webView loadHTMLString:result baseURL:nil];
     
@@ -91,12 +89,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = NO;
 }
 
 @end

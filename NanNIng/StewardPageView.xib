@@ -67,6 +67,9 @@
                             <state key="normal" image="wuye_juweihui.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="arttileAction:" destination="-1" eventType="touchUpInside" id="YbN-ha-ufM"/>
+                            </connections>
                         </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="居委会通知" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VuY-cB-FAJ">
                             <rect key="frame" x="130" y="333" width="60" height="21"/>
