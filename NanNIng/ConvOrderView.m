@@ -32,9 +32,9 @@
         UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
         self.navigationItem.leftBarButtonItem = btnBack;
         
-        UIButton *rBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 58, 26)];
+        UIButton *rBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 52, 27)];
         [rBtn addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
-        [rBtn setImage:[UIImage imageNamed:@"conv_order_share"] forState:UIControlStateNormal];
+        [rBtn setImage:[UIImage imageNamed:@"head_share"] forState:UIControlStateNormal];
         UIBarButtonItem *btnShare = [[UIBarButtonItem alloc]initWithCustomView:rBtn];
         self.navigationItem.rightBarButtonItem = btnShare;
     }
@@ -130,5 +130,17 @@
         phoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
     }
     [phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneUrl]];
+}
+
+- (IBAction)mapPointAction:(id)sender {
+    if (_shop) {
+        CLLocationCoordinate2D coor;
+        coor.longitude = [_shop.longitude doubleValue];
+        coor.latitude = [_shop.latitude doubleValue];
+        StoreMapPointView *pointView = [[StoreMapPointView alloc] init];
+        pointView.storeCoor = coor;
+        pointView.storeTitle = _shop.title;
+        [self.navigationController pushViewController:pointView animated:YES];
+    }
 }
 @end

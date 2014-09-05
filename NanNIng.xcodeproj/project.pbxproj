@@ -98,6 +98,10 @@
 		1432767E19B80EC000C18B71 /* MyOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1432767919B80EC000C18B71 /* MyOrder.m */; };
 		1432767F19B80EC000C18B71 /* MyGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = 1432767B19B80EC000C18B71 /* MyGoods.m */; };
 		1432768019B80EC000C18B71 /* ResponseCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1432767D19B80EC000C18B71 /* ResponseCode.m */; };
+		1432768919B83FC300C18B71 /* StoreMapPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1432768719B83FC300C18B71 /* StoreMapPointView.m */; };
+		1432768A19B83FC300C18B71 /* StoreMapPointView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1432768819B83FC300C18B71 /* StoreMapPointView.xib */; };
+		1432768E19B84EB100C18B71 /* RechargeDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1432768C19B84EB100C18B71 /* RechargeDetailView.m */; };
+		1432768F19B84EB100C18B71 /* RechargeDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1432768D19B84EB100C18B71 /* RechargeDetailView.xib */; };
 		144ADDA419B3FEF4006980B9 /* ADVDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 144ADDA219B3FEF4006980B9 /* ADVDetailView.m */; };
 		144ADDA519B3FEF4006980B9 /* ADVDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144ADDA319B3FEF4006980B9 /* ADVDetailView.xib */; };
 		144ADDAF19B40140006980B9 /* StewardFeeFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 144ADDA719B40140006980B9 /* StewardFeeFrameView.m */; };
@@ -618,6 +622,12 @@
 		1432767B19B80EC000C18B71 /* MyGoods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGoods.m; sourceTree = "<group>"; };
 		1432767C19B80EC000C18B71 /* ResponseCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseCode.h; sourceTree = "<group>"; };
 		1432767D19B80EC000C18B71 /* ResponseCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseCode.m; sourceTree = "<group>"; };
+		1432768619B83FC300C18B71 /* StoreMapPointView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreMapPointView.h; sourceTree = "<group>"; };
+		1432768719B83FC300C18B71 /* StoreMapPointView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreMapPointView.m; sourceTree = "<group>"; };
+		1432768819B83FC300C18B71 /* StoreMapPointView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreMapPointView.xib; sourceTree = "<group>"; };
+		1432768B19B84EB100C18B71 /* RechargeDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeDetailView.h; sourceTree = "<group>"; };
+		1432768C19B84EB100C18B71 /* RechargeDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeDetailView.m; sourceTree = "<group>"; };
+		1432768D19B84EB100C18B71 /* RechargeDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeDetailView.xib; sourceTree = "<group>"; };
 		144ADDA119B3FEF4006980B9 /* ADVDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADVDetailView.h; sourceTree = "<group>"; };
 		144ADDA219B3FEF4006980B9 /* ADVDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADVDetailView.m; sourceTree = "<group>"; };
 		144ADDA319B3FEF4006980B9 /* ADVDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADVDetailView.xib; sourceTree = "<group>"; };
@@ -1345,8 +1355,8 @@
 				14B8F30D1994696000537505 /* SinaWeiboConnection.framework in Frameworks */,
 				14B8F3181994696000537505 /* libTCWeiboSDK.a in Frameworks */,
 				14B8F3161994696000537505 /* libSinaWeiboSDK.a in Frameworks */,
-				14B8F2D91994696000537505 /* KeyboardManager.framework in Frameworks */,
 				14B8F0F51994636F00537505 /* Foundation.framework in Frameworks */,
+				14B8F2D91994696000537505 /* KeyboardManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2401,6 +2411,9 @@
 				14B8F3AD1994730200537505 /* RechargeView.h */,
 				14B8F3AE1994730200537505 /* RechargeView.m */,
 				04A1430119960FEE00E44FEE /* RechargeView.xib */,
+				1432768B19B84EB100C18B71 /* RechargeDetailView.h */,
+				1432768C19B84EB100C18B71 /* RechargeDetailView.m */,
+				1432768D19B84EB100C18B71 /* RechargeDetailView.xib */,
 				0476060A1998472B007BED4C /* CommunityView.h */,
 				0476060B1998472B007BED4C /* CommunityView.m */,
 				0476060C1998472B007BED4C /* CommunityView.xib */,
@@ -2428,6 +2441,9 @@
 				144ADE4119B41659006980B9 /* BusinessDetailView.h */,
 				144ADE4219B41659006980B9 /* BusinessDetailView.m */,
 				144ADE4319B41659006980B9 /* BusinessDetailView.xib */,
+				1432768619B83FC300C18B71 /* StoreMapPointView.h */,
+				1432768719B83FC300C18B71 /* StoreMapPointView.m */,
+				1432768819B83FC300C18B71 /* StoreMapPointView.xib */,
 				144ADE4419B41659006980B9 /* BusinessGoodCell.h */,
 				144ADE4519B41659006980B9 /* BusinessGoodCell.m */,
 				144ADE4619B41659006980B9 /* BusinessGoodCell.xib */,
@@ -2754,6 +2770,7 @@
 				0476061619984C4B007BED4C /* cm_ attention@2x.png in Resources */,
 				0446CE381995180A00D6C015 /* subtleprice@2x.png in Resources */,
 				14B8F35A199472E500537505 /* MainPageView.xib in Resources */,
+				1432768F19B84EB100C18B71 /* RechargeDetailView.xib in Resources */,
 				14B8F4B71994732900537505 /* maingoodbg@2x.png in Resources */,
 				144ADDD719B40AF7006980B9 /* RepairsFormView.xib in Resources */,
 				14B8F32519946C3900537505 /* mapapi.bundle in Resources */,
@@ -2948,6 +2965,7 @@
 				1432766119B7FF4700C18B71 /* ArticleCell.xib in Resources */,
 				04A142EC19960AFA00E44FEE /* conv_order_phone@2x.png in Resources */,
 				14B8F4601994732900537505 /* prepayBtnBg.png in Resources */,
+				1432768A19B83FC300C18B71 /* StoreMapPointView.xib in Resources */,
 				14B8F4C11994ADB500537505 /* navi_my.png in Resources */,
 				14B8F3D41994730200537505 /* BusinessView.xib in Resources */,
 				14B8F4771994732900537505 /* online_yidong@2x.png in Resources */,
@@ -3149,12 +3167,14 @@
 				144ADDEE19B40D40006980B9 /* NoticeFrameView.m in Sources */,
 				144ADE4F19B41659006980B9 /* BusinessCell.m in Sources */,
 				144B15A119B315B500494428 /* SelectHomeAddressView.m in Sources */,
+				1432768919B83FC300C18B71 /* StoreMapPointView.m in Sources */,
 				14B8F3061994696000537505 /* NSObject+RMCopyable.m in Sources */,
 				144ADE2A19B4103E006980B9 /* KuaiDi100View.m in Sources */,
 				14B8F33D19946C8100537505 /* NdUncaughtExceptionHandler.m in Sources */,
 				14B8F2D41994696000537505 /* EGOImageLoadConnection.m in Sources */,
 				1432766019B7FF4700C18B71 /* ArticleCell.m in Sources */,
 				144B158119B3144500494428 /* FMDatabasePool.m in Sources */,
+				1432768E19B84EB100C18B71 /* RechargeDetailView.m in Sources */,
 				144ADE2419B4103E006980B9 /* MySendExpressCell.m in Sources */,
 				14B8F3041994696000537505 /* NSString+STRegex.m in Sources */,
 				144ADE6D19B41854006980B9 /* ConvOrderView.m in Sources */,
@@ -3322,36 +3342,6 @@
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/Extend/QQConnectSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/UI",
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NanNIng/NanNIng-Prefix.pch";
@@ -3397,36 +3387,6 @@
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/Extend/QQConnectSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/UI",
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
-					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
-					Framework,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NanNIng/NanNIng-Prefix.pch";
