@@ -7,7 +7,7 @@
 //
 
 #import "CityPageView.h"
-#import "CityCultureView.h"
+#import "CityView.h"
 
 @interface CityPageView ()
 
@@ -67,16 +67,22 @@
 
 - (IBAction)clickCity:(UIButton *)sender
 {
-    CityCultureView *cityView = [[CityCultureView alloc] init];
+    CityView *cityView = [[CityView alloc] init];
     cityView.hidesBottomBarWhenPushed = NO;
     [self.navigationController pushViewController:cityView animated:YES];
 }
 
-- (IBAction)clickDongmeng:(UIButton *)sender {
+- (IBAction)clickDongmeng:(UIButton *)sender
+{
+    
 }
 
-- (IBAction)clickZhiyuan:(UIButton *)sender {
+- (IBAction)clickZhiyuan:(UIButton *)sender
+{
+    
 }
-- (IBAction)clickHelp:(UIButton *)sender {
+- (IBAction)clickHelp:(UIButton *)sender
+{
+    
 }
 @end

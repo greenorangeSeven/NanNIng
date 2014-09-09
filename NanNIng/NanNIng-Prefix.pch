@@ -112,7 +112,8 @@
 #define api_take_my_order @"/take_my_order"
 //取消订单
 #define api_cancel_my_order @"/cancel_my_order"
-
+//智慧南宁
+#define api_get_wisdom_list @"/get_wisdom_list"
 
 #define AreaListKey @"AreList"
 

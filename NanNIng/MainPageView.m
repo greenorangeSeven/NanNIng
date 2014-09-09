@@ -11,7 +11,7 @@
 #import "RechargeView.h"
 #import "SubtleView.h"
 #import "BusinessView.h"
-#import "CityCultureView.h"
+#import "CityView.h"
 
 @interface MainPageView ()
 
@@ -234,7 +234,7 @@
 
 - (IBAction)clickCityCulture:(UIButton *)sender
 {
-    CityCultureView *cityView = [[CityCultureView alloc] init];
+    CityView *cityView = [[CityView alloc] init];
     cityView.hidesBottomBarWhenPushed = NO;
     [self.navigationController pushViewController:cityView animated:YES];
 }
