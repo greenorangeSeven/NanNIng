@@ -897,4 +897,16 @@
     return arts;
 }
 
++ (NSMutableArray *)readJsonStrToCommercials:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *commercialJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( commercialJsonArray == nil || [commercialJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *commercialArray = [RMMapper mutableArrayOfClass:[Commercial class] fromArrayOfDictionary:commercialJsonArray];
+    return commercialArray;
+}
+
 @end

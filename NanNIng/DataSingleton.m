@@ -27,7 +27,7 @@
             }
         }
     }
-    cell.lbl.font = [UIFont boldSystemFontOfSize:21.0];
+    cell.lbl.font = [UIFont boldSystemFontOfSize:16.0];
     cell.lbl.text = isLoadOver ? loadOverString : loadingString;
     if (isLoading) {
         cell.loading.hidden = NO;

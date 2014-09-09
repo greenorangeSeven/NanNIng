@@ -155,7 +155,7 @@
                                        }
                                    }];
         isLoading = YES;
-        [self.newsTable reloadData];
+//        [self.newsTable reloadData];
     }
 }
 

@@ -293,12 +293,14 @@
 
 - (IBAction)shareAction:(id)sender {
     Advertisement *adv = [advDatas objectAtIndex:advIndex];
-    NSDictionary *contentDic = [NSDictionary dictionaryWithObjectsAndKeys:
-                                adv.title , @"title",
-                                adv.content, @"summary",
-                                adv.pic, @"thumb",
-                                nil];
-    [Tool shareAction:sender andShowView:self.view andContent:contentDic];
+    if (adv) {
+        NSDictionary *contentDic = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    adv.title , @"title",
+                                    adv.content, @"summary",
+                                    adv.pic, @"thumb",
+                                    nil];
+        [Tool shareAction:sender andShowView:self.view andContent:contentDic];
+    }
 }
 
 - (IBAction)advDetailAction:(id)sender {
@@ -313,25 +315,27 @@
 
 - (IBAction)pointsAction:(id)sender {
     Advertisement *adv = (Advertisement *)[advDatas objectAtIndex:advIndex];
-    NSString *pointslUrl = [NSString stringWithFormat:@"%@%@?APPKey=%@&model=poster&id=%@", api_base_url, api_points, appkey, adv.id];
-    NSURL *url = [ NSURL URLWithString : pointslUrl];
-    // 构造 ASIHTTPRequest 对象
-    ASIHTTPRequest *request = [ ASIHTTPRequest requestWithURL :url];
-    // 开始同步请求
-    [request startSynchronous ];
-    NSError *error = [request error ];
-    assert (!error);
-    // 如果请求成功，返回 Response
-    NSString *response = [request responseString ];
-    NSData *data = [response dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *err;
-    NSString *status = @"0";
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&err];
-    if (json) {
-        status = [json objectForKey:@"status"];
-        if ([status isEqualToString:@"1"]) {
-            adv.points = [NSString stringWithFormat:@"%d", [adv.points intValue] + 1];
-            [self.pointsBtn setTitle:[NSString stringWithFormat:@"点赞( %@ )", adv.points] forState:UIControlStateNormal];
+    if (adv) {
+        NSString *pointslUrl = [NSString stringWithFormat:@"%@%@?APPKey=%@&model=poster&id=%@", api_base_url, api_points, appkey, adv.id];
+        NSURL *url = [ NSURL URLWithString : pointslUrl];
+        // 构造 ASIHTTPRequest 对象
+        ASIHTTPRequest *request = [ ASIHTTPRequest requestWithURL :url];
+        // 开始同步请求
+        [request startSynchronous ];
+        NSError *error = [request error ];
+        assert (!error);
+        // 如果请求成功，返回 Response
+        NSString *response = [request responseString ];
+        NSData *data = [response dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *err;
+        NSString *status = @"0";
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&err];
+        if (json) {
+            status = [json objectForKey:@"status"];
+            if ([status isEqualToString:@"1"]) {
+                adv.points = [NSString stringWithFormat:@"%d", [adv.points intValue] + 1];
+                [self.pointsBtn setTitle:[NSString stringWithFormat:@"点赞( %@ )", adv.points] forState:UIControlStateNormal];
+            }
         }
     }
 }
