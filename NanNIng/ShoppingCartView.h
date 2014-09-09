@@ -12,7 +12,6 @@
 #import "OrderInfo.h"
 #import "OrderBusiness.h"
 #import "OrderGood.h"
-
 #import "FMDatabase.h"
 #import "FMDatabaseAdditions.h"
 #import "FMDatabaseQueue.h"
@@ -30,6 +29,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *goodTableView;
 @property (weak, nonatomic) IBOutlet UILabel *totalLb;
+@property (weak, nonatomic) IBOutlet UIButton *buyButton;
+
 - (IBAction)balanceAction:(id)sender;
 
 @end

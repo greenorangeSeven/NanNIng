@@ -7,6 +7,7 @@
 //
 
 #import "GoodsDetailView.h"
+#import "ShoppingBuyView.h"
 
 @interface GoodsDetailView ()
 
@@ -148,7 +149,12 @@
     [database close];
 }
 
-- (IBAction)buyAction:(id)sender {
+- (IBAction)buyAction:(id)sender
+{
+    ShoppingBuyView *shoppingBuyView = [[ShoppingBuyView alloc] init];
+    shoppingBuyView.hidesBottomBarWhenPushed = YES;
+    shoppingBuyView.goods = goodDetail;
+    [self.navigationController pushViewController:shoppingBuyView animated:YES];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
