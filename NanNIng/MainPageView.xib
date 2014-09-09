@@ -169,14 +169,14 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="c9X-ID-GSd">
                             <rect key="frame" x="32" y="425" width="57" height="57"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="publicservice.png">
+                            <state key="normal" image="taosao.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="clickService:" destination="-1" eventType="touchUpInside" id="eyU-7q-o0t"/>
                             </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="便民服务" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WpU-lg-87i">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="社区商务" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WpU-lg-87i">
                             <rect key="frame" x="31" y="484" width="59" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -192,7 +192,7 @@
                                 <action selector="clickSubtle:" destination="-1" eventType="touchUpInside" id="23p-s4-lgl"/>
                             </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="精选特价" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e4F-YQ-klV">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="特价超市" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e4F-YQ-klV">
                             <rect key="frame" x="131" y="484" width="59" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -216,8 +216,8 @@
         <image name="main_topimage.png" width="640" height="374"/>
         <image name="maingoodbg.png" width="320" height="32"/>
         <image name="praise.png" width="20" height="19"/>
-        <image name="publicservice.png" width="48" height="48"/>
         <image name="share.png" width="22" height="19"/>
+        <image name="taosao.png" width="48" height="48"/>
         <image name="wuye_baoxiu.png" width="47" height="48"/>
         <image name="wuye_jiaofei.png" width="48" height="48"/>
         <image name="wuye_notification.png" width="48" height="47"/>

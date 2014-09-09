@@ -15,4 +15,10 @@
 
 - (IBAction)clickCity:(UIButton *)sender;
 
+- (IBAction)clickDongmeng:(UIButton *)sender;
+
+- (IBAction)clickZhiyuan:(UIButton *)sender;
+
+- (IBAction)clickHelp:(UIButton *)sender;
+
 @end

@@ -71,4 +71,12 @@
     cityView.hidesBottomBarWhenPushed = NO;
     [self.navigationController pushViewController:cityView animated:YES];
 }
+
+- (IBAction)clickDongmeng:(UIButton *)sender {
+}
+
+- (IBAction)clickZhiyuan:(UIButton *)sender {
+}
+- (IBAction)clickHelp:(UIButton *)sender {
+}
 @end
