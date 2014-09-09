@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TQImageCache.h"
 #import "Commercial.h"
+#import "CommunityDetailView.h"
 
 @interface CommunityView : UIViewController<UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate,MBProgressHUDDelegate,IconDownloaderDelegate>
 {

@@ -102,6 +102,8 @@
 		1432768A19B83FC300C18B71 /* StoreMapPointView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1432768819B83FC300C18B71 /* StoreMapPointView.xib */; };
 		1432768E19B84EB100C18B71 /* RechargeDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1432768C19B84EB100C18B71 /* RechargeDetailView.m */; };
 		1432768F19B84EB100C18B71 /* RechargeDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1432768D19B84EB100C18B71 /* RechargeDetailView.xib */; };
+		143B9A2019BE913A00BFD71D /* CommunityDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 143B9A1E19BE913A00BFD71D /* CommunityDetailView.m */; };
+		143B9A2119BE913A00BFD71D /* CommunityDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 143B9A1F19BE913A00BFD71D /* CommunityDetailView.xib */; };
 		14489DAF19B9624F0050CBED /* Commercial.m in Sources */ = {isa = PBXBuildFile; fileRef = 14489DAE19B9624F0050CBED /* Commercial.m */; };
 		144ADDA419B3FEF4006980B9 /* ADVDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 144ADDA219B3FEF4006980B9 /* ADVDetailView.m */; };
 		144ADDA519B3FEF4006980B9 /* ADVDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144ADDA319B3FEF4006980B9 /* ADVDetailView.xib */; };
@@ -629,6 +631,9 @@
 		1432768B19B84EB100C18B71 /* RechargeDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeDetailView.h; sourceTree = "<group>"; };
 		1432768C19B84EB100C18B71 /* RechargeDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeDetailView.m; sourceTree = "<group>"; };
 		1432768D19B84EB100C18B71 /* RechargeDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeDetailView.xib; sourceTree = "<group>"; };
+		143B9A1D19BE913A00BFD71D /* CommunityDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityDetailView.h; sourceTree = "<group>"; };
+		143B9A1E19BE913A00BFD71D /* CommunityDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityDetailView.m; sourceTree = "<group>"; };
+		143B9A1F19BE913A00BFD71D /* CommunityDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityDetailView.xib; sourceTree = "<group>"; };
 		14489DAD19B9624F0050CBED /* Commercial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commercial.h; sourceTree = "<group>"; };
 		14489DAE19B9624F0050CBED /* Commercial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commercial.m; sourceTree = "<group>"; };
 		144ADDA119B3FEF4006980B9 /* ADVDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADVDetailView.h; sourceTree = "<group>"; };
@@ -2425,6 +2430,9 @@
 				0476060F1998498E007BED4C /* CommunityCell.h */,
 				047606101998498E007BED4C /* CommunityCell.m */,
 				047606111998498E007BED4C /* CommunityCell.xib */,
+				143B9A1D19BE913A00BFD71D /* CommunityDetailView.h */,
+				143B9A1E19BE913A00BFD71D /* CommunityDetailView.m */,
+				143B9A1F19BE913A00BFD71D /* CommunityDetailView.xib */,
 				144ADE5B19B41732006980B9 /* SubtleView.h */,
 				144ADE5C19B41732006980B9 /* SubtleView.m */,
 				144ADE5D19B41732006980B9 /* SubtleView.xib */,
@@ -2758,6 +2766,7 @@
 				0446CE371995180A00D6C015 /* publicservice@2x.png in Resources */,
 				040CDF5B1995B37600E02EE4 /* subtle_temp.png in Resources */,
 				14B8F0FF1994636F00537505 /* InfoPlist.strings in Resources */,
+				143B9A2119BE913A00BFD71D /* CommunityDetailView.xib in Resources */,
 				144ADE6C19B41854006980B9 /* ConvCell.xib in Resources */,
 				14B8F4981994732900537505 /* setting_info@2x.png in Resources */,
 				144ADE2719B4103E006980B9 /* MyInBoxView.xib in Resources */,
@@ -3090,6 +3099,7 @@
 				144ADDDE19B40AF7006980B9 /* RepairsItemCell.m in Sources */,
 				14B8F2FF1994696000537505 /* MWPhotoBrowser.m in Sources */,
 				14B8F2E11994696000537505 /* PSTCollectionViewData.m in Sources */,
+				143B9A2019BE913A00BFD71D /* CommunityDetailView.m in Sources */,
 				14B8F2E41994696000537505 /* PSTCollectionViewLayout.m in Sources */,
 				144B152819B313DD00494428 /* CommunityModel.m in Sources */,
 				14B8F2B51994696000537505 /* AFImageRequestOperation.m in Sources */,
