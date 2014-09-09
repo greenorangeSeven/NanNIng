@@ -19,5 +19,6 @@
 - (IBAction)clickBusiness:(UIButton *)sender;
 
 - (IBAction)clickCommunity:(UIButton *)sender;
+- (IBAction)clickBBS:(id)sender;
 
 @end

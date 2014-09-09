@@ -292,12 +292,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Commercial *commer = [commercials objectAtIndex:[indexPath row]];
-    if (commer) {
-        CommunityDetailView *detailView = [[CommunityDetailView alloc] init];
-        detailView.commer = commer;
-        detailView.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:detailView animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    int row = [indexPath row];
+    if (row >= [commercials count]) {
+        if (!isLoading)
+        {
+            [self performSelector:@selector(reload:)];
+        }
+    }
+    else
+    {
+        Commercial *commer = [commercials objectAtIndex:[indexPath row]];
+        if (commer) {
+            CommunityDetailView *detailView = [[CommunityDetailView alloc] init];
+            detailView.commer = commer;
+            detailView.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:detailView animated:YES];
+        }
     }
 }
 

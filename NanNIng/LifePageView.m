@@ -117,4 +117,7 @@
     communityView.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:communityView animated:YES];
 }
+
+- (IBAction)clickBBS:(id)sender {
+}
 @end
