@@ -33,9 +33,9 @@
         UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
         self.navigationItem.leftBarButtonItem = btnBack;
         
-        UIButton *rBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 58, 26)];
+        UIButton *rBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 52, 27)];
         [rBtn addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
-        [rBtn setImage:[UIImage imageNamed:@"conv_order_share"] forState:UIControlStateNormal];
+        [rBtn setImage:[UIImage imageNamed:@"head_share"] forState:UIControlStateNormal];
         UIBarButtonItem *btnSearch = [[UIBarButtonItem alloc]initWithCustomView:rBtn];
         self.navigationItem.rightBarButtonItem = btnSearch;
     }

@@ -292,19 +292,36 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    CommunityCell *convView = [[ConvOrderView alloc] init];
-//    convView.hidesBottomBarWhenPushed = YES;
-//    
-//    [self.navigationController pushViewController:CommunityCell animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    int row = [indexPath row];
+    if (row >= [commercials count]) {
+        if (!isLoading)
+        {
+            [self performSelector:@selector(reload:)];
+        }
+    }
+    else
+    {
+        Commercial *commer = [commercials objectAtIndex:[indexPath row]];
+        if (commer) {
+            CommunityDetailView *detailView = [[CommunityDetailView alloc] init];
+            detailView.commer = commer;
+            detailView.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:detailView animated:YES];
+        }
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row < commercials.count) {
+    if (indexPath.row < commercials.count)
+    {
         return 124;
     }
     else
+    {
         return 62;
+    }
 }
 
 - (IBAction)item1Action:(id)sender {
