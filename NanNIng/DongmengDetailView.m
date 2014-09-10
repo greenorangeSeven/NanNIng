@@ -6,15 +6,15 @@
 //  Copyright (c) 2014年 greenorange. All rights reserved.
 //
 
-#import "CityDetailView.h"
+#import "DongmengDetailView.h"
 
-@interface CityDetailView ()
+@interface DongmengDetailView ()
 {
     CityInfo *info;
 }
 @end
 
-@implementation CityDetailView
+@implementation DongmengDetailView
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -117,5 +117,4 @@
 {
     [super didReceiveMemoryWarning];
 }
-
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CityDetailView : UIViewController<UIActionSheetDelegate>
+@interface DongmengDetailView : UIViewController<UIActionSheetDelegate>
 {
     MBProgressHUD *hud;
 }

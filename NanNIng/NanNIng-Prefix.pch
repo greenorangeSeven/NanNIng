@@ -112,8 +112,25 @@
 #define api_take_my_order @"/take_my_order"
 //取消订单
 #define api_cancel_my_order @"/cancel_my_order"
-//智慧南宁
+
+//智慧南宁列表
 #define api_get_wisdom_list @"/get_wisdom_list"
+//智慧南宁详情
+#define api_get_wisdom_info @"/get_wisdom_info"
+
+//志愿者
+#define api_get_volnews_list @"/get_volnews_list"
+//加入志愿者
+#define api_vol_baoming @"/vol_baoming"
+//志愿者动态详情
+#define api_get_volnews_info @"/get_volnews_info"
+
+//能帮就帮换灯片
+#define api_get_help_piclist @"/get_help_piclist"
+//能帮就帮新闻列表
+#define api_get_help_list @"/get_help_list"
+//能帮就帮新闻详情
+#define api_get_help_info @"/get_help_info"
 
 #define AreaListKey @"AreList"
 

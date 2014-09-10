@@ -1,18 +1,20 @@
 //
-//  ArticleView.m
+//  CityPageView.m
 //  NanNIng
 //
-//  Created by Seven on 14-9-3.
+//  Created by Seven on 14-8-9.
 //  Copyright (c) 2014年 greenorange. All rights reserved.
 //
 
-#import "CityView.h"
+#import "HelperView.h"
+#import "HelperCell.h"
+#import "HelperDetailView.h"
 
-@interface CityView ()
+@interface HelperView ()<SGFocusImageFrameDelegate, UIActionSheetDelegate,UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate,MBProgressHUDDelegate,IconDownloaderDelegate>
 
 @end
 
-@implementation CityView
+@implementation HelperView
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -20,7 +22,7 @@
     if (self) {
         UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 44)];
         titleLabel.font = [UIFont boldSystemFontOfSize:18];
-        titleLabel.text = @"城市文化";
+        titleLabel.text = @"能帮就帮";
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.textColor = [Tool getColorForGreen];
         titleLabel.textAlignment = UITextAlignmentCenter;
@@ -39,6 +41,7 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 - (void)viewDidLoad
 {
@@ -61,7 +64,6 @@
     }
     
     self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
-    catalog = @"1";
     allCount = 0;
     [_refreshHeaderView refreshLastUpdatedDate];
     self.view.backgroundColor = [Tool getBackgroundColor];
@@ -70,6 +72,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.tableView.backgroundColor = [Tool getBackgroundColor];
+    [self initADV];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -80,6 +83,75 @@
         [self reload:YES];
     }
 }
+
+- (void)initADV
+{
+    //如果有网络连接
+    if ([UserModel Instance].isNetworkRunning) {
+        //        [Tool showHUD:@"数据加载" andView:self.view andHUD:hud];
+        NSString *url = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@", api_base_url, api_get_help_piclist, appkey];
+        [[AFOSCClient sharedClient]getPath:url parameters:Nil
+                                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                       @try {
+                                           advDatas = [Tool readJsonStrToADV:operation.responseString];
+                                           
+                                           int length = [advDatas count];
+                                           NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:length+2];
+                                           if (length > 1)
+                                           {
+                                               Advertisement *adv = [advDatas objectAtIndex:length-1];
+                                               SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:adv.pic tag:-1];
+                                               [itemArray addObject:item];
+                                           }
+                                           for (int i = 0; i < length; i++)
+                                           {
+                                               Advertisement *adv = [advDatas objectAtIndex:i];
+                                               SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:adv.pic tag:-1];
+                                               [itemArray addObject:item];
+                                               
+                                           }
+                                           //添加第一张图 用于循环
+                                           if (length >1)
+                                           {
+                                               Advertisement *adv = [advDatas objectAtIndex:0];
+                                               SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:adv.pic tag:-1];
+                                               [itemArray addObject:item];
+                                           }
+                                           bannerView = [[SGFocusImageFrame alloc] initWithFrame:CGRectMake(0, 0, 320, 200) delegate:self imageItems:itemArray isAuto:NO];
+                                           [bannerView scrollToIndex:0];
+                                           [self.advIv addSubview:bannerView];
+                                       }
+                                       @catch (NSException *exception) {
+                                           [NdUncaughtExceptionHandler TakeException:exception];
+                                       }
+                                       @finally {
+                                           //                                           if (hud != nil) {
+                                           //                                               [hud hide:YES];
+                                           //                                           }
+                                       }
+                                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                       if ([UserModel Instance].isNetworkRunning == NO) {
+                                           return;
+                                       }
+                                       if ([UserModel Instance].isNetworkRunning) {
+                                           [Tool ToastNotification:@"错误 网络无连接" andView:self.view andLoading:NO andIsBottom:NO];
+                                       }
+                                   }];
+    }
+}
+
+//顶部图片滑动点击委托协议实现事件
+- (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame didSelectItem:(SGFocusImageItem *)item
+{
+    NSLog(@"%s \n click===>%@",__FUNCTION__,item.title);
+}
+
+//顶部图片自动滑动委托协议实现事件
+- (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame currentItem:(int)index
+{
+    NSLog(@"%s \n scrollToIndex===>%d",__FUNCTION__,index);
+}
+
 
 - (void)doneManualRefresh
 {
@@ -106,7 +178,7 @@
     for (Citys *c in cityArray) {
         c.imgData = nil;
     }
-
+    
     [super didReceiveMemoryWarning];
 }
 
@@ -148,9 +220,9 @@
             allCount = 0;
         }
         int pageIndex = allCount / 20;
-        NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&catid=%@&p=%i", api_base_url, api_get_wisdom_list, appkey,catalog,pageIndex];
+        NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&p=%i", api_base_url, api_get_help_list, appkey,pageIndex];
         
-         NSString *url = [NSString stringWithString:tempUrl];
+        NSString *url = [NSString stringWithString:tempUrl];
         [[AFOSCClient sharedClient] getPath:url parameters:Nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             @try {
                 isLoading = NO;
@@ -283,15 +355,15 @@
     {
         if (indexPath.row < [cityArray count])
         {
-            CityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CityCell"];
+            HelperCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HelperCell"];
             if (!cell)
             {
-                NSArray *objects = [[NSBundle mainBundle] loadNibNamed:@"CityCell" owner:self options:nil];
+                NSArray *objects = [[NSBundle mainBundle] loadNibNamed:@"HelperCell" owner:self options:nil];
                 for (NSObject *o in objects)
                 {
-                    if ([o isKindOfClass:[CityCell class]])
+                    if ([o isKindOfClass:[HelperCell class]])
                     {
-                        cell = (CityCell *)o;
+                        cell = (HelperCell *)o;
                         break;
                     }
                 }
@@ -299,33 +371,6 @@
             Citys *city = [cityArray objectAtIndex:[indexPath row]];
             cell.titleLb.text = city.title;
             cell.summaryLb.text = city.summary;
-            if (city.imgData) {
-                cell.thumImg.image = city.imgData;
-            }
-            else
-            {
-                if ([city.thumb isEqualToString:@""]) {
-                    city.imgData = [UIImage imageNamed:@"loadingpic2"];
-                }
-                else
-                {
-                    NSData * imageData = [_iconCache getImage:[TQImageCache parseUrlForCacheName:city.thumb]];
-                    if (imageData)
-                    {
-                        city.imgData = [UIImage imageWithData:imageData];
-                        cell.thumImg.image = city.imgData;
-                    }
-                    else
-                    {
-                        IconDownloader *downloader = [_imageDownloadsInProgress objectForKey:[NSString stringWithFormat:@"%d", [indexPath row]]];
-                        if (downloader == nil) {
-                            ImgRecord *record = [ImgRecord new];
-                            record.url = city.thumb;
-                            [self startIconDownload:record forIndexPath:indexPath];
-                        }
-                    }
-                }
-            }
             return cell;
         }
         else
@@ -347,11 +392,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Citys *art = [cityArray objectAtIndex:[indexPath row]];
-    if (art) {
-        CityDetailView *cityDetailView = [[CityDetailView alloc] init];
-        cityDetailView.art = art;
-        [self.navigationController pushViewController:cityDetailView animated:YES];
+    if (art)
+    {
+        HelperDetailView *helperDetailView = [[HelperDetailView alloc] init];
+        helperDetailView.art = art;
+        [self.navigationController pushViewController:helperDetailView animated:YES];
     }
 }
+
 
 @end

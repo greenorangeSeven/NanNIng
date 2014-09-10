@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CityDetailView : UIViewController<UIActionSheetDelegate>
+@interface VolnDetailView : UIViewController<UIActionSheetDelegate>
 {
     MBProgressHUD *hud;
 }

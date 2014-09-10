@@ -6,13 +6,14 @@
 //  Copyright (c) 2014年 greenorange. All rights reserved.
 //
 
-#import "CityView.h"
+#import "VolnView.h"
+#import "VolnJoinView.h"
 
-@interface CityView ()
+@interface VolnView ()
 
 @end
 
-@implementation CityView
+@implementation VolnView
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -20,7 +21,7 @@
     if (self) {
         UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 44)];
         titleLabel.font = [UIFont boldSystemFontOfSize:18];
-        titleLabel.text = @"城市文化";
+        titleLabel.text = @"志愿者";
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.textColor = [Tool getColorForGreen];
         titleLabel.textAlignment = UITextAlignmentCenter;
@@ -61,7 +62,6 @@
     }
     
     self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
-    catalog = @"1";
     allCount = 0;
     [_refreshHeaderView refreshLastUpdatedDate];
     self.view.backgroundColor = [Tool getBackgroundColor];
@@ -148,7 +148,7 @@
             allCount = 0;
         }
         int pageIndex = allCount / 20;
-        NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&catid=%@&p=%i", api_base_url, api_get_wisdom_list, appkey,catalog,pageIndex];
+        NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&p=%i", api_base_url, api_get_volnews_list, appkey,pageIndex];
         
          NSString *url = [NSString stringWithString:tempUrl];
         [[AFOSCClient sharedClient] getPath:url parameters:Nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -283,15 +283,15 @@
     {
         if (indexPath.row < [cityArray count])
         {
-            CityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CityCell"];
+            VolnCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VolnCell"];
             if (!cell)
             {
-                NSArray *objects = [[NSBundle mainBundle] loadNibNamed:@"CityCell" owner:self options:nil];
+                NSArray *objects = [[NSBundle mainBundle] loadNibNamed:@"VolnCell" owner:self options:nil];
                 for (NSObject *o in objects)
                 {
-                    if ([o isKindOfClass:[CityCell class]])
+                    if ([o isKindOfClass:[VolnCell class]])
                     {
-                        cell = (CityCell *)o;
+                        cell = (VolnCell *)o;
                         break;
                     }
                 }
@@ -299,7 +299,8 @@
             Citys *city = [cityArray objectAtIndex:[indexPath row]];
             cell.titleLb.text = city.title;
             cell.summaryLb.text = city.summary;
-            if (city.imgData) {
+            if (city.imgData)
+            {
                 cell.thumImg.image = city.imgData;
             }
             else
@@ -348,10 +349,17 @@
 {
     Citys *art = [cityArray objectAtIndex:[indexPath row]];
     if (art) {
-        CityDetailView *cityDetailView = [[CityDetailView alloc] init];
-        cityDetailView.art = art;
-        [self.navigationController pushViewController:cityDetailView animated:YES];
+        VolnDetailView *volnDetailView = [[VolnDetailView alloc] init];
+        volnDetailView.art = art;
+        [self.navigationController pushViewController:volnDetailView animated:YES];
     }
 }
 
+- (IBAction)joinAction:(UIButton *)sender
+{
+    VolnJoinView *volnJoinView = [[VolnJoinView alloc] init];
+    volnJoinView.hidesBottomBarWhenPushed = NO;
+    [self.navigationController pushViewController:volnJoinView animated:YES];
+
+}
 @end

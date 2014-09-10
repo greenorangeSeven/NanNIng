@@ -11,10 +11,10 @@
 #import "SGFocusImageItem.h"
 #import "TQImageCache.h"
 #import "Article.h"
-#import "CityCell.h"
-#import "CityDetailView.h"
+#import "VolnCell.h"
+#import "VolnDetailView.h"
 
-@interface CityView : UIViewController<UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate,MBProgressHUDDelegate,IconDownloaderDelegate>
+@interface VolnView : UIViewController<UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate,MBProgressHUDDelegate,IconDownloaderDelegate>
 
 {
     NSMutableArray *cityArray;
@@ -26,7 +26,6 @@
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
     
-    NSString *catalog;
     BOOL isInitialize;
     TQImageCache * _iconCache;
     
@@ -38,5 +37,6 @@
 @property (nonatomic, retain) NSMutableDictionary *imageDownloadsInProgress;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+- (IBAction)joinAction:(UIButton *)sender;
 
 @end

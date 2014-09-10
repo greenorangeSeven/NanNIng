@@ -8,6 +8,9 @@
 
 #import "CityPageView.h"
 #import "CityView.h"
+#import "DongmengView.h"
+#import "VolnView.h"
+#import "HelperView.h"
 
 @interface CityPageView ()
 
@@ -74,15 +77,22 @@
 
 - (IBAction)clickDongmeng:(UIButton *)sender
 {
-    
+    DongmengView *dongView = [[DongmengView alloc] init];
+    dongView.hidesBottomBarWhenPushed = NO;
+    [self.navigationController pushViewController:dongView animated:YES];
 }
 
 - (IBAction)clickZhiyuan:(UIButton *)sender
 {
-    
+    VolnView *volnView = [[VolnView alloc] init];
+    volnView.hidesBottomBarWhenPushed = NO;
+    [self.navigationController pushViewController:volnView animated:YES];
 }
 - (IBAction)clickHelp:(UIButton *)sender
 {
     
+    HelperView *helperView = [[HelperView alloc] init];
+    helperView.hidesBottomBarWhenPushed = NO;
+    [self.navigationController pushViewController:helperView animated:YES];
 }
 @end

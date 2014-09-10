@@ -6,15 +6,15 @@
 //  Copyright (c) 2014年 greenorange. All rights reserved.
 //
 
-#import "CityDetailView.h"
+#import "VolnDetailView.h"
 
-@interface CityDetailView ()
+@interface VolnDetailView ()
 {
     CityInfo *info;
 }
 @end
 
-@implementation CityDetailView
+@implementation VolnDetailView
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -85,7 +85,7 @@
     //如果有网络连接
     if ([UserModel Instance].isNetworkRunning)
     {
-        NSString *url = [NSString stringWithFormat:@"%@%@?APPKey=%@&id=%@", api_base_url, api_get_wisdom_info, appkey,_art.id];
+        NSString *url = [NSString stringWithFormat:@"%@%@?APPKey=%@&id=%@", api_base_url, api_get_volnews_info, appkey,_art.id];
         [[AFOSCClient sharedClient]getPath:url parameters:Nil
                                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                        @try {
@@ -117,5 +117,4 @@
 {
     [super didReceiveMemoryWarning];
 }
-
 @end

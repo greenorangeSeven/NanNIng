@@ -12,9 +12,9 @@
 #import "TQImageCache.h"
 #import "Article.h"
 #import "CityCell.h"
-#import "CityDetailView.h"
+#import "DongmengDetailView.h"
 
-@interface CityView : UIViewController<UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate,MBProgressHUDDelegate,IconDownloaderDelegate>
+@interface DongmengView : UIViewController<UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate,MBProgressHUDDelegate,IconDownloaderDelegate>
 
 {
     NSMutableArray *cityArray;

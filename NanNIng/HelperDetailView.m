@@ -6,15 +6,16 @@
 //  Copyright (c) 2014年 greenorange. All rights reserved.
 //
 
-#import "CityDetailView.h"
+#import "HelperDetailView.h"
 
-@interface CityDetailView ()
+@interface HelperDetailView ()
 {
     CityInfo *info;
 }
+
 @end
 
-@implementation CityDetailView
+@implementation HelperDetailView
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,7 +35,7 @@
         UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
         self.navigationItem.leftBarButtonItem = btnBack;
         
-    }
+        }
     return self;
 }
 
@@ -65,7 +66,7 @@
 
 - (void)loadData
 {
-    NSString *html = [NSString stringWithFormat:@"<body>%@<div id='web_title'>%@</div>%@<div id='web_img'><img src='%@' height='150' width='150' hspace='35'/></div></body><div id='web_body'>%@</div></body>", HTML_Style, info.title, HTML_Splitline, info.thumb,info.content];
+    NSString *html = [NSString stringWithFormat:@"<body>%@<div id='web_title'>%@</div>%@<div id='web_img'><img src='%@' height='250' width='250' hspace='35'/></div></body><div id='web_body'>%@</div></body>", HTML_Style, info.title, HTML_Splitline, info.thumb,info.content];
     NSString *result = [Tool getHTMLString:html];
     [self.webView loadHTMLString:result baseURL:nil];
     
@@ -85,7 +86,7 @@
     //如果有网络连接
     if ([UserModel Instance].isNetworkRunning)
     {
-        NSString *url = [NSString stringWithFormat:@"%@%@?APPKey=%@&id=%@", api_base_url, api_get_wisdom_info, appkey,_art.id];
+        NSString *url = [NSString stringWithFormat:@"%@%@?APPKey=%@&id=%@", api_base_url, api_get_help_info, appkey,_art.id];
         [[AFOSCClient sharedClient]getPath:url parameters:Nil
                                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                        @try {
@@ -96,10 +97,10 @@
                                            [NdUncaughtExceptionHandler TakeException:exception];
                                        }
                                        @finally {
-                                           if (hud != nil)
-                                           {
-                                               [hud hide:YES];
-                                           }
+                                            if (hud != nil)
+                                            {
+                                                [hud hide:YES];
+                                            }
                                        }
                                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                        if ([UserModel Instance].isNetworkRunning == NO) {

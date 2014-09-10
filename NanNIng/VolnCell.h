@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CityCell : UITableViewCell
+@interface VolnCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLb;
 @property (weak, nonatomic) IBOutlet UILabel *summaryLb;

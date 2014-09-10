@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 greenorange. All rights reserved.
 //
 
-#import "CityView.h"
+#import "DongmengView.h"
 
-@interface CityView ()
+@interface DongmengView ()
 
 @end
 
-@implementation CityView
+@implementation DongmengView
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -20,7 +20,7 @@
     if (self) {
         UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 44)];
         titleLabel.font = [UIFont boldSystemFontOfSize:18];
-        titleLabel.text = @"城市文化";
+        titleLabel.text = @"魅力东盟";
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.textColor = [Tool getColorForGreen];
         titleLabel.textAlignment = UITextAlignmentCenter;
@@ -61,7 +61,7 @@
     }
     
     self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
-    catalog = @"1";
+    catalog = @"2";
     allCount = 0;
     [_refreshHeaderView refreshLastUpdatedDate];
     self.view.backgroundColor = [Tool getBackgroundColor];
@@ -348,9 +348,9 @@
 {
     Citys *art = [cityArray objectAtIndex:[indexPath row]];
     if (art) {
-        CityDetailView *cityDetailView = [[CityDetailView alloc] init];
-        cityDetailView.art = art;
-        [self.navigationController pushViewController:cityDetailView animated:YES];
+        DongmengDetailView *dongDetailView = [[DongmengDetailView alloc] init];
+        dongDetailView.art = art;
+        [self.navigationController pushViewController:dongDetailView animated:YES];
     }
 }
 
