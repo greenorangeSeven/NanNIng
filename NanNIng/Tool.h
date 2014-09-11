@@ -45,6 +45,8 @@
 #import "MyGoods.h"
 #import "ResponseCode.h"
 #import "Commercial.h"
+#import "Citys.h"
+#import "CityInfo.h"
 
 @interface Tool : NSObject
 
@@ -155,5 +157,6 @@
 + (ResponseCode *)readJsonStrToResponseCode:(NSString *)str;
 + (NSMutableArray *)readJsonStrToArticleArray:(NSString *)str;
 + (NSMutableArray *)readJsonStrToCommercials:(NSString *)str;
-
++ (NSMutableArray *)readJsonStrToCitys:(NSString *)str;
++ (CityInfo *)readJsonStrToCityInfo:(NSString *)str;
 @end

@@ -82,7 +82,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    if (isInitialize == NO) {
+    if (isInitialize == NO)
+    {
         isInitialize = YES;
         [self reload:YES];
     }

@@ -569,6 +569,18 @@
     return user;
 }
 
++ (CityInfo *)readJsonStrToCityInfo:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *detailDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( detailDic == nil) {
+        return nil;
+    }
+    CityInfo *info = [RMMapper objectWithClass:[CityInfo class] fromDictionary:detailDic];
+    return info;
+}
+
 + (OrdersNum *)readJsonStrToOrdersNum:(NSString *)str
 {
     NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
@@ -920,6 +932,18 @@
     }
     NSMutableArray *commercialArray = [RMMapper mutableArrayOfClass:[Commercial class] fromArrayOfDictionary:commercialJsonArray];
     return commercialArray;
+}
+
++ (NSMutableArray *)readJsonStrToCitys:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *cityJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( cityJsonArray == nil || [cityJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *cityArray = [RMMapper mutableArrayOfClass:[Citys class] fromArrayOfDictionary:cityJsonArray];
+    return cityArray;
 }
 
 @end

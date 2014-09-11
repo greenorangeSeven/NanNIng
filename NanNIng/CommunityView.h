@@ -41,6 +41,7 @@
 
 //异步加载图片专用
 @property (nonatomic, retain) NSMutableDictionary *imageDownloadsInProgress;
+
 - (void)startIconDownload:(ImgRecord *)imgRecord forIndexPath:(NSIndexPath *)indexPath;
 
 - (void)reloadType:(NSString *)ncatalog;
