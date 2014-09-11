@@ -66,6 +66,21 @@
 
 - (void)buyOK
 {
+   
+    FMDatabase* database=[FMDatabase databaseWithPath:[Tool databasePath]];
+    if (![database open]) {
+        NSLog(@"Open database failed");
+        return;
+    }
+    if (![database tableExists:@"shoppingcart"])
+    {
+        [database executeUpdate:createshoppingcart];
+    }
+    BOOL isOK = [database executeUpdate:@"DELETE FROM shoppingcart"];
+    if(isOK)
+    {
+        NSLog(@"数据已清空");
+    }
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"提示"
                                                  message:@"支付成功"                         delegate:self
                                        cancelButtonTitle:@"确定"
@@ -244,7 +259,7 @@
             pro.partnerPrivKey = [usermodel getUserValueForKey:@"PRIVATE"];
             pro.sellerID = [usermodel getUserValueForKey:@"DEFAULT_SELLER"];
             
-            [AlipayUtils doPay:pro NotifyURL:api_goods_notify AndScheme:@"BeautyLifeAlipay" seletor:nil target:nil];
+            [AlipayUtils doPay:pro NotifyURL:api_goods_notify AndScheme:@"NanNIngAlipay" seletor:nil target:nil];
         }
             break;
         case 0:
