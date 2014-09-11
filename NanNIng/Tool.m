@@ -649,6 +649,19 @@
     return commArray;
 }
 
++ (NSMutableArray *)readJsonStrToCommunityArray2:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *commJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( [commJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *commArray = [RMMapper mutableArrayOfClass:[CommunityModel class]
+                                        fromArrayOfDictionary:commJsonArray];
+    return commArray;
+}
+
 + (NSMutableArray *)readJsonStrToADV:(NSString *)str
 {
     NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];

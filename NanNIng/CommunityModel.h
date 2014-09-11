@@ -19,5 +19,6 @@
 
 @property (nonatomic, retain) NSArray *build_list;
 @property (nonatomic, retain) NSArray *buildArray;
+@property (retain,nonatomic) UIImage * imgData;
 
 @end

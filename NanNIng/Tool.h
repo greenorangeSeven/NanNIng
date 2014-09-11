@@ -133,6 +133,7 @@
 + (AlipayInfo *)readJsonStrToAliPay:(NSString *)str;
 + (NSMutableArray *)readJsonStrToRegionArray:(NSString *)str;
 + (NSMutableArray *)readJsonStrToCommunityArray:(NSString *)str;
++ (NSMutableArray *)readJsonStrToCommunityArray2:(NSString *)str;
 + (NSMutableArray *)readJsonStrToADV:(NSString *)str;
 + (NSMutableArray *)readJsonStrToNews:(NSString *)str;
 + (NSMutableArray *)readJsonStrToRepairsCate:(NSString *)str;

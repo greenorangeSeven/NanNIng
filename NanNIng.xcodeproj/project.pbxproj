@@ -264,6 +264,10 @@
 		144B15A019B315B500494428 /* ChooseAreaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144B159519B315B500494428 /* ChooseAreaView.xib */; };
 		144B15A119B315B500494428 /* SelectHomeAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 144B159719B315B500494428 /* SelectHomeAddressView.m */; };
 		144B15A219B315B500494428 /* SelectHomeAddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144B159819B315B500494428 /* SelectHomeAddressView.xib */; };
+		14B6D84819BF3B6000D309C0 /* ProjectCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D84319BF3B6000D309C0 /* ProjectCollectionView.m */; };
+		14B6D84919BF3B6000D309C0 /* ProjectCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14B6D84419BF3B6000D309C0 /* ProjectCollectionView.xib */; };
+		14B6D84A19BF3B6000D309C0 /* ProjectCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D84619BF3B6000D309C0 /* ProjectCollectionCell.m */; };
+		14B6D84B19BF3B6000D309C0 /* ProjectCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14B6D84719BF3B6000D309C0 /* ProjectCollectionCell.xib */; };
 		14B8F0F51994636F00537505 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8F0F41994636F00537505 /* Foundation.framework */; };
 		14B8F0F71994636F00537505 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8F0F61994636F00537505 /* CoreGraphics.framework */; };
 		14B8F0F91994636F00537505 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B8F0F81994636F00537505 /* UIKit.framework */; };
@@ -950,6 +954,12 @@
 		144B159619B315B500494428 /* SelectHomeAddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectHomeAddressView.h; sourceTree = "<group>"; };
 		144B159719B315B500494428 /* SelectHomeAddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectHomeAddressView.m; sourceTree = "<group>"; };
 		144B159819B315B500494428 /* SelectHomeAddressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectHomeAddressView.xib; sourceTree = "<group>"; };
+		14B6D84219BF3B6000D309C0 /* ProjectCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectCollectionView.h; sourceTree = "<group>"; };
+		14B6D84319BF3B6000D309C0 /* ProjectCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectCollectionView.m; sourceTree = "<group>"; };
+		14B6D84419BF3B6000D309C0 /* ProjectCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectCollectionView.xib; sourceTree = "<group>"; };
+		14B6D84519BF3B6000D309C0 /* ProjectCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectCollectionCell.h; sourceTree = "<group>"; };
+		14B6D84619BF3B6000D309C0 /* ProjectCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectCollectionCell.m; sourceTree = "<group>"; };
+		14B6D84719BF3B6000D309C0 /* ProjectCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectCollectionCell.xib; sourceTree = "<group>"; };
 		14B8F0F11994636F00537505 /* NanNIng.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanNIng.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14B8F0F41994636F00537505 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		14B8F0F61994636F00537505 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1330,7 +1340,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14B8F2D91994696000537505 /* KeyboardManager.framework in Frameworks */,
 				14B8F30B1994696000537505 /* QQConnection.framework in Frameworks */,
 				14B8F1AB199468D100537505 /* XCTest.framework in Frameworks */,
 				14B8F30F1994696000537505 /* WeChatConnection.framework in Frameworks */,
@@ -1375,6 +1384,7 @@
 				14B8F30D1994696000537505 /* SinaWeiboConnection.framework in Frameworks */,
 				14B8F3181994696000537505 /* libTCWeiboSDK.a in Frameworks */,
 				14B8F3161994696000537505 /* libSinaWeiboSDK.a in Frameworks */,
+				14B8F2D91994696000537505 /* KeyboardManager.framework in Frameworks */,
 				14B8F0F51994636F00537505 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2486,6 +2496,12 @@
 				042EBF5819BE926D00561E71 /* ShoppingBuyView.h */,
 				042EBF5919BE926D00561E71 /* ShoppingBuyView.m */,
 				042EBF5A19BE926D00561E71 /* ShoppingBuyView.xib */,
+				14B6D84219BF3B6000D309C0 /* ProjectCollectionView.h */,
+				14B6D84319BF3B6000D309C0 /* ProjectCollectionView.m */,
+				14B6D84419BF3B6000D309C0 /* ProjectCollectionView.xib */,
+				14B6D84519BF3B6000D309C0 /* ProjectCollectionCell.h */,
+				14B6D84619BF3B6000D309C0 /* ProjectCollectionCell.m */,
+				14B6D84719BF3B6000D309C0 /* ProjectCollectionCell.xib */,
 			);
 			name = LifePage;
 			sourceTree = "<group>";
@@ -2909,6 +2925,7 @@
 				14B8F48D1994732900537505 /* areaarrows@2x.png in Resources */,
 				14B8F48B1994732900537505 /* areaBtnBg.png in Resources */,
 				14B8F45D1994732900537505 /* repairslogo@2x.png in Resources */,
+				14B6D84B19BF3B6000D309C0 /* ProjectCollectionCell.xib in Resources */,
 				14B8F4A61994732900537505 /* tellogo@2x.png in Resources */,
 				144ADE5419B41659006980B9 /* BusinessDetailView.xib in Resources */,
 				144ADE4E19B41659006980B9 /* BusniessSearchView.xib in Resources */,
@@ -2982,6 +2999,7 @@
 				042EBF6219BED3B700561E71 /* fragment_forum@2x.png in Resources */,
 				04A142DE199606DD00E44FEE /* bm_luyou@2x.png in Resources */,
 				144ADDFC19B40E8E006980B9 /* ritem-1@2x.png in Resources */,
+				14B6D84919BF3B6000D309C0 /* ProjectCollectionView.xib in Resources */,
 				040CDF591995B37600E02EE4 /* subtle_new@2x.png in Resources */,
 				144ADE2F19B412A7006980B9 /* addmyinbox@2x.png in Resources */,
 				144ADE0119B40E8E006980B9 /* ritem-6@2x.png in Resources */,
@@ -3079,6 +3097,7 @@
 				14B8F2BB1994696000537505 /* AFURLConnectionOperation.m in Sources */,
 				14B8F2FC1994696000537505 /* MWGridCell.m in Sources */,
 				144ADE5719B41659006980B9 /* GoodsDetailView.m in Sources */,
+				14B6D84A19BF3B6000D309C0 /* ProjectCollectionCell.m in Sources */,
 				144B156B19B3140D00494428 /* BusinessGoods.m in Sources */,
 				14B8F2B11994696000537505 /* NSData+CommonCrypto.m in Sources */,
 				14B8F2B41994696000537505 /* AFHTTPRequestOperation.m in Sources */,
@@ -3124,6 +3143,7 @@
 				14B8F2E41994696000537505 /* PSTCollectionViewLayout.m in Sources */,
 				144B152819B313DD00494428 /* CommunityModel.m in Sources */,
 				14B8F2B51994696000537505 /* AFImageRequestOperation.m in Sources */,
+				14B6D84819BF3B6000D309C0 /* ProjectCollectionView.m in Sources */,
 				14B8F2BA1994696000537505 /* AFPropertyListRequestOperation.m in Sources */,
 				14B8F2E71994696000537505 /* PSTGridLayoutItem.m in Sources */,
 				14B8F2E21994696000537505 /* PSTCollectionViewFlowLayout.m in Sources */,
@@ -3392,6 +3412,8 @@
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NanNIng/NanNIng-Prefix.pch";
@@ -3437,6 +3459,8 @@
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/Extend/QQConnectSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/UI",
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
