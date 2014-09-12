@@ -10,6 +10,8 @@
 #import "TQImageCache.h"
 #import "BBSModel.h"
 #import "BBSTableCell.h"
+#import "BBSReplyView.h"
+#import "UIViewController+CWPopup.h"
 
 @interface BBSTableView : UIViewController<UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate,MBProgressHUDDelegate,IconDownloaderDelegate>
 {
@@ -37,5 +39,6 @@
 @property (nonatomic, retain) NSMutableDictionary *imageDownloadsInProgress;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITextField *replyTF;
 
 @end

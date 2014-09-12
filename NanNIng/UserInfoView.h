@@ -18,7 +18,7 @@
 {
     EGOImageView *faceEGOImageView;
 }
-
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *userFaceIv;
 @property (weak, nonatomic) IBOutlet UITextField *nicknameTf;
 @property (weak, nonatomic) IBOutlet UITextField *nameTf;

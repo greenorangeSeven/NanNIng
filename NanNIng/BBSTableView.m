@@ -46,6 +46,11 @@
     titleLabel.textColor = [Tool getColorForGreen];
     titleLabel.textAlignment = UITextAlignmentCenter;
     self.navigationItem.titleView = titleLabel;
+    BBSReplyView *samplePopupViewController = [[BBSReplyView alloc] initWithNibName:@"BBSReplyView" bundle:nil];
+    [self presentPopupViewController:samplePopupViewController animated:YES completion:^(void) {
+        NSLog(@"popup view presented");
+    }];
+//    [_replyTF becomeFirstResponder];
     
     //适配iOS7uinavigationbar遮挡问题
     if(IS_IOS7)
@@ -344,17 +349,28 @@
             cell.replyView.frame = CGRectMake(cell.replyView.frame .origin.x, cell.timeView.frame.origin.y + cell.timeView.frame.size.height, cell.replyView.frame.size.width, cell.replyView.frame.size.height);
             
             cell.replyLb.text = bbs.replysStr;
-            if ([bbs.replysStr isEqualToString:@""] == NO)
+            NSString *replysStr = [NSString stringWithString:bbs.replysStr];
+            if ([replysStr isEqualToString:@""] == NO)
             {
                 cell.replyLb.frame = CGRectMake(cell.replyLb.frame .origin.x, cell.replyLb.frame.origin.y, cell.replyLb.frame.size.width, bbs.replyHeight -10);
                 cell.replyView.frame = CGRectMake(cell.replyView.frame .origin.x, cell.timeView.frame.origin.y + cell.timeView.frame.size.height, cell.replyView.frame.size.width, cell.replyLb.frame.size.height);
+                cell.replyView.hidden = NO;
             }
             else
             {
                 cell.replyView.hidden = YES;
             }
             cell.timeLb.text = bbs.timeStr;
-//            cell.titleLb.text = city.title;
+            NSString *nickname = @"匿名用户";
+            if ([bbs.nickname isEqualToString:@""] == NO)
+            {
+                nickname = bbs.nickname;
+            }
+            else if ([bbs.name isEqualToString:@""] == NO)
+            {
+                nickname = bbs.name;
+            }
+            cell.nickNameLb.text = nickname;
 //            cell.summaryLb.text = city.summary;
 //            if (city.imgData) {
 //                cell.thumImg.image = city.imgData;

@@ -13,6 +13,7 @@
                 <outlet property="nameTf" destination="hoZ-iC-PVo" id="sU7-09-hPZ"/>
                 <outlet property="nicknameTf" destination="0pb-aL-g4N" id="Hos-8a-jAn"/>
                 <outlet property="saveInfoBtn" destination="Gik-D2-Wfi" id="Ea9-uE-6J0"/>
+                <outlet property="scrollView" destination="dfv-WB-fJi" id="Cxi-xY-d4R"/>
                 <outlet property="selectHomeAddressBtn" destination="KFh-qo-0Jk" id="Euz-wi-MlI"/>
                 <outlet property="userFaceIv" destination="Izf-pR-IVV" id="djD-Mc-VpC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
