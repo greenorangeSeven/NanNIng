@@ -133,7 +133,7 @@
 //能帮就帮新闻详情
 #define api_get_help_info @"/get_help_info"
 //小区商务发布
-#define api_add_business_info @"/add_business_info"
+#define api_add_business_info @"/add_bussiness_info"
 
 #define AreaListKey @"AreList"
 
