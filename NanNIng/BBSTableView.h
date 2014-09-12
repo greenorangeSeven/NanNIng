@@ -1,23 +1,19 @@
 //
-//  ArticleView.h
+//  BBSTableView.h
 //  NanNIng
 //
-//  Created by Seven on 14-9-3.
+//  Created by Seven on 14-9-11.
 //  Copyright (c) 2014年 greenorange. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "SGFocusImageFrame.h"
-#import "SGFocusImageItem.h"
 #import "TQImageCache.h"
-#import "Article.h"
-#import "CityCell.h"
-#import "DongmengDetailView.h"
+#import "BBSModel.h"
+#import "BBSTableCell.h"
 
-@interface DongmengView : UIViewController<UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate,MBProgressHUDDelegate,IconDownloaderDelegate>
-
+@interface BBSTableView : UIViewController<UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate,MBProgressHUDDelegate,IconDownloaderDelegate>
 {
-    NSMutableArray *cityArray;
+    NSMutableArray *bbsArray;
     BOOL isLoading;
     BOOL isLoadOver;
     int allCount;
@@ -26,7 +22,6 @@
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
     
-    NSString *catalog;
     BOOL isInitialize;
     TQImageCache * _iconCache;
     
@@ -34,6 +29,10 @@
     
     MBProgressHUD *hud;
 }
+
+@property (weak, nonatomic) NSString *cid;
+@property (weak, nonatomic) NSString *cname;
+
 //异步加载图片专用
 @property (nonatomic, retain) NSMutableDictionary *imageDownloadsInProgress;
 

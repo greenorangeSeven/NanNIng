@@ -16,6 +16,9 @@
 #import "ArticleView.h"
 
 @interface StewardPageView : UIViewController<SGFocusImageFrameDelegate, UIActionSheetDelegate>
+{
+    UIWebView *phoneCallWebView;
+}
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UILabel *telBg;
@@ -25,5 +28,6 @@
 - (IBAction)noticeAction:(id)sender;
 - (IBAction)expressAction:(id)sender;
 - (IBAction)arttileAction:(id)sender;
+- (IBAction)telAction:(id)sender;
 
 @end

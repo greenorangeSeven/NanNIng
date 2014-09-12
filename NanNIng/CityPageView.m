@@ -8,7 +8,6 @@
 
 #import "CityPageView.h"
 #import "CityView.h"
-#import "DongmengView.h"
 #import "VolnView.h"
 #import "HelperView.h"
 
@@ -71,28 +70,41 @@
 - (IBAction)clickCity:(UIButton *)sender
 {
     CityView *cityView = [[CityView alloc] init];
-    cityView.hidesBottomBarWhenPushed = NO;
+    cityView.typeStr = @"1";
+    cityView.typeNameStr = @"城市文化";
+    cityView.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:cityView animated:YES];
 }
 
 - (IBAction)clickDongmeng:(UIButton *)sender
 {
-    DongmengView *dongView = [[DongmengView alloc] init];
-    dongView.hidesBottomBarWhenPushed = NO;
-    [self.navigationController pushViewController:dongView animated:YES];
+    CityView *cityView = [[CityView alloc] init];
+    cityView.typeStr = @"2";
+    cityView.typeNameStr = @"魅力东盟";
+    cityView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:cityView animated:YES];
 }
 
 - (IBAction)clickZhiyuan:(UIButton *)sender
 {
     VolnView *volnView = [[VolnView alloc] init];
-    volnView.hidesBottomBarWhenPushed = NO;
+    volnView.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:volnView animated:YES];
 }
 - (IBAction)clickHelp:(UIButton *)sender
 {
     
     HelperView *helperView = [[HelperView alloc] init];
-    helperView.hidesBottomBarWhenPushed = NO;
+    helperView.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:helperView animated:YES];
 }
+
+- (IBAction)telAction:(id)sender{
+    NSURL *phoneUrl = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", servicephone]];
+    if (!phoneCallWebView) {
+        phoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    }
+    [phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneUrl]];
+}
+
 @end

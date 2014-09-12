@@ -1,14 +1,14 @@
 //
-//  ArticleCell.m
+//  BBSTableCell.m
 //  NanNIng
 //
-//  Created by Seven on 14-9-4.
+//  Created by Seven on 14-9-11.
 //  Copyright (c) 2014年 greenorange. All rights reserved.
 //
 
-#import "DongmengCell.h"
+#import "BBSTableCell.h"
 
-@implementation DongmengCell
+@implementation BBSTableCell
 
 - (void)awakeFromNib
 {

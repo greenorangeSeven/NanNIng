@@ -45,6 +45,8 @@
 {
     [super viewDidLoad];
     self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width, self.view.frame.size.height);
+    [Tool roundTextView:self.joinField andBorderWidth:1 andCornerRadius:3.0];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,7 +99,7 @@
     [request startAsynchronous];
     
     request.hud = [[MBProgressHUD alloc] initWithView:self.view];
-    [Tool showHUD:@"正在报名..." andView:self.view andHUD:request.hud];
+    [Tool showHUD:@"提交报名..." andView:self.view andHUD:request.hud];
 
 }
 
@@ -132,20 +134,16 @@
     switch (errorCode) {
         case 1:
         {
-            
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"提醒"
-                                                         message:errorMessage
-                                                        delegate:nil
-                                               cancelButtonTitle:@"确定"
-                                               otherButtonTitles:nil];
-            [av show];
-            [self.navigationController popViewControllerAnimated:YES];
+            self.nameField.text = @"";
+            self.phoneField.text = @"";
+            self.idField.text = @"";
+            self.joinField.text = @"";
+            [Tool showCustomHUD:errorMessage andView:self.view  andImage:@"37x-Checkmark.png" andAfterDelay:3];
         }
             break;
         case 0:
         {
             [Tool showCustomHUD:errorMessage andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:3];
-            self.joinBtn.enabled = YES;
         }
             break;
     }

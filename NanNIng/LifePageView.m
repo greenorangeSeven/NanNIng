@@ -12,6 +12,7 @@
 #import "SubtleView.h"
 #import "BusinessView.h"
 #import "CommunityView.h"
+#import "ProjectCollectionView.h"
 
 @interface LifePageView ()
 
@@ -119,5 +120,17 @@
 }
 
 - (IBAction)clickBBS:(id)sender {
+    ProjectCollectionView *projectView = [[ProjectCollectionView alloc] init];
+    projectView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:projectView animated:YES];
 }
+
+- (IBAction)telAction:(id)sender{
+    NSURL *phoneUrl = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", servicephone]];
+    if (!phoneCallWebView) {
+        phoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    }
+    [phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneUrl]];
+}
+
 @end

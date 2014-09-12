@@ -18,14 +18,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 44)];
-        titleLabel.font = [UIFont boldSystemFontOfSize:18];
-        titleLabel.text = @"城市文化";
-        titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.textColor = [Tool getColorForGreen];
-        titleLabel.textAlignment = UITextAlignmentCenter;
-        self.navigationItem.titleView = titleLabel;
-        
         UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
         [lBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
         [lBtn setImage:[UIImage imageNamed:@"head_back"] forState:UIControlStateNormal];
@@ -43,6 +35,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 44)];
+    titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    titleLabel.text = self.typeNameStr;
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textColor = [Tool getColorForGreen];
+    titleLabel.textAlignment = UITextAlignmentCenter;
+    self.navigationItem.titleView = titleLabel;
+    
     //适配iOS7uinavigationbar遮挡问题
     if(IS_IOS7)
     {
@@ -61,7 +62,6 @@
     }
     
     self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
-    catalog = @"1";
     allCount = 0;
     [_refreshHeaderView refreshLastUpdatedDate];
     self.view.backgroundColor = [Tool getBackgroundColor];
@@ -148,7 +148,7 @@
             allCount = 0;
         }
         int pageIndex = allCount / 20;
-        NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&catid=%@&p=%i", api_base_url, api_get_wisdom_list, appkey,catalog,pageIndex];
+        NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&catid=%@&p=%i", api_base_url, api_get_wisdom_list, appkey,self.typeStr,pageIndex];
         
          NSString *url = [NSString stringWithString:tempUrl];
         [[AFOSCClient sharedClient] getPath:url parameters:Nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -274,7 +274,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [cityArray count];
+    if ([UserModel Instance].isNetworkRunning) {
+        if (isLoadOver) {
+            return cityArray.count == 0 ? 1 : cityArray.count;
+        }
+        else
+            return cityArray.count + 1;
+    }
+    else
+        return cityArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -341,7 +349,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 92;
+    if (indexPath.row < cityArray.count)
+    {
+        return 92;
+    }
+    else
+    {
+        return 62;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

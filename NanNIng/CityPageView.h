@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface CityPageView : UIViewController
+{
+    UIWebView *phoneCallWebView;
+}
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UILabel *telBg;
@@ -20,5 +23,7 @@
 - (IBAction)clickZhiyuan:(UIButton *)sender;
 
 - (IBAction)clickHelp:(UIButton *)sender;
+
+- (IBAction)telAction:(id)sender;
 
 @end

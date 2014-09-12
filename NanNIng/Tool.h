@@ -47,6 +47,8 @@
 #import "Commercial.h"
 #import "Citys.h"
 #import "CityInfo.h"
+#import "BBSModel.h"
+#import "BBSReplyModel.h"
 
 @interface Tool : NSObject
 
@@ -89,6 +91,7 @@
 + (void)ReleaseWebView:(UIWebView *)webView;
 
 + (int)getTextViewHeight:(UITextView *)txtView andUIFont:(UIFont *)font andText:(NSString *)txt;
++ (int)getTextHeight:(int)width andUIFont:(UIFont *)font andText:(NSString *)txt;
 
 + (UIColor *)getBackgroundColor;
 + (UIColor *)getCellBackgroundColor;
@@ -135,6 +138,7 @@
 + (AlipayInfo *)readJsonStrToAliPay:(NSString *)str;
 + (NSMutableArray *)readJsonStrToRegionArray:(NSString *)str;
 + (NSMutableArray *)readJsonStrToCommunityArray:(NSString *)str;
++ (NSMutableArray *)readJsonStrToCommunityArray2:(NSString *)str;
 + (NSMutableArray *)readJsonStrToADV:(NSString *)str;
 + (NSMutableArray *)readJsonStrToNews:(NSString *)str;
 + (NSMutableArray *)readJsonStrToRepairsCate:(NSString *)str;
@@ -158,4 +162,6 @@
 + (NSMutableArray *)readJsonStrToCommercials:(NSString *)str;
 + (NSMutableArray *)readJsonStrToCitys:(NSString *)str;
 + (CityInfo *)readJsonStrToCityInfo:(NSString *)str;
++ (NSMutableArray *)readJsonStrToBBSArray:(NSString *)str;
+
 @end
