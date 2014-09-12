@@ -45,6 +45,8 @@
 		0446CE3B19951B3D00D6C015 /* main_business@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0446CE3A19951B3D00D6C015 /* main_business@2x.png */; };
 		0446CE3D19951B9700D6C015 /* main_city@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0446CE3C19951B9700D6C015 /* main_city@2x.png */; };
 		0446CE3F19951BE900D6C015 /* main_subtle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0446CE3E19951BE900D6C015 /* main_subtle@2x.png */; };
+		044885E119C29A9300EFFAB0 /* CBusinessPublishView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044885DF19C29A9300EFFAB0 /* CBusinessPublishView.m */; };
+		044885E219C29A9300EFFAB0 /* CBusinessPublishView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044885E019C29A9300EFFAB0 /* CBusinessPublishView.xib */; };
 		04646DE119BFDA2600F71AE4 /* VolnDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04646DD819BFDA2600F71AE4 /* VolnDetailView.xib */; };
 		04646DE219BFDA2600F71AE4 /* VolnDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04646DDA19BFDA2600F71AE4 /* VolnDetailView.m */; };
 		04646DE319BFDA2600F71AE4 /* VolnCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04646DDC19BFDA2600F71AE4 /* VolnCell.xib */; };
@@ -606,6 +608,9 @@
 		0446CE3A19951B3D00D6C015 /* main_business@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_business@2x.png"; sourceTree = "<group>"; };
 		0446CE3C19951B9700D6C015 /* main_city@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_city@2x.png"; sourceTree = "<group>"; };
 		0446CE3E19951BE900D6C015 /* main_subtle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_subtle@2x.png"; sourceTree = "<group>"; };
+		044885DE19C29A9300EFFAB0 /* CBusinessPublishView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBusinessPublishView.h; sourceTree = "<group>"; };
+		044885DF19C29A9300EFFAB0 /* CBusinessPublishView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBusinessPublishView.m; sourceTree = "<group>"; };
+		044885E019C29A9300EFFAB0 /* CBusinessPublishView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBusinessPublishView.xib; sourceTree = "<group>"; };
 		04646DD819BFDA2600F71AE4 /* VolnDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VolnDetailView.xib; sourceTree = "<group>"; };
 		04646DD919BFDA2600F71AE4 /* VolnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolnView.h; sourceTree = "<group>"; };
 		04646DDA19BFDA2600F71AE4 /* VolnDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolnDetailView.m; sourceTree = "<group>"; };
@@ -2582,6 +2587,9 @@
 				143B9A1D19BE913A00BFD71D /* CommunityDetailView.h */,
 				143B9A1E19BE913A00BFD71D /* CommunityDetailView.m */,
 				143B9A1F19BE913A00BFD71D /* CommunityDetailView.xib */,
+				044885DE19C29A9300EFFAB0 /* CBusinessPublishView.h */,
+				044885DF19C29A9300EFFAB0 /* CBusinessPublishView.m */,
+				044885E019C29A9300EFFAB0 /* CBusinessPublishView.xib */,
 				144ADE5B19B41732006980B9 /* SubtleView.h */,
 				144ADE5C19B41732006980B9 /* SubtleView.m */,
 				144ADE5D19B41732006980B9 /* SubtleView.xib */,
@@ -3139,6 +3147,7 @@
 				144ADE7519B43561006980B9 /* loadingpic1@2x.png in Resources */,
 				047606131998498E007BED4C /* CommunityCell.xib in Resources */,
 				14B8F3EA1994731000537505 /* SettingView.xib in Resources */,
+				044885E219C29A9300EFFAB0 /* CBusinessPublishView.xib in Resources */,
 				04A1430A1996185900E44FEE /* xm_fangdai.png in Resources */,
 				04646DFD19BFE64900F71AE4 /* voln_join_join@2x.png in Resources */,
 				14B8F31B1994696000537505 /* ShareSDKFlatShareViewUI.bundle in Resources */,
@@ -3245,6 +3254,7 @@
 				14B8F2E61994696000537505 /* PSTGridLayoutInfo.m in Sources */,
 				14B8F2EE1994696000537505 /* NSData+ImageContentType.m in Sources */,
 				144B151F19B3137800494428 /* PayOrder.m in Sources */,
+				044885E119C29A9300EFFAB0 /* CBusinessPublishView.m in Sources */,
 				14B8F2F71994696000537505 /* UIImage+GIF.m in Sources */,
 				144ADE2619B4103E006980B9 /* MyInBoxView.m in Sources */,
 				144B157019B3140D00494428 /* OrderGood.m in Sources */,

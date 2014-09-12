@@ -8,8 +8,9 @@
 
 #import "CommunityView.h"
 #import "CommunityCell.h"
+#import "CBusinessPublishView.h"
 
-@interface CommunityView ()
+@interface CommunityView ()<UIActionSheetDelegate>
 @end
 
 @implementation CommunityView
@@ -37,6 +38,12 @@
         UIBarButtonItem *btnMy = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
         self.navigationItem.leftBarButtonItem = btnMy;
         
+        UIButton *rBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 63, 22)];
+        [rBtn addTarget:self action:@selector(publishAction) forControlEvents:UIControlEventTouchUpInside];
+        [rBtn setTitle:@"发布" forState:UIControlStateNormal];
+        [rBtn setTitleColor:[Tool getColorForGreen] forState:UIControlStateNormal];
+        UIBarButtonItem *btnSearch = [[UIBarButtonItem alloc]initWithCustomView:rBtn];
+        self.navigationItem.rightBarButtonItem = btnSearch;
     }
     return self;
     
@@ -45,6 +52,23 @@
 - (void)backAction
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)publishAction
+{
+    if ([UserModel Instance].isLogin == NO)
+    {
+        [Tool noticeLogin:self.view andDelegate:self andTitle:@""];
+        return;
+    }
+    CBusinessPublishView *publishView = [[CBusinessPublishView alloc] init];
+    publishView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:publishView animated:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [Tool processLoginNotice:actionSheet andButtonIndex:buttonIndex andNav:self.navigationController andParent:nil];
 }
 
 - (void)viewDidLoad
