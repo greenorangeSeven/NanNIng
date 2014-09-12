@@ -10,6 +10,7 @@
 #import "ProjectCollectionCell.h"
 #import "TQImageCache.h"
 #import "CommunityModel.h"
+#import "BBSTableView.h"
 
 @interface ProjectCollectionView : UIViewController<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, IconDownloaderDelegate>
 {

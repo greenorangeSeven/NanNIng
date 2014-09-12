@@ -172,7 +172,13 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    CommunityModel *project = [projects objectAtIndex:[indexPath row]];
+    if (project) {
+        BBSTableView *bbsView = [[BBSTableView alloc] init];
+        bbsView.cid = project.id;
+        bbsView.cname = project.title;
+        [self.navigationController pushViewController:bbsView animated:YES];
+    }
 }
 
 //返回这个UICollectionView是否可以被选择

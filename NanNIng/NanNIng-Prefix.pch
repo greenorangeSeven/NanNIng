@@ -79,6 +79,7 @@
 #define api_articlepiclist @"/get_article_piclist"
 #define api_articlelist @"/get_article_list"
 #define api_commerciallist @"/get_business_info_list"
+#define api_bbslist @"/bbs"
 
 //商品下单地址
 #define api_send_order @"/send_order"

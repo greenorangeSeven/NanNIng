@@ -1,36 +1,32 @@
 //
-//  ArticleView.m
+//  BBSTableView.m
 //  NanNIng
 //
-//  Created by Seven on 14-9-3.
+//  Created by Seven on 14-9-11.
 //  Copyright (c) 2014年 greenorange. All rights reserved.
 //
 
-#import "DongmengView.h"
+#import "BBSTableView.h"
 
-@interface DongmengView ()
+@interface BBSTableView ()
 
 @end
 
-@implementation DongmengView
+@implementation BBSTableView
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 44)];
-        titleLabel.font = [UIFont boldSystemFontOfSize:18];
-        titleLabel.text = @"魅力东盟";
-        titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.textColor = [Tool getColorForGreen];
-        titleLabel.textAlignment = UITextAlignmentCenter;
-        self.navigationItem.titleView = titleLabel;
-        
-        UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
-        [lBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-        [lBtn setImage:[UIImage imageNamed:@"head_back"] forState:UIControlStateNormal];
-        UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
-        self.navigationItem.leftBarButtonItem = btnBack;
+        self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+        if (self) {
+            UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
+            [lBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+            [lBtn setImage:[UIImage imageNamed:@"head_back"] forState:UIControlStateNormal];
+            UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
+            self.navigationItem.leftBarButtonItem = btnBack;
+        }
+        return self;
     }
     return self;
 }
@@ -43,6 +39,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 44)];
+    titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    titleLabel.text = [NSString stringWithFormat:@"%@论坛", _cname];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textColor = [Tool getColorForGreen];
+    titleLabel.textAlignment = UITextAlignmentCenter;
+    self.navigationItem.titleView = titleLabel;
+    
     //适配iOS7uinavigationbar遮挡问题
     if(IS_IOS7)
     {
@@ -61,15 +65,12 @@
     }
     
     self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
-    catalog = @"2";
     allCount = 0;
     [_refreshHeaderView refreshLastUpdatedDate];
     self.view.backgroundColor = [Tool getBackgroundColor];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    self.tableView.backgroundColor = [Tool getBackgroundColor];
+//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -92,9 +93,9 @@
 {
     [self setTableView:nil];
     _refreshHeaderView = nil;
-    [cityArray removeAllObjects];
+    [bbsArray removeAllObjects];
     [_imageDownloadsInProgress removeAllObjects];
-    cityArray = nil;
+    bbsArray = nil;
     _iconCache = nil;
     [super viewDidUnload];
 }
@@ -103,17 +104,17 @@
     NSArray *allDownloads = [self.imageDownloadsInProgress allValues];
     [allDownloads makeObjectsPerformSelector:@selector(cancelDownload)];
     //清空
-    for (Citys *c in cityArray) {
+    for (BBSModel *c in bbsArray) {
         c.imgData = nil;
     }
-
+    
     [super didReceiveMemoryWarning];
 }
 
 - (void)clear
 {
     allCount = 0;
-    [cityArray removeAllObjects];
+    [bbsArray removeAllObjects];
     [_imageDownloadsInProgress removeAllObjects];
     isLoadOver = NO;
 }
@@ -148,17 +149,17 @@
             allCount = 0;
         }
         int pageIndex = allCount / 20;
-        NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&catid=%@&p=%i", api_base_url, api_get_wisdom_list, appkey,catalog,pageIndex];
+        NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&cid=%@&p=%i", api_base_url, api_bbslist, appkey, _cid, pageIndex];
         
-         NSString *url = [NSString stringWithString:tempUrl];
+        NSString *url = [NSString stringWithString:tempUrl];
         [[AFOSCClient sharedClient] getPath:url parameters:Nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             @try {
                 isLoading = NO;
                 if (!noRefresh) {
                     [self clear];
                 }
-                cityArray = [Tool readJsonStrToCitys:operation.responseString];
-                int count = [cityArray count];
+                bbsArray = [Tool readJsonStrToBBSArray:operation.responseString];
+                int count = [bbsArray count];
                 allCount += count;
                 if (count < 20) {
                     isLoadOver = YES;
@@ -256,11 +257,11 @@
     if (iconDownloader)
     {
         int _index = [index intValue];
-        if (_index >= [cityArray count])
+        if (_index >= [bbsArray count])
         {
             return;
         }
-        Citys *c = [cityArray objectAtIndex:[index intValue]];
+        BBSModel *c = [bbsArray objectAtIndex:[index intValue]];
         if (c) {
             c.imgData = iconDownloader.imgRecord.img;
             // cache it
@@ -271,61 +272,117 @@
     }
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [cityArray count];
+    if ([UserModel Instance].isNetworkRunning) {
+        if (isLoadOver) {
+            return bbsArray.count == 0 ? 1 : bbsArray.count;
+        }
+        else
+            return bbsArray.count + 1;
+    }
+    else
+        return bbsArray.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row < bbsArray.count)
+    {
+        BBSModel *bbs = [bbsArray objectAtIndex:[indexPath row]];
+        int height = 186 + bbs.contentHeight - 33 + bbs.replyHeight - 42;
+        if ([bbs.thumb count] == 0)
+        {
+            height -= 60;
+        }
+        if ([bbs.replysStr isEqualToString:@""] == YES)
+        {
+            height -= 22;
+        }
+        return height;
+    }
+    else
+    {
+        return 62;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([cityArray count] > 0)
+    if ([bbsArray count] > 0)
     {
-        if (indexPath.row < [cityArray count])
+        if (indexPath.row < [bbsArray count])
         {
-            CityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CityCell"];
+            BBSTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BBSTableCell"];
             if (!cell)
             {
-                NSArray *objects = [[NSBundle mainBundle] loadNibNamed:@"CityCell" owner:self options:nil];
+                NSArray *objects = [[NSBundle mainBundle] loadNibNamed:@"BBSTableCell" owner:self options:nil];
                 for (NSObject *o in objects)
                 {
-                    if ([o isKindOfClass:[CityCell class]])
+                    if ([o isKindOfClass:[BBSTableCell class]])
                     {
-                        cell = (CityCell *)o;
+                        cell = (BBSTableCell *)o;
                         break;
                     }
                 }
             }
-            Citys *city = [cityArray objectAtIndex:[indexPath row]];
-            cell.titleLb.text = city.title;
-            cell.summaryLb.text = city.summary;
-            if (city.imgData) {
-                cell.thumImg.image = city.imgData;
+            BBSModel *bbs = [bbsArray objectAtIndex:[indexPath row]];
+            
+            cell.contentLb.text = bbs.content;
+            CGRect contentLb = cell.contentLb.frame;
+            cell.contentLb.frame = CGRectMake(contentLb.origin.x, contentLb.origin.y, contentLb.size.width, bbs.contentHeight -10);
+            if ([bbs.thumb count] > 0)
+            {
+                cell.imageIv.frame = CGRectMake(cell.imageIv.frame .origin.x, cell.contentLb.frame.origin.y + cell.contentLb.frame.size.height, cell.imageIv.frame.size.width, cell.imageIv.frame.size.height);
+                cell.timeView.frame = CGRectMake(cell.timeView.frame .origin.x, cell.imageIv.frame.origin.y + cell.imageIv.frame.size.height, cell.timeView.frame.size.width, cell.timeView.frame.size.height);
             }
             else
             {
-                if ([city.thumb isEqualToString:@""]) {
-                    city.imgData = [UIImage imageNamed:@"loadingpic2"];
-                }
-                else
-                {
-                    NSData * imageData = [_iconCache getImage:[TQImageCache parseUrlForCacheName:city.thumb]];
-                    if (imageData)
-                    {
-                        city.imgData = [UIImage imageWithData:imageData];
-                        cell.thumImg.image = city.imgData;
-                    }
-                    else
-                    {
-                        IconDownloader *downloader = [_imageDownloadsInProgress objectForKey:[NSString stringWithFormat:@"%d", [indexPath row]]];
-                        if (downloader == nil) {
-                            ImgRecord *record = [ImgRecord new];
-                            record.url = city.thumb;
-                            [self startIconDownload:record forIndexPath:indexPath];
-                        }
-                    }
-                }
+                cell.imageIv.hidden = YES;
+                cell.timeView.frame = CGRectMake(cell.timeView.frame .origin.x, cell.contentLb.frame.origin.y + cell.contentLb.frame.size.height, cell.timeView.frame.size.width, cell.timeView.frame.size.height);
             }
+            cell.replyView.frame = CGRectMake(cell.replyView.frame .origin.x, cell.timeView.frame.origin.y + cell.timeView.frame.size.height, cell.replyView.frame.size.width, cell.replyView.frame.size.height);
+            
+            cell.replyLb.text = bbs.replysStr;
+            if ([bbs.replysStr isEqualToString:@""] == NO)
+            {
+                cell.replyLb.frame = CGRectMake(cell.replyLb.frame .origin.x, cell.replyLb.frame.origin.y, cell.replyLb.frame.size.width, bbs.replyHeight -10);
+                cell.replyView.frame = CGRectMake(cell.replyView.frame .origin.x, cell.timeView.frame.origin.y + cell.timeView.frame.size.height, cell.replyView.frame.size.width, cell.replyLb.frame.size.height);
+            }
+            else
+            {
+                cell.replyView.hidden = YES;
+            }
+            cell.timeLb.text = bbs.timeStr;
+//            cell.titleLb.text = city.title;
+//            cell.summaryLb.text = city.summary;
+//            if (city.imgData) {
+//                cell.thumImg.image = city.imgData;
+//            }
+//            else
+//            {
+//                if ([city.thumb isEqualToString:@""]) {
+//                    city.imgData = [UIImage imageNamed:@"loadingpic2"];
+//                }
+//                else
+//                {
+//                    NSData * imageData = [_iconCache getImage:[TQImageCache parseUrlForCacheName:city.thumb]];
+//                    if (imageData)
+//                    {
+//                        city.imgData = [UIImage imageWithData:imageData];
+//                        cell.thumImg.image = city.imgData;
+//                    }
+//                    else
+//                    {
+//                        IconDownloader *downloader = [_imageDownloadsInProgress objectForKey:[NSString stringWithFormat:@"%d", [indexPath row]]];
+//                        if (downloader == nil) {
+//                            ImgRecord *record = [ImgRecord new];
+//                            record.url = city.thumb;
+//                            [self startIconDownload:record forIndexPath:indexPath];
+//                        }
+//                    }
+//                }
+//            }
             return cell;
         }
         else
@@ -339,19 +396,9 @@
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 92;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Citys *art = [cityArray objectAtIndex:[indexPath row]];
-    if (art) {
-        DongmengDetailView *dongDetailView = [[DongmengDetailView alloc] init];
-        dongDetailView.art = art;
-        [self.navigationController pushViewController:dongDetailView animated:YES];
-    }
+
 }
 
 @end

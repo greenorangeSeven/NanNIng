@@ -235,7 +235,9 @@
 - (IBAction)clickCityCulture:(UIButton *)sender
 {
     CityView *cityView = [[CityView alloc] init];
-    cityView.hidesBottomBarWhenPushed = NO;
+    cityView.typeStr = @"1";
+    cityView.typeNameStr = @"城市文化";
+    cityView.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:cityView animated:YES];
 }
 

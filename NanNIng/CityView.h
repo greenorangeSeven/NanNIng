@@ -15,7 +15,6 @@
 #import "CityDetailView.h"
 
 @interface CityView : UIViewController<UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate,MBProgressHUDDelegate,IconDownloaderDelegate>
-
 {
     NSMutableArray *cityArray;
     BOOL isLoading;
@@ -26,7 +25,6 @@
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
     
-    NSString *catalog;
     BOOL isInitialize;
     TQImageCache * _iconCache;
     
@@ -34,6 +32,10 @@
     
     MBProgressHUD *hud;
 }
+
+@property (weak, nonatomic) NSString *typeStr;
+@property (weak, nonatomic) NSString *typeNameStr;
+
 //异步加载图片专用
 @property (nonatomic, retain) NSMutableDictionary *imageDownloadsInProgress;
 

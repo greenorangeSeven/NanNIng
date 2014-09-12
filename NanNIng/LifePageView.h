@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface LifePageView : UIViewController
+{
+    UIWebView *phoneCallWebView;
+}
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UILabel *telBg;
@@ -20,5 +23,6 @@
 
 - (IBAction)clickCommunity:(UIButton *)sender;
 - (IBAction)clickBBS:(id)sender;
+- (IBAction)telAction:(id)sender;
 
 @end

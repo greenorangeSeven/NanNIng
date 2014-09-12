@@ -274,7 +274,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [cityArray count];
+    if ([UserModel Instance].isNetworkRunning) {
+        if (isLoadOver) {
+            return cityArray.count == 0 ? 1 : cityArray.count;
+        }
+        else
+            return cityArray.count + 1;
+    }
+    else
+        return cityArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -342,7 +350,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 92;
+    if (indexPath.row < cityArray.count)
+    {
+        return 92;
+    }
+    else
+    {
+        return 62;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

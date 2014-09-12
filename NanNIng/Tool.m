@@ -71,7 +71,7 @@
 
 + (void)roundTextView:(UIView *)txtView andBorderWidth:(int)width andCornerRadius:(float)radius
 {
-    txtView.layer.borderColor = [[UIColor colorWithRed:179.0/255.0 green:179.0/255.0 blue:179.0/255.0 alpha:1.0] CGColor];
+    txtView.layer.borderColor = [[UIColor colorWithRed:202.0/255.0 green:204.0/255.0 blue:205.0/255.0 alpha:1.0] CGColor];
     txtView.layer.borderWidth = width;
     txtView.layer.cornerRadius = radius;
     txtView.layer.masksToBounds = YES;
@@ -241,6 +241,15 @@
 {
     float fPadding = 16.0;
     CGSize constraint = CGSizeMake(txtView.contentSize.width - 10 - fPadding, CGFLOAT_MAX);
+    CGSize size = [txt sizeWithFont:font constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    float fHeight = size.height + 16.0;
+    return fHeight;
+}
+
++(int)getTextHeight:(int)width andUIFont:(UIFont *)font andText:(NSString *)txt
+{
+    float fPadding = 16.0;
+    CGSize constraint = CGSizeMake(width - 10 - fPadding, CGFLOAT_MAX);
     CGSize size = [txt sizeWithFont:font constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     float fHeight = size.height + 16.0;
     return fHeight;
@@ -944,6 +953,43 @@
     }
     NSMutableArray *cityArray = [RMMapper mutableArrayOfClass:[Citys class] fromArrayOfDictionary:cityJsonArray];
     return cityArray;
+}
+
++ (NSMutableArray *)readJsonStrToBBSArray:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *bbsJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( bbsJsonArray == nil || [bbsJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *bbsArray = [RMMapper mutableArrayOfClass:[BBSModel class] fromArrayOfDictionary:bbsJsonArray];
+    for (BBSModel *o in bbsArray)
+    {
+        NSMutableArray *reply_Array = [RMMapper mutableArrayOfClass:[BBSReplyModel class]
+                                             fromArrayOfDictionary:o.reply_list];
+        NSMutableString *ms = [[NSMutableString alloc] init];
+        for (BBSReplyModel *r in reply_Array)
+        {
+            NSString *rname = @"匿名用户:";
+            if ([r.nickname isEqualToString:@""] == NO)
+            {
+                rname = [NSString stringWithFormat:@"%@:", r.nickname];
+            }
+            else if ([r.name isEqualToString:@""] == NO)
+            {
+                rname = [NSString stringWithFormat:@"%@:", r.name];
+            }
+            NSString *rcontent = [NSString stringWithFormat:@"%@%@\n", rname, r.reply_content];
+            [ms appendString:rcontent];
+        }
+        o.timeStr = [Tool intervalSinceNow:[Tool TimestampToDateStr:o.addtime andFormatterStr:@"yyyy-MM-dd HH:mm:ss"]];
+        o.replyArray = reply_Array;
+        o.contentHeight = [self getTextHeight:253 andUIFont:[UIFont fontWithName:@"Arial-BoldItalicMT" size:12] andText:o.content];
+        o.replysStr = ms;
+        o.replyHeight = [self getTextHeight:253 andUIFont:[UIFont fontWithName:@"Arial-BoldItalicMT" size:12] andText:ms];
+    }
+    return bbsArray;
 }
 
 @end
