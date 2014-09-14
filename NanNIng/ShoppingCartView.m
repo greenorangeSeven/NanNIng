@@ -85,6 +85,7 @@
     [super viewWillAppear:animated];
     if ([UserModel Instance].isLogin == NO)
     {
+        self.totalLb.text = @"0.00";
         [goodData removeAllObjects];
         [self.goodTableView reloadData];
         noDataLabel.hidden = NO;

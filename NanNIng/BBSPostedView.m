@@ -1,35 +1,28 @@
 //
-//  CBusinessPublishView.m
+//  BBSPostedView.m
 //  NanNIng
 //
-//  Created by mac on 14-9-12.
+//  Created by Seven on 14-9-14.
 //  Copyright (c) 2014年 greenorange. All rights reserved.
 //
 
-#import "CBusinessPublishView.h"
-#import "VPImageCropperViewController.h"
-#import <AssetsLibrary/AssetsLibrary.h>
-#import <MobileCoreServices/MobileCoreServices.h>
-#import "EGOImageView.h"
+#import "BBSPostedView.h"
 
 #define ORIGINAL_MAX_WIDTH 640.0f
 
-@interface CBusinessPublishView ()<UIActionSheetDelegate, UIPickerViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, VPImageCropperDelegate>
-{
-    UIImage *picimage;
-}
+@interface BBSPostedView ()
 
 @end
 
-@implementation CBusinessPublishView
+@implementation BBSPostedView
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 150, 44)];
+        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 44)];
         titleLabel.font = [UIFont boldSystemFontOfSize:18];
-        titleLabel.text = @"小区商务";
+        titleLabel.text = @"论坛发帖";
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.textColor = [Tool getColorForGreen];
         titleLabel.textAlignment = UITextAlignmentCenter;
@@ -38,18 +31,17 @@
         UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
         [lBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
         [lBtn setImage:[UIImage imageNamed:@"head_back"] forState:UIControlStateNormal];
-        UIBarButtonItem *btnMy = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
-        self.navigationItem.leftBarButtonItem = btnMy;
+        UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
+        self.navigationItem.leftBarButtonItem = btnBack;
         
         UIButton *rBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 63, 22)];
         [rBtn addTarget:self action:@selector(publishAction) forControlEvents:UIControlEventTouchUpInside];
-        [rBtn setTitle:@"发送" forState:UIControlStateNormal];
+        [rBtn setTitle:@"发布" forState:UIControlStateNormal];
         [rBtn setTitleColor:[Tool getColorForGreen] forState:UIControlStateNormal];
         UIBarButtonItem *btnSearch = [[UIBarButtonItem alloc]initWithCustomView:rBtn];
         self.navigationItem.rightBarButtonItem = btnSearch;
     }
     return self;
-    
 }
 
 - (void)backAction
@@ -59,33 +51,23 @@
 
 - (void)publishAction
 {
-    NSString *descStr = self.describeField.text;
-    NSString *phoneStr = self.phoneField.text;
-    
-    if (descStr == nil || [descStr length] == 0)
-    {
-        [Tool showCustomHUD:@"请填写内容描述" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
-        return;
-    }
-    if (phoneStr == nil || [phoneStr length] == 0)
-    {
-        [Tool showCustomHUD:@"请填写联系电话" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+    NSString *contentStr = self.contentTv.text;
+    if (contentStr == nil || [contentStr length] == 0) {
+        [Tool showCustomHUD:@"请输入发帖内容" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
         return;
     }
     self.navigationItem.rightBarButtonItem.enabled = NO;
-    UserModel *usermodel = [UserModel Instance];
-    NSString *updateUrl = [NSString stringWithFormat:@"%@%@", api_base_url, api_add_business_info];
+    NSString *updateUrl = [NSString stringWithFormat:@"%@%@", api_base_url, api_addbbs];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:updateUrl]];
-    [request setUseCookiePersistence:NO];
+    [request setUseCookiePersistence:[[UserModel Instance] isLogin]];
     [request setPostValue:appkey forKey:@"APPKey"];
+    UserModel *usermodel = [UserModel Instance];
+    [request setPostValue:@"   " forKey:@"subject"];
     [request setPostValue:[usermodel getUserValueForKey:@"id"] forKey:@"userid"];
-    [request setPostValue:[usermodel getUserValueForKey:@"cid"] forKey:@"cid"];
-    
-    [request setPostValue:[NSString stringWithFormat:@"%i",self.typeSegment.selectedSegmentIndex+1] forKey:@"catid"];
-    [request setPostValue:descStr forKey:@"content"];
-    [request setPostValue:phoneStr forKey:@"tel"];
+    [request setPostValue:self.cid forKey:@"cid"];
+    [request setPostValue:contentStr forKey:@"content"];
     if (picimage != nil) {
-        [request addData:UIImageJPEGRepresentation(picimage, 0.75f) withFileName:@"img.jpg" andContentType:@"image/jpeg" forKey:@"thumb"];
+        [request addData:UIImageJPEGRepresentation(picimage, 0.75f) withFileName:@"img.jpg" andContentType:@"image/jpeg" forKey:@"pics"];
     }
     request.delegate = self;
     request.tag = 11;
@@ -93,21 +75,18 @@
     [request setDidFinishSelector:@selector(requestSubmit:)];
     [request startAsynchronous];
     request.hud = [[MBProgressHUD alloc] initWithView:self.view];
-    [Tool showHUD:@"正在提交..." andView:self.view andHUD:request.hud];
+    [Tool showHUD:@"提交发帖" andView:self.view andHUD:request.hud];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
-    if (request.hud)
-    {
+    if (request.hud) {
         [request.hud hide:NO];
     }
-    self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 - (void)requestSubmit:(ASIHTTPRequest *)request
 {
-    if (request.hud)
-    {
+    if (request.hud) {
         [request.hud hide:YES];
     }
     
@@ -122,7 +101,6 @@
                                            cancelButtonTitle:@"确定"
                                            otherButtonTitles:nil];
         [av show];
-        self.navigationItem.rightBarButtonItem.enabled = YES;
         return;
     }
     User *user = [Tool readJsonStrToUser:request.responseString];
@@ -131,10 +109,12 @@
     switch (errorCode) {
         case 1:
         {
-            [Tool showCustomHUD:@"提交成功" andView:self.view  andImage:@"37x-Checkmark.png" andAfterDelay:3];
-            self.describeField.text = @"";
-            self.phoneField.text = @"";
-            [self.selectPhoneBtn setImage:[UIImage imageNamed:@"repairspic.png"] forState:UIControlStateNormal];
+            [Tool showCustomHUD:@"发帖成功" andView:self.view  andImage:@"37x-Checkmark.png" andAfterDelay:3];
+            self.contentTv.text = @"";
+            picimage = nil;
+            [self.photoBtn setImage:[UIImage imageNamed:@"repairspic.png"] forState:UIControlStateNormal];
+            //通知刷新我的保修单
+            [[NSNotificationCenter defaultCenter] postNotificationName:Notification_ADDBBS object:nil];
         }
             break;
         case 0:
@@ -146,36 +126,25 @@
     self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UserModel *usermodel = [UserModel Instance];
-    //适配iOS7uinavigationbar遮挡tableView的问题
+    //适配iOS7uinavigationbar遮挡的问题
     if(IS_IOS7)
     {
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    //用户是否已认证，已认证后才能报修
-    if ([[usermodel getUserValueForKey:@"cid"] isEqualToString:@""]) {
-        self.navigationItem.rightBarButtonItem.enabled = NO;
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"温馨提醒"
-                                                     message:@"您的个人信息不完善，暂未能提交信息，请完善个人信息！"
-                                                    delegate:nil
-                                           cancelButtonTitle:@"确定"
-                                           otherButtonTitles:nil];
-        [av show];
-    }
-     [Tool roundTextView:self.describeField andBorderWidth:1 andCornerRadius:3.0];
+    [Tool roundTextView:self.contentTv andBorderWidth:1 andCornerRadius:3.0];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)selectPhoneAction:(id)sender {
+- (IBAction)photoAction:(id)sender {
     UIActionSheet *choiceSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                              delegate:self
                                                     cancelButtonTitle:@"取消"
@@ -183,19 +152,6 @@
                                                     otherButtonTitles:@"拍照", @"从相册中选取", nil];
     choiceSheet.tag = 0;
     [choiceSheet showInView:self.view];
-}
-
-#pragma mark VPImageCropperDelegate
-- (void)imageCropper:(VPImageCropperViewController *)cropperViewController didFinished:(UIImage *)editedImage {
-    [cropperViewController dismissViewControllerAnimated:YES completion:^{
-        [self.selectPhoneBtn setImage:editedImage forState:UIControlStateNormal];
-        picimage = editedImage;
-    }];
-}
-
-- (void)imageCropperDidCancel:(VPImageCropperViewController *)cropperViewController {
-    [cropperViewController dismissViewControllerAnimated:YES completion:^{
-    }];
 }
 
 #pragma mark UIActionSheetDelegate
@@ -240,13 +196,8 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [picker dismissViewControllerAnimated:YES completion:^() {
         UIImage *portraitImg = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        portraitImg = [self imageByScalingToMaxSize:portraitImg];
-        // 裁剪
-        VPImageCropperViewController *imgEditorVC = [[VPImageCropperViewController alloc] initWithImage:portraitImg cropFrame:CGRectMake(0, 100.0f, self.view.frame.size.width, self.view.frame.size.width) limitScaleRatio:3.0];
-        imgEditorVC.delegate = self;
-        [self presentViewController:imgEditorVC animated:YES completion:^{
-            // TO DO
-        }];
+        picimage = [self imageByScalingToMaxSize:portraitImg];
+        [self.photoBtn setImage:picimage forState:UIControlStateNormal];
     }];
 }
 
@@ -374,6 +325,4 @@
     UIGraphicsEndImageContext();
     return newImage;
 }
-
-
 @end

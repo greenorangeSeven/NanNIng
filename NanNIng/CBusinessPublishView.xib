@@ -83,6 +83,7 @@
                         <segment title="二手交易"/>
                         <segment title="业主需求"/>
                     </segments>
+                    <color key="tintColor" red="0.070588235289999995" green="0.56470588239999997" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                 </segmentedControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

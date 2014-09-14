@@ -140,6 +140,8 @@
 		1433174419C14EB200635B99 /* BBSTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1433174219C14EB200635B99 /* BBSTableView.xib */; };
 		1433174819C1739200635B99 /* BBSTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1433174619C1739200635B99 /* BBSTableCell.m */; };
 		1433174919C1739200635B99 /* BBSTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1433174719C1739200635B99 /* BBSTableCell.xib */; };
+		1438271019C5D2720089CDCF /* BBSPostedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1438270E19C5D2720089CDCF /* BBSPostedView.m */; };
+		1438271119C5D2720089CDCF /* BBSPostedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1438270F19C5D2720089CDCF /* BBSPostedView.xib */; };
 		143B9A2019BE913A00BFD71D /* CommunityDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 143B9A1E19BE913A00BFD71D /* CommunityDetailView.m */; };
 		143B9A2119BE913A00BFD71D /* CommunityDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 143B9A1F19BE913A00BFD71D /* CommunityDetailView.xib */; };
 		14489DAF19B9624F0050CBED /* Commercial.m in Sources */ = {isa = PBXBuildFile; fileRef = 14489DAE19B9624F0050CBED /* Commercial.m */; };
@@ -731,6 +733,9 @@
 		1433174519C1739200635B99 /* BBSTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSTableCell.h; sourceTree = "<group>"; };
 		1433174619C1739200635B99 /* BBSTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSTableCell.m; sourceTree = "<group>"; };
 		1433174719C1739200635B99 /* BBSTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBSTableCell.xib; sourceTree = "<group>"; };
+		1438270D19C5D2720089CDCF /* BBSPostedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSPostedView.h; sourceTree = "<group>"; };
+		1438270E19C5D2720089CDCF /* BBSPostedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSPostedView.m; sourceTree = "<group>"; };
+		1438270F19C5D2720089CDCF /* BBSPostedView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBSPostedView.xib; sourceTree = "<group>"; };
 		143B9A1D19BE913A00BFD71D /* CommunityDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityDetailView.h; sourceTree = "<group>"; };
 		143B9A1E19BE913A00BFD71D /* CommunityDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityDetailView.m; sourceTree = "<group>"; };
 		143B9A1F19BE913A00BFD71D /* CommunityDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityDetailView.xib; sourceTree = "<group>"; };
@@ -2647,6 +2652,9 @@
 				14577D2419C2AA7A008655A0 /* BBSReplyView.h */,
 				14577D2519C2AA7A008655A0 /* BBSReplyView.m */,
 				14577D2619C2AA7A008655A0 /* BBSReplyView.xib */,
+				1438270D19C5D2720089CDCF /* BBSPostedView.h */,
+				1438270E19C5D2720089CDCF /* BBSPostedView.m */,
+				1438270F19C5D2720089CDCF /* BBSPostedView.xib */,
 			);
 			name = LifePage;
 			sourceTree = "<group>";
@@ -3075,6 +3083,7 @@
 				14B8F4951994732900537505 /* beautylifelogo@2x.png in Resources */,
 				14B8F48E1994732900537505 /* areaimage.png in Resources */,
 				04A142C91995FC4800E44FEE /* lm_dianqi@2x.png in Resources */,
+				1438271119C5D2720089CDCF /* BBSPostedView.xib in Resources */,
 				04A142CF1995FC4800E44FEE /* lm_xiyu@2x.png in Resources */,
 				042EBF6019BEAEE600561E71 /* fragment_help@2x.png in Resources */,
 				144ADE7719B43561006980B9 /* loadingpic3@2x.png in Resources */,
@@ -3230,6 +3239,7 @@
 				14B8F2D71994696000537505 /* GCDiscreetNotificationView.m in Sources */,
 				14B8F34419946C9D00537505 /* JSNotifier.m in Sources */,
 				14B8F2B21994696000537505 /* NSString+Base64.m in Sources */,
+				1438271019C5D2720089CDCF /* BBSPostedView.m in Sources */,
 				144B156819B3140D00494428 /* AlipayInfo.m in Sources */,
 				14B8F2BD1994696000537505 /* UIImageView+AFNetworking.m in Sources */,
 				144ADE6B19B41854006980B9 /* ConvCell.m in Sources */,
@@ -3612,6 +3622,16 @@
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NanNIng/NanNIng-Prefix.pch";
@@ -3657,6 +3677,16 @@
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/Extend/QQConnectSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/UI",
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",

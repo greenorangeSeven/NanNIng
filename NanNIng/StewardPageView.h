@@ -14,14 +14,20 @@
 #import "SGFocusImageFrame.h"
 #import "SGFocusImageItem.h"
 #import "ArticleView.h"
+#import "ADVDetailView.h"
 
 @interface StewardPageView : UIViewController<SGFocusImageFrameDelegate, UIActionSheetDelegate>
 {
     UIWebView *phoneCallWebView;
+    
+    NSMutableArray *advDatas;
+    SGFocusImageFrame *bannerView;
+    int advIndex;
 }
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UILabel *telBg;
+@property (weak, nonatomic) IBOutlet UIImageView *advIv;
 
 - (IBAction)stewardFeeAction:(id)sender;
 - (IBAction)repairsAction:(id)sender;

@@ -99,7 +99,7 @@
         if (!noRefresh) {
             allCount = 0;
         }
-        int pageIndex = allCount/20;
+        int pageIndex = allCount/20 + 1;
         NSMutableString *tempUrl;
         switch (self.catalog) {
             case 1:
@@ -218,12 +218,24 @@
 //表格行点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    News *n = [news objectAtIndex:[indexPath row]];
-    if (n) {
-        NewsDetailView *newsDetail = [[NewsDetailView alloc] init];
-        newsDetail.news = n;
-        newsDetail.catalog = catalog;
-        [self.navigationController pushViewController:newsDetail animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    int row = [indexPath row];
+    //点击“下面20条”
+    if (row >= [news count]) {
+        //启动刷新
+        if (!isLoading) {
+            [self performSelector:@selector(reload:)];
+        }
+    }
+    else
+    {
+        News *n = [news objectAtIndex:[indexPath row]];
+        if (n) {
+            NewsDetailView *newsDetail = [[NewsDetailView alloc] init];
+            newsDetail.news = n;
+            newsDetail.catalog = catalog;
+            [self.navigationController pushViewController:newsDetail animated:YES];
+        }
     }
 }
 

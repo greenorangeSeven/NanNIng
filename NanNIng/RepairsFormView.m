@@ -228,6 +228,7 @@
         {
             [Tool showCustomHUD:@"提交报修成功" andView:self.view  andImage:@"37x-Checkmark.png" andAfterDelay:3];
             self.descTv.text = @"";
+            picimage = nil;
             [self.selectPhoneBtn setImage:[UIImage imageNamed:@"repairspic.png"] forState:UIControlStateNormal];
             //通知刷新我的保修单
             [[NSNotificationCenter defaultCenter] postNotificationName:Notification_RefreshMyRepairs object:nil];

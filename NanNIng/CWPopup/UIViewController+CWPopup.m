@@ -306,7 +306,7 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
         [completion invoke];
     }
     // remove observer
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - handling screen orientation change
@@ -317,10 +317,10 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
     CGFloat y;
     if (UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
         x = ([UIScreen mainScreen].bounds.size.width - frame.size.width)/2;
-        y = ([UIScreen mainScreen].bounds.size.height - frame.size.height)/2;
+        y = ([UIScreen mainScreen].bounds.size.height - frame.size.height)/2 -70;
     } else {
         x = ([UIScreen mainScreen].bounds.size.height - frame.size.width)/2;
-        y = ([UIScreen mainScreen].bounds.size.width - frame.size.height)/2;
+        y = ([UIScreen mainScreen].bounds.size.width - frame.size.height)/2-70;
     }
     return CGRectMake(x, y, frame.size.width, frame.size.height);
 }

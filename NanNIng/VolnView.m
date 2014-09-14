@@ -147,7 +147,7 @@
         if (!noRefresh) {
             allCount = 0;
         }
-        int pageIndex = allCount / 20;
+        int pageIndex = allCount / 20 + 1;
         NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&p=%i", api_base_url, api_get_volnews_list, appkey,pageIndex];
         
          NSString *url = [NSString stringWithString:tempUrl];
@@ -362,12 +362,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Citys *art = [cityArray objectAtIndex:[indexPath row]];
-    if (art) {
-        VolnDetailView *volnDetailView = [[VolnDetailView alloc] init];
-        volnDetailView.art = art;
-        [self.navigationController pushViewController:volnDetailView animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    int row = [indexPath row];
+    //点击“下面20条”
+    if (row >= [cityArray count]) {
+        //启动刷新
+        if (!isLoading) {
+            [self performSelector:@selector(reload:)];
+        }
     }
+    else
+    {
+        Citys *art = [cityArray objectAtIndex:[indexPath row]];
+        if (art) {
+            VolnDetailView *volnDetailView = [[VolnDetailView alloc] init];
+            volnDetailView.art = art;
+            [self.navigationController pushViewController:volnDetailView animated:YES];
+        }
+    }
+    
 }
 
 - (IBAction)joinAction:(UIButton *)sender

@@ -56,6 +56,12 @@
 {
     [super viewDidLoad];
     UserModel *user = [UserModel Instance];
+    //适配iOS7uinavigationbar遮挡问题
+    if(IS_IOS7)
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     
     self.nameField.text = [user getUserValueForKey:@"name"];
     self.addressField.text = [user getUserValueForKey:@"address"];

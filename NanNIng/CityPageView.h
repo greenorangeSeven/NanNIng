@@ -7,14 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SGFocusImageFrame.h"
+#import "SGFocusImageItem.h"
+#import "ArticleView.h"
+#import "ADVDetailView.h"
 
 @interface CityPageView : UIViewController
 {
     UIWebView *phoneCallWebView;
+    NSMutableArray *advDatas;
+    SGFocusImageFrame *bannerView;
+    int advIndex;
 }
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UILabel *telBg;
+@property (weak, nonatomic) IBOutlet UIImageView *advIv;
 
 - (IBAction)clickCity:(UIButton *)sender;
 
