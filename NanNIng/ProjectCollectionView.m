@@ -177,6 +177,7 @@
         BBSTableView *bbsView = [[BBSTableView alloc] init];
         bbsView.cid = project.id;
         bbsView.cname = project.title;
+        bbsView.project = project;
         [self.navigationController pushViewController:bbsView animated:YES];
     }
 }

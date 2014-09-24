@@ -16,7 +16,7 @@
 #import "UITap.h"
 #import "MWPhotoBrowser.h"
 
-@interface BBSTableView : UIViewController<UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate,MBProgressHUDDelegate,IconDownloaderDelegate,MWPhotoBrowserDelegate>
+@interface BBSTableView : UIViewController<UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate,MBProgressHUDDelegate,IconDownloaderDelegate,MWPhotoBrowserDelegate, UIAlertViewDelegate>
 {
     NSMutableArray *bbsArray;
     BOOL isLoading;
@@ -36,6 +36,8 @@
     int tableIndex;
     BBSReplyView *samplePopupViewController;
     NSArray *_photos;
+    
+    NSString *userId;
 }
 
 @property (nonatomic, retain) NSArray *photos;
@@ -45,8 +47,12 @@
 @property (weak, nonatomic) NSString *cid;
 @property (weak, nonatomic) NSString *cname;
 
+@property (weak, nonatomic) CommunityModel *project;
+
 //异步加载图片专用
 @property (nonatomic, retain) NSMutableDictionary *imageDownloadsInProgress;
+
+@property (weak, nonatomic) IBOutlet UIImageView *logoIV;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *replyTF;

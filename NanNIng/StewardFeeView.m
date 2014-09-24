@@ -54,7 +54,7 @@
     }
     [Tool roundView:self.bgView andCornerRadius:3.0];
     if (!IS_IPHONE_5) {
-        self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width, 443);
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width, 473);
     }
     
     
