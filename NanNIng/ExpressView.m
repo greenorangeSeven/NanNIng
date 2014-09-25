@@ -54,6 +54,16 @@
         self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width, self.view.frame.size.height - 40);
     }
     
+    if ([[[UserModel Instance] getUserValueForKey:@"house_number"] isEqualToString:@""]) {
+        self.sendBtn.enabled = NO;
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"温馨提醒"
+                                                     message:@"您的个人信息不完善，请完善个人信息！"
+                                                    delegate:self
+                                           cancelButtonTitle:nil
+                                           otherButtonTitles:@"确定", nil];
+        [av show];
+    }
+    
     UserModel *usermodel = [UserModel Instance];
     self.nameLb.text = [usermodel getUserValueForKey:@"name"];
     EGOImageView *faceEGOImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"userface.png"]];
@@ -71,6 +81,26 @@
 	[self.inboxBtnLb addGestureRecognizer:inboxTap];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+    
+    if ([[[UserModel Instance] getUserValueForKey:@"house_number"] isEqualToString:@""] == NO)
+    {
+        self.sendBtn.enabled = YES;
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        UserInfoView *userinfoView = [[UserInfoView alloc] init];
+        userinfoView.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:userinfoView animated:YES];
+    }
+}
+
 - (void)inboxClick
 {
     MyInBoxView *inboxView = [[MyInBoxView alloc] init];
@@ -82,12 +112,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = NO;
 }
 
 - (IBAction)mySendExpressAction:(id)sender {

@@ -68,7 +68,7 @@
     //如果有网络连接
     if ([UserModel Instance].isNetworkRunning) {
         //        [Tool showHUD:@"数据加载" andView:self.view andHUD:hud];
-        NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&spaceid=3", api_base_url, api_getadv, appkey];
+        NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&spaceid=4", api_base_url, api_getadv, appkey];
         NSString *cid = [[UserModel Instance] getUserValueForKey:@"cid"];
         if (cid != nil && [cid length] > 0) {
             [tempUrl appendString:[NSString stringWithFormat:@"&cid=%@", cid]];
@@ -80,8 +80,8 @@
                                            advDatas = [Tool readJsonStrToADV:operation.responseString];
                                            
                                            int length = [advDatas count];
-                                           //点赞按钮初始化
-                                           Advertisement *adv = (Advertisement *)[advDatas objectAtIndex:advIndex];
+//                                           //点赞按钮初始化
+//                                           Advertisement *adv = (Advertisement *)[advDatas objectAtIndex:advIndex];
                                            
                                            NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:length+2];
                                            if (length > 1)
@@ -163,6 +163,7 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
+    bannerView.delegate = self;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
@@ -203,6 +204,10 @@
 }
 
 - (IBAction)arttileAction:(id)sender {
+    if ([UserModel Instance].isLogin == NO) {
+        [Tool noticeLogin:self.view andDelegate:self andTitle:@""];
+        return;
+    }
     ArticleView *artView = [[ArticleView alloc] init];
     artView.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:artView animated:YES];

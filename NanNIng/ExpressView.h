@@ -11,7 +11,7 @@
 #import "EGOImageView.h"
 #import "MyInBoxView.h"
 
-@interface ExpressView : UIViewController<UIActionSheetDelegate, UIPickerViewDelegate>
+@interface ExpressView : UIViewController<UIActionSheetDelegate, UIPickerViewDelegate,UIAlertViewDelegate>
 {
     NSArray *typeData;
     NSString *typeStr;

@@ -203,6 +203,13 @@
     bannerView.delegate = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    bannerView.delegate = self;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -222,12 +229,6 @@
             self.view = nil;// 目的是再次进入时能够重新加载调用viewDidLoad函数。
         }
     }
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 - (IBAction)clickService:(UIButton *)sender

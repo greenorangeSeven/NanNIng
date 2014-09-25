@@ -146,7 +146,7 @@
                                                        SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:coupon.thumb tag:-1];
                                                        [itemArray addObject:item];
                                                    }
-                                                   bannerView = [[SGFocusImageFrame alloc] initWithFrame:CGRectMake(0, 0, 320, 135) delegate:self imageItems:itemArray isAuto:YES];
+                                                   bannerView = [[SGFocusImageFrame alloc] initWithFrame:CGRectMake(0, 0, 320, 135) delegate:self imageItems:itemArray isAuto:NO];
                                                    [bannerView scrollToIndex:0];
                                                    [self.couponIv addSubview:bannerView];
                                                }
@@ -186,6 +186,18 @@
 {
     //    NSLog(@"%s \n scrollToIndex===>%d",__FUNCTION__,index);
     couponIndex = index;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    bannerView.delegate = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    bannerView.delegate = self;
 }
 
 //定义展示的UICollectionViewCell的个数

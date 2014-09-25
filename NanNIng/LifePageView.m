@@ -74,7 +74,7 @@
     //如果有网络连接
     if ([UserModel Instance].isNetworkRunning) {
         //        [Tool showHUD:@"数据加载" andView:self.view andHUD:hud];
-        NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&spaceid=4", api_base_url, api_getadv, appkey];
+        NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&spaceid=5", api_base_url, api_getadv, appkey];
         NSString *cid = [[UserModel Instance] getUserValueForKey:@"cid"];
         if (cid != nil && [cid length] > 0) {
             [tempUrl appendString:[NSString stringWithFormat:@"&cid=%@", cid]];
@@ -169,6 +169,7 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
+    bannerView.delegate = self;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 

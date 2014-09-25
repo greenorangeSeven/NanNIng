@@ -13,7 +13,7 @@
 #import "ArticleCell.h"
 #import "ArticleDetailView.h"
 
-@interface ArticleView : UIViewController<SGFocusImageFrameDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface ArticleView : UIViewController<SGFocusImageFrameDelegate, UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate>
 {
     NSMutableArray *advs;
     

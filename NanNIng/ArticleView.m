@@ -43,6 +43,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([[[UserModel Instance] getUserValueForKey:@"house_number"] isEqualToString:@""]) {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"温馨提醒"
+                                                     message:@"您的个人信息不完善，请完善个人信息！"
+                                                    delegate:self
+                                           cancelButtonTitle:nil
+                                           otherButtonTitles:@"确定", nil];
+        [av show];
+    }
+    
     //适配iOS7uinavigationbar遮挡问题
     if(IS_IOS7)
     {
@@ -54,8 +64,29 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    [self initMainADV];
-    [self reload];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+    bannerView.delegate = self;
+    if ([[[UserModel Instance] getUserValueForKey:@"house_number"] isEqualToString:@""] == NO)
+    {
+        if (advs ==nil || [advs count] == 0) {
+            [self initMainADV];
+            [self reload];
+        }
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        UserInfoView *userinfoView = [[UserInfoView alloc] init];
+        userinfoView.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:userinfoView animated:YES];
+    }
 }
 
 - (void)initMainADV
@@ -97,7 +128,7 @@
                                                SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:adv.thumb tag:-1];
                                                [itemArray addObject:item];
                                            }
-                                           bannerView = [[SGFocusImageFrame alloc] initWithFrame:CGRectMake(0, 0, 320, 200) delegate:self imageItems:itemArray isAuto:YES];
+                                           bannerView = [[SGFocusImageFrame alloc] initWithFrame:CGRectMake(0, 0, 320, 200) delegate:self imageItems:itemArray isAuto:NO];
                                            [bannerView scrollToIndex:0];
                                            [self.topIV addSubview:bannerView];
                                        }
@@ -174,7 +205,12 @@
 {
     //    NSLog(@"%s \n scrollToIndex===>%d",__FUNCTION__,index);
     advIndex = index;
+}
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    bannerView.delegate = nil;
 }
 
 - (void)didReceiveMemoryWarning

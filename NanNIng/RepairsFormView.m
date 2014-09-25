@@ -48,9 +48,29 @@
     }
     
     self.nameLb.text = [NSString stringWithFormat:@"%@（%@）", [usermodel getUserValueForKey:@"name"], [usermodel getUserValueForKey:@"tel"]];
-    self.addressLb.text = [usermodel getUserValueForKey:@"address"];
+    
     _timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timerFunc) userInfo:nil repeats:YES];
     [self initCateData];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if ([[usermodel getUserValueForKey:@"house_number"] isEqualToString:@""] == NO)
+    {
+        self.submitBtn.enabled = YES;
+        self.addressLb.text = [usermodel getUserValueForKey:@"address"];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        UserInfoView *userinfoView = [[UserInfoView alloc] init];
+        userinfoView.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:userinfoView animated:YES];
+    }
 }
 
 - (void)timerFunc

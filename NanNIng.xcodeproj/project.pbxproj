@@ -144,6 +144,8 @@
 		1438271119C5D2720089CDCF /* BBSPostedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1438270F19C5D2720089CDCF /* BBSPostedView.xib */; };
 		143B9A2019BE913A00BFD71D /* CommunityDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 143B9A1E19BE913A00BFD71D /* CommunityDetailView.m */; };
 		143B9A2119BE913A00BFD71D /* CommunityDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 143B9A1F19BE913A00BFD71D /* CommunityDetailView.xib */; };
+		1447B15319D2C06200492D55 /* alipayBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1447B15119D2C06200492D55 /* alipayBtn@2x.png */; };
+		1447B15419D2C06200492D55 /* alipayFeeBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1447B15219D2C06200492D55 /* alipayFeeBtn@2x.png */; };
 		14489DAF19B9624F0050CBED /* Commercial.m in Sources */ = {isa = PBXBuildFile; fileRef = 14489DAE19B9624F0050CBED /* Commercial.m */; };
 		144ADDA419B3FEF4006980B9 /* ADVDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 144ADDA219B3FEF4006980B9 /* ADVDetailView.m */; };
 		144ADDA519B3FEF4006980B9 /* ADVDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144ADDA319B3FEF4006980B9 /* ADVDetailView.xib */; };
@@ -305,6 +307,7 @@
 		14577D2719C2AA7A008655A0 /* BBSReplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14577D2519C2AA7A008655A0 /* BBSReplyView.m */; };
 		14577D2819C2AA7A008655A0 /* BBSReplyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14577D2619C2AA7A008655A0 /* BBSReplyView.xib */; };
 		14A7BFF819C92B5C009039DF /* ExpressCompany.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14A7BFF719C92B5C009039DF /* ExpressCompany.plist */; };
+		14B4C04519D3043800B4F661 /* head_shopcar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B4C04419D3043700B4F661 /* head_shopcar@2x.png */; };
 		14B6D84819BF3B6000D309C0 /* ProjectCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D84319BF3B6000D309C0 /* ProjectCollectionView.m */; };
 		14B6D84919BF3B6000D309C0 /* ProjectCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14B6D84419BF3B6000D309C0 /* ProjectCollectionView.xib */; };
 		14B6D84A19BF3B6000D309C0 /* ProjectCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D84619BF3B6000D309C0 /* ProjectCollectionCell.m */; };
@@ -740,6 +743,8 @@
 		143B9A1D19BE913A00BFD71D /* CommunityDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityDetailView.h; sourceTree = "<group>"; };
 		143B9A1E19BE913A00BFD71D /* CommunityDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityDetailView.m; sourceTree = "<group>"; };
 		143B9A1F19BE913A00BFD71D /* CommunityDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityDetailView.xib; sourceTree = "<group>"; };
+		1447B15119D2C06200492D55 /* alipayBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alipayBtn@2x.png"; sourceTree = "<group>"; };
+		1447B15219D2C06200492D55 /* alipayFeeBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alipayFeeBtn@2x.png"; sourceTree = "<group>"; };
 		14489DAD19B9624F0050CBED /* Commercial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commercial.h; sourceTree = "<group>"; };
 		14489DAE19B9624F0050CBED /* Commercial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commercial.m; sourceTree = "<group>"; };
 		144ADDA119B3FEF4006980B9 /* ADVDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADVDetailView.h; sourceTree = "<group>"; };
@@ -1052,6 +1057,7 @@
 		14577D2519C2AA7A008655A0 /* BBSReplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSReplyView.m; sourceTree = "<group>"; };
 		14577D2619C2AA7A008655A0 /* BBSReplyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBSReplyView.xib; sourceTree = "<group>"; };
 		14A7BFF719C92B5C009039DF /* ExpressCompany.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ExpressCompany.plist; sourceTree = "<group>"; };
+		14B4C04419D3043700B4F661 /* head_shopcar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head_shopcar@2x.png"; sourceTree = "<group>"; };
 		14B6D84219BF3B6000D309C0 /* ProjectCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectCollectionView.h; sourceTree = "<group>"; };
 		14B6D84319BF3B6000D309C0 /* ProjectCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectCollectionView.m; sourceTree = "<group>"; };
 		14B6D84419BF3B6000D309C0 /* ProjectCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectCollectionView.xib; sourceTree = "<group>"; };
@@ -2699,6 +2705,9 @@
 		14B8F355199471E000537505 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				14B4C04419D3043700B4F661 /* head_shopcar@2x.png */,
+				1447B15119D2C06200492D55 /* alipayBtn@2x.png */,
+				1447B15219D2C06200492D55 /* alipayFeeBtn@2x.png */,
 				14577D1E19C29CEF008655A0 /* reply@2x.png */,
 				04646DFE19BFE75300F71AE4 /* voln_join@2x.png */,
 				04646DFA19BFE64900F71AE4 /* voln_join_ti@2x.png */,
@@ -2964,7 +2973,10 @@
 				0446CE371995180A00D6C015 /* publicservice@2x.png in Resources */,
 				040CDF5B1995B37600E02EE4 /* subtle_temp.png in Resources */,
 				042EBF6C19BEDCD300561E71 /* CityCell.xib in Resources */,
+				1447B15419D2C06200492D55 /* alipayFeeBtn@2x.png in Resources */,
 				14B8F0FF1994636F00537505 /* InfoPlist.strings in Resources */,
+				14B4C04519D3043800B4F661 /* head_shopcar@2x.png in Resources */,
+				1447B15319D2C06200492D55 /* alipayBtn@2x.png in Resources */,
 				143B9A2119BE913A00BFD71D /* CommunityDetailView.xib in Resources */,
 				144ADE6C19B41854006980B9 /* ConvCell.xib in Resources */,
 				14B8F4981994732900537505 /* setting_info@2x.png in Resources */,
@@ -3640,6 +3652,10 @@
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NanNIng/NanNIng-Prefix.pch";
@@ -3685,6 +3701,10 @@
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/Extend/QQConnectSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/UI",
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",

@@ -11,7 +11,7 @@
 #import "VolnView.h"
 #import "HelperView.h"
 
-@interface CityPageView ()
+@interface CityPageView ()<SGFocusImageFrameDelegate>
 
 @end
 
@@ -67,7 +67,7 @@
     //如果有网络连接
     if ([UserModel Instance].isNetworkRunning) {
         //        [Tool showHUD:@"数据加载" andView:self.view andHUD:hud];
-        NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&spaceid=5", api_base_url, api_getadv, appkey];
+        NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&spaceid=6", api_base_url, api_getadv, appkey];
         NSString *cid = [[UserModel Instance] getUserValueForKey:@"cid"];
         if (cid != nil && [cid length] > 0) {
             [tempUrl appendString:[NSString stringWithFormat:@"&cid=%@", cid]];
@@ -150,6 +150,12 @@
 {
     [super viewWillDisappear:animated];
     bannerView.delegate = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    bannerView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
