@@ -50,6 +50,7 @@
 #import "CityInfo.h"
 #import "BBSModel.h"
 #import "BBSReplyModel.h"
+#import "Voln.h"
 
 @interface Tool : NSObject
 
@@ -151,6 +152,7 @@
 + (NSMutableArray *)readJsonStrToShopArray:(NSString *)str;
 + (NSMutableArray *)readJsonStrToShopsCate:(NSString *)str;
 + (BusinessGoods *)readJsonStrBusinessGoods:(NSString *)str;
++ (NSMutableArray *)readJsonStrToVolnArray:(NSString *)str;
 + (OrdersNum *)readJsonStrToOrdersNum:(NSString *)str;
 + (Goods *)readJsonStrToGoodsInfo:(NSString *)str;
 + (Coupons *)readJsonStrToCouponDetail:(NSString *)str;

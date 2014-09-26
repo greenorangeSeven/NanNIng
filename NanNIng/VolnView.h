@@ -38,5 +38,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)joinAction:(UIButton *)sender;
+- (IBAction)volnInfoAction:(UIButton *)sender;
 
 @end

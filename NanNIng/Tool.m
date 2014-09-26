@@ -958,6 +958,18 @@
     return cityArray;
 }
 
++ (NSMutableArray *)readJsonStrToVolnArray:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *volnJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( volnJsonArray == nil || [volnJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *volnArray = [RMMapper mutableArrayOfClass:[Voln class] fromArrayOfDictionary:volnJsonArray];
+    return volnArray;
+}
+
 + (NSMutableArray *)readJsonStrToBBSArray:(NSString *)str
 {
     NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
