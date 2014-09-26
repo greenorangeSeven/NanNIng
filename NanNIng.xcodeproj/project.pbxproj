@@ -113,6 +113,7 @@
 		140D56FF19D14B7100C8C067 /* BBSTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 140D56FA19D14B7100C8C067 /* BBSTableView.xib */; };
 		140D570019D14B7100C8C067 /* BBSTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 140D56FC19D14B7100C8C067 /* BBSTableCell.m */; };
 		140D570119D14B7100C8C067 /* BBSTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 140D56FD19D14B7100C8C067 /* BBSTableCell.xib */; };
+		141749E919D4FEAE00A5BB1E /* cm_guanzhu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 141749E819D4FEAE00A5BB1E /* cm_guanzhu@2x.png */; };
 		141BDCFD19B76050002C6295 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 141BDCFC19B76050002C6295 /* Article.m */; };
 		141BDD0119B7622E002C6295 /* ArticleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 141BDCFF19B7622E002C6295 /* ArticleView.m */; };
 		141BDD0219B7622E002C6295 /* ArticleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 141BDD0019B7622E002C6295 /* ArticleView.xib */; };
@@ -698,6 +699,7 @@
 		140D56FB19D14B7100C8C067 /* BBSTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSTableCell.h; sourceTree = "<group>"; };
 		140D56FC19D14B7100C8C067 /* BBSTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSTableCell.m; sourceTree = "<group>"; };
 		140D56FD19D14B7100C8C067 /* BBSTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBSTableCell.xib; sourceTree = "<group>"; };
+		141749E819D4FEAE00A5BB1E /* cm_guanzhu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cm_guanzhu@2x.png"; sourceTree = "<group>"; };
 		141BDCFB19B76050002C6295 /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Article.h; sourceTree = "<group>"; };
 		141BDCFC19B76050002C6295 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
 		141BDCFE19B7622E002C6295 /* ArticleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleView.h; sourceTree = "<group>"; };
@@ -1495,8 +1497,8 @@
 				14B8F30E1994696000537505 /* TencentWeiboConnection.framework in Frameworks */,
 				14B8F30D1994696000537505 /* SinaWeiboConnection.framework in Frameworks */,
 				14B8F3181994696000537505 /* libTCWeiboSDK.a in Frameworks */,
-				14B8F3161994696000537505 /* libSinaWeiboSDK.a in Frameworks */,
 				14577D1D19C28B55008655A0 /* KeyboardManager.framework in Frameworks */,
+				14B8F3161994696000537505 /* libSinaWeiboSDK.a in Frameworks */,
 				14B8F0F51994636F00537505 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2718,6 +2720,7 @@
 		14B8F355199471E000537505 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				141749E819D4FEAE00A5BB1E /* cm_guanzhu@2x.png */,
 				14B4C04419D3043700B4F661 /* head_shopcar@2x.png */,
 				1447B15119D2C06200492D55 /* alipayBtn@2x.png */,
 				1447B15219D2C06200492D55 /* alipayFeeBtn@2x.png */,
@@ -3114,6 +3117,7 @@
 				04A142C91995FC4800E44FEE /* lm_dianqi@2x.png in Resources */,
 				1438271119C5D2720089CDCF /* BBSPostedView.xib in Resources */,
 				04A142CF1995FC4800E44FEE /* lm_xiyu@2x.png in Resources */,
+				141749E919D4FEAE00A5BB1E /* cm_guanzhu@2x.png in Resources */,
 				042EBF6019BEAEE600561E71 /* fragment_help@2x.png in Resources */,
 				144ADE7719B43561006980B9 /* loadingpic3@2x.png in Resources */,
 				14B8F4A01994732900537505 /* setting_logout@2x.png in Resources */,
@@ -3674,6 +3678,8 @@
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NanNIng/NanNIng-Prefix.pch";
@@ -3719,6 +3725,8 @@
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/Extend/QQConnectSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/UI",
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",

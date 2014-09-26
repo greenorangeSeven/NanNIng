@@ -940,6 +940,9 @@
         return nil;
     }
     NSMutableArray *commercialArray = [RMMapper mutableArrayOfClass:[Commercial class] fromArrayOfDictionary:commercialJsonArray];
+    for (Commercial *com in commercialArray) {
+        com.contentHeight = [self getTextHeight:300 andUIFont:[UIFont fontWithName:@"Arial-BoldItalicMT" size:12] andText:com.content];
+    }
     return commercialArray;
 }
 

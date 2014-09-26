@@ -80,7 +80,7 @@
 #define api_articlelist @"/get_article_list"
 #define api_commerciallist @"/get_business_info_list"
 #define api_commercialinfo @"/get_bussiness_info"
-#define api_delcommercial @"/del_bussiness_info"
+#define api_delcommercial @"/del_business_info"
 #define api_replycommercial @"/reply_business_info"
 #define api_bbslist @"/bbs"
 #define api_replybbs @"/reply_subject"

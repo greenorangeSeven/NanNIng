@@ -81,7 +81,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
-    catalog = @"2";
+    catalog = @"1";
     allCount = 0;
     self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
     commercials = [[NSMutableArray alloc] initWithCapacity:20];
@@ -102,6 +102,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
     self.tableView.backgroundColor = [Tool getBackgroundColor];
+    userId = [[UserModel Instance] getUserValueForKey:@"id"];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -262,6 +263,18 @@
             [cell.telBtn addTarget:self action:@selector(telAction:) forControlEvents:UIControlEventTouchUpInside];
             cell.telBtn.tag = [indexPath row];
             
+            cell.guanzhuLb.text = [NSString stringWithFormat:@"%@人关注", commer.hits];
+            //删除按钮
+            if ([userId isEqualToString:commer.customer_id]) {
+                cell.delBtn.hidden = NO;
+            }
+            else
+            {
+                cell.delBtn.hidden = YES;
+            }
+            [cell.delBtn addTarget:self action:@selector(delAction:) forControlEvents:UIControlEventTouchUpInside];
+            cell.delBtn.tag = [indexPath row];
+            
             if (commer.imgData) {
                 cell.picIv.image = commer.imgData;
             }
@@ -289,6 +302,8 @@
                 }
             }
             
+            
+            
             return cell;
         }
         else
@@ -312,6 +327,56 @@
             phoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
         }
         [phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneUrl]];
+    }
+}
+
+- (void)delAction:(id)sender
+{
+    UIButton *tap = (UIButton *)sender;
+    if (tap) {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"删除提醒"
+                                                     message:@"您确定要删除这条信息？"
+                                                    delegate:self
+                                           cancelButtonTitle:@"取消"
+                                           otherButtonTitles:@"确定", nil];
+        av.tag =tap.tag;
+        [av show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        int tag = alertView.tag;
+        Commercial *commer = [commercials objectAtIndex:tag];
+        if (commer) {
+            NSString *delUrl = [NSString stringWithFormat:@"%@%@?APPKey=%@&userid=%@&id=%@", api_base_url, api_delcommercial, appkey, userId, commer.id];
+            NSURL *url = [ NSURL URLWithString : delUrl];
+            // 构造 ASIHTTPRequest 对象
+            ASIHTTPRequest *request = [ ASIHTTPRequest requestWithURL :url];
+            // 开始同步请求
+            [request startSynchronous ];
+            NSError *error = [request error ];
+            assert (!error);
+            // 如果请求成功，返回 Response
+            NSString *response = [request responseString ];
+            NSData *data = [response dataUsingEncoding:NSUTF8StringEncoding];
+            NSError *err;
+            int status = 0;
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&err];
+            if (json) {
+                status = [[json objectForKey:@"status"] intValue];
+                if (status == 1) {
+                    [Tool showCustomHUD:@"删除成功" andView:self.view  andImage:@"37x-Checkmark.png" andAfterDelay:1];
+                    [commercials removeObjectAtIndex:tag];
+                    [self.tableView reloadData];
+                }
+                else
+                {
+                    [Tool showCustomHUD:@"删除失败" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+                }
+            }
+        }
     }
 }
 
