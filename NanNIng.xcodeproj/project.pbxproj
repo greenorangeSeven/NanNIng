@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040726E119D402B2000D5F66 /* VolnInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040726DF19D402B2000D5F66 /* VolnInfoView.m */; };
+		040726E219D402B2000D5F66 /* VolnInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040726E019D402B2000D5F66 /* VolnInfoView.xib */; };
 		040CDF591995B37600E02EE4 /* subtle_new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 040CDF521995B37600E02EE4 /* subtle_new@2x.png */; };
 		040CDF5A1995B37600E02EE4 /* head_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 040CDF531995B37600E02EE4 /* head_back.png */; };
 		040CDF5B1995B37600E02EE4 /* subtle_temp.png in Resources */ = {isa = PBXBuildFile; fileRef = 040CDF541995B37600E02EE4 /* subtle_temp.png */; };
@@ -78,6 +80,11 @@
 		0476061919984C50007BED4C /* cm_community_temp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476061819984C50007BED4C /* cm_community_temp@2x.png */; };
 		0476062019986423007BED4C /* city_temp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0476061F19986423007BED4C /* city_temp@2x.png */; };
 		047606271998664F007BED4C /* city_cell_temp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 047606261998664F007BED4C /* city_cell_temp@2x.png */; };
+		048BC10119D4F3F9004C082E /* Voln.m in Sources */ = {isa = PBXBuildFile; fileRef = 048BC10019D4F3F9004C082E /* Voln.m */; };
+		048BC10519D4F7D4004C082E /* VolnInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048BC10319D4F7D4004C082E /* VolnInfoCell.m */; };
+		048BC10619D4F7D4004C082E /* VolnInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048BC10419D4F7D4004C082E /* VolnInfoCell.xib */; };
+		048BC10F19D50CA4004C082E /* VolnInfoDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048BC10C19D50CA4004C082E /* VolnInfoDetailView.xib */; };
+		048BC11019D50CA4004C082E /* VolnInfoDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 048BC10E19D50CA4004C082E /* VolnInfoDetailView.m */; };
 		04A142B41995EF8C00E44FEE /* business_detail_temp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A142B31995EF8C00E44FEE /* business_detail_temp@2x.png */; };
 		04A142B61995F09400E44FEE /* business_buy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A142B51995F09400E44FEE /* business_buy@2x.png */; };
 		04A142BA1995F0E100E44FEE /* head_sort@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A142B91995F0E000E44FEE /* head_sort@2x.png */; };
@@ -571,6 +578,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040726DE19D402B2000D5F66 /* VolnInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolnInfoView.h; sourceTree = "<group>"; };
+		040726DF19D402B2000D5F66 /* VolnInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolnInfoView.m; sourceTree = "<group>"; };
+		040726E019D402B2000D5F66 /* VolnInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VolnInfoView.xib; sourceTree = "<group>"; };
 		040CDF521995B37600E02EE4 /* subtle_new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "subtle_new@2x.png"; sourceTree = "<group>"; };
 		040CDF531995B37600E02EE4 /* head_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head_back.png; sourceTree = "<group>"; };
 		040CDF541995B37600E02EE4 /* subtle_temp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subtle_temp.png; sourceTree = "<group>"; };
@@ -658,6 +668,14 @@
 		0476061819984C50007BED4C /* cm_community_temp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cm_community_temp@2x.png"; sourceTree = "<group>"; };
 		0476061F19986423007BED4C /* city_temp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "city_temp@2x.png"; sourceTree = "<group>"; };
 		047606261998664F007BED4C /* city_cell_temp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "city_cell_temp@2x.png"; sourceTree = "<group>"; };
+		048BC0FF19D4F3F9004C082E /* Voln.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Voln.h; sourceTree = "<group>"; };
+		048BC10019D4F3F9004C082E /* Voln.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Voln.m; sourceTree = "<group>"; };
+		048BC10219D4F7D4004C082E /* VolnInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolnInfoCell.h; sourceTree = "<group>"; };
+		048BC10319D4F7D4004C082E /* VolnInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolnInfoCell.m; sourceTree = "<group>"; };
+		048BC10419D4F7D4004C082E /* VolnInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VolnInfoCell.xib; sourceTree = "<group>"; };
+		048BC10C19D50CA4004C082E /* VolnInfoDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VolnInfoDetailView.xib; sourceTree = "<group>"; };
+		048BC10D19D50CA4004C082E /* VolnInfoDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolnInfoDetailView.h; sourceTree = "<group>"; };
+		048BC10E19D50CA4004C082E /* VolnInfoDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolnInfoDetailView.m; sourceTree = "<group>"; };
 		04A142B31995EF8C00E44FEE /* business_detail_temp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business_detail_temp@2x.png"; sourceTree = "<group>"; };
 		04A142B51995F09400E44FEE /* business_buy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business_buy@2x.png"; sourceTree = "<group>"; };
 		04A142B91995F0E000E44FEE /* head_sort@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head_sort@2x.png"; sourceTree = "<group>"; };
@@ -1487,9 +1505,9 @@
 				14B8F30E1994696000537505 /* TencentWeiboConnection.framework in Frameworks */,
 				14B8F30D1994696000537505 /* SinaWeiboConnection.framework in Frameworks */,
 				14B8F3181994696000537505 /* libTCWeiboSDK.a in Frameworks */,
-				14577D1D19C28B55008655A0 /* KeyboardManager.framework in Frameworks */,
 				14B8F3161994696000537505 /* libSinaWeiboSDK.a in Frameworks */,
 				14B8F0F51994636F00537505 /* Foundation.framework in Frameworks */,
+				14577D1D19C28B55008655A0 /* KeyboardManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1533,6 +1551,15 @@
 				04646DF519BFE56E00F71AE4 /* VolnJoinView.h */,
 				04646DF619BFE56E00F71AE4 /* VolnJoinView.m */,
 				04646DF719BFE56E00F71AE4 /* VolnJoinView.xib */,
+				040726DE19D402B2000D5F66 /* VolnInfoView.h */,
+				040726DF19D402B2000D5F66 /* VolnInfoView.m */,
+				040726E019D402B2000D5F66 /* VolnInfoView.xib */,
+				048BC10219D4F7D4004C082E /* VolnInfoCell.h */,
+				048BC10319D4F7D4004C082E /* VolnInfoCell.m */,
+				048BC10419D4F7D4004C082E /* VolnInfoCell.xib */,
+				048BC10D19D50CA4004C082E /* VolnInfoDetailView.h */,
+				048BC10E19D50CA4004C082E /* VolnInfoDetailView.m */,
+				048BC10C19D50CA4004C082E /* VolnInfoDetailView.xib */,
 				04646E0519BFFF6500F71AE4 /* HelperView.h */,
 				04646E0419BFFF6500F71AE4 /* HelperView.m */,
 				04646E0319BFFF6500F71AE4 /* HelperView.xib */,
@@ -2469,6 +2496,8 @@
 				1433173B19C14C9400635B99 /* BBSModel.m */,
 				1433173D19C14DEF00635B99 /* BBSReplyModel.h */,
 				1433173E19C14DEF00635B99 /* BBSReplyModel.m */,
+				048BC0FF19D4F3F9004C082E /* Voln.h */,
+				048BC10019D4F3F9004C082E /* Voln.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -3009,6 +3038,7 @@
 				14B8F4971994732900537505 /* setting_login@2x.png in Resources */,
 				04646DE119BFDA2600F71AE4 /* VolnDetailView.xib in Resources */,
 				144ADE3519B414A0006980B9 /* 37x-Failure.png in Resources */,
+				048BC10619D4F7D4004C082E /* VolnInfoCell.xib in Resources */,
 				04646E1119C025F200F71AE4 /* HelperDetailView.xib in Resources */,
 				14B8F45E1994732900537505 /* payfeequery@2x.png in Resources */,
 				14B8F4931994732900537505 /* registerbtn@2x.png in Resources */,
@@ -3052,6 +3082,7 @@
 				14B8F4961994732900537505 /* setting_register@2x.png in Resources */,
 				144ADE5819B41659006980B9 /* GoodsDetailView.xib in Resources */,
 				14B8F4A91994732900537505 /* cuttingline@2x.png in Resources */,
+				048BC10F19D50CA4004C082E /* VolnInfoDetailView.xib in Resources */,
 				040CDF5F1995B37600E02EE4 /* head_share@2x.png in Resources */,
 				14B8F3121994696000537505 /* Resource.bundle in Resources */,
 				144ADE3419B414A0006980B9 /* 37x-Failure@2x.png in Resources */,
@@ -3216,6 +3247,7 @@
 				1432766119B7FF4700C18B71 /* ArticleCell.xib in Resources */,
 				04A142EC19960AFA00E44FEE /* conv_order_phone@2x.png in Resources */,
 				14B8F4601994732900537505 /* prepayBtnBg.png in Resources */,
+				040726E219D402B2000D5F66 /* VolnInfoView.xib in Resources */,
 				1432768A19B83FC300C18B71 /* StoreMapPointView.xib in Resources */,
 				14B8F4C11994ADB500537505 /* navi_my.png in Resources */,
 				14B8F3D41994730200537505 /* BusinessView.xib in Resources */,
@@ -3261,6 +3293,7 @@
 				144ADE6B19B41854006980B9 /* ConvCell.m in Sources */,
 				144B158019B3144500494428 /* FMDatabaseAdditions.m in Sources */,
 				14B8F2C71994696000537505 /* ASINetworkQueue.m in Sources */,
+				048BC10519D4F7D4004C082E /* VolnInfoCell.m in Sources */,
 				144B156419B3140D00494428 /* RepairsList.m in Sources */,
 				14B8F2CB1994696000537505 /* ImgRecord.m in Sources */,
 				144ADDDC19B40AF7006980B9 /* RepairsItemView.m in Sources */,
@@ -3302,6 +3335,7 @@
 				14B8F2BB1994696000537505 /* AFURLConnectionOperation.m in Sources */,
 				14B8F2FC1994696000537505 /* MWGridCell.m in Sources */,
 				144ADE5719B41659006980B9 /* GoodsDetailView.m in Sources */,
+				040726E119D402B2000D5F66 /* VolnInfoView.m in Sources */,
 				14B6D84A19BF3B6000D309C0 /* ProjectCollectionCell.m in Sources */,
 				144B156B19B3140D00494428 /* BusinessGoods.m in Sources */,
 				14B8F2B11994696000537505 /* NSData+CommonCrypto.m in Sources */,
@@ -3350,6 +3384,7 @@
 				14B8F2E11994696000537505 /* PSTCollectionViewData.m in Sources */,
 				04646DE219BFDA2600F71AE4 /* VolnDetailView.m in Sources */,
 				143B9A2019BE913A00BFD71D /* CommunityDetailView.m in Sources */,
+				048BC11019D50CA4004C082E /* VolnInfoDetailView.m in Sources */,
 				14B8F2E41994696000537505 /* PSTCollectionViewLayout.m in Sources */,
 				144B152819B313DD00494428 /* CommunityModel.m in Sources */,
 				04646DE419BFDA2600F71AE4 /* VolnView.m in Sources */,
@@ -3399,6 +3434,7 @@
 				140D570019D14B7100C8C067 /* BBSTableCell.m in Sources */,
 				14B8F2FA1994696000537505 /* UIImageView+WebCache.m in Sources */,
 				14B8F3071994696000537505 /* NSUserDefaults+RMSaveCustomObject.m in Sources */,
+				048BC10119D4F3F9004C082E /* Voln.m in Sources */,
 				14B8F3001994696000537505 /* MWTapDetectingImageView.m in Sources */,
 				144ADDDA19B40AF7006980B9 /* MyRepairsCell.m in Sources */,
 				144ADE2219B4103E006980B9 /* MySendExpressView.m in Sources */,
@@ -3656,6 +3692,10 @@
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NanNIng/NanNIng-Prefix.pch";
@@ -3701,6 +3741,10 @@
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/Extend/QQConnectSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/UI",
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",

@@ -8,6 +8,7 @@
 
 #import "VolnView.h"
 #import "VolnJoinView.h"
+#import "VolnInfoView.h"
 
 @interface VolnView ()
 
@@ -389,5 +390,12 @@
     volnJoinView.hidesBottomBarWhenPushed = NO;
     [self.navigationController pushViewController:volnJoinView animated:YES];
 
+}
+
+- (IBAction)volnInfoAction:(UIButton *)sender
+{
+    VolnInfoView *volnInfoView = [[VolnInfoView alloc] init];
+    volnInfoView.hidesBottomBarWhenPushed = NO;
+    [self.navigationController pushViewController:volnInfoView animated:YES];
 }
 @end
