@@ -80,7 +80,7 @@
     }
     if (joinStr == nil || [joinStr length] == 0)
     {
-        [Tool showCustomHUD:@"请输入加入原因" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+        [Tool showCustomHUD:@"请填写加入理由" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
         return;
     }
 

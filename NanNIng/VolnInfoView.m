@@ -52,12 +52,12 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
    
-    self.view.backgroundColor = [Tool getBackgroundColor];
+//    self.view.backgroundColor = [Tool getBackgroundColor];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    self.tableView.backgroundColor = [Tool getBackgroundColor];
+//    self.tableView.backgroundColor = [Tool getBackgroundColor];
     [self loadData];
 }
 
@@ -125,7 +125,10 @@
             cell.telLabel.text = [NSString stringWithFormat:@"电话:%@",voln.tel];
             NSString *time = [Tool intervalSinceNow:[Tool TimestampToDateStr:voln.addtime andFormatterStr:@"yyyy-MM-dd HH:mm:ss"]];
             
-            cell.timeLabel.text = [NSString stringWithFormat:@"加入时间:%@",time];
+            cell.causeLb.frame = CGRectMake(cell.causeLb.frame .origin.x, cell.causeLb.frame.origin.y, cell.causeLb.frame.size.width, voln.causeHeight);
+            cell.causeLb.text = voln.cause;
+            
+            cell.timeLabel.text = [NSString stringWithFormat:@"%@加入",time];
 
             return cell;
         }
@@ -135,16 +138,18 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 91;
+    Voln *voln = [volnArray objectAtIndex:[indexPath row]];
+    int height = 80 + voln.causeHeight - 21;
+    return height;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Voln *voln = [volnArray objectAtIndex:[indexPath row]];
-    VolnInfoDetailView *volnInfoDetailView = [[VolnInfoDetailView alloc] init];
-    volnInfoDetailView.voln = voln;
-    volnInfoDetailView.hidesBottomBarWhenPushed = NO;
-    [self.navigationController pushViewController:volnInfoDetailView animated:YES];
+//    Voln *voln = [volnArray objectAtIndex:[indexPath row]];
+//    VolnInfoDetailView *volnInfoDetailView = [[VolnInfoDetailView alloc] init];
+//    volnInfoDetailView.voln = voln;
+//    volnInfoDetailView.hidesBottomBarWhenPushed = NO;
+//    [self.navigationController pushViewController:volnInfoDetailView animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

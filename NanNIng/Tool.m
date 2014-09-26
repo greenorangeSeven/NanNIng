@@ -967,6 +967,10 @@
         return nil;
     }
     NSMutableArray *volnArray = [RMMapper mutableArrayOfClass:[Voln class] fromArrayOfDictionary:volnJsonArray];
+    for (Voln *v in volnArray) {
+        v.cause = [NSString stringWithFormat:@"加入理由:%@", v.cause];
+        v.causeHeight = [self getTextHeight:287 andUIFont:[UIFont fontWithName:@"Arial-BoldItalicMT" size:12] andText:v.cause];
+    }
     return volnArray;
 }
 

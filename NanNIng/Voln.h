@@ -17,4 +17,6 @@
 @property (nonatomic,copy) NSString *cause;
 @property (nonatomic,copy) NSString *addtime;
 
+@property int causeHeight;
+
 @end
