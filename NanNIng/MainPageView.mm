@@ -233,10 +233,13 @@
 
 - (IBAction)clickService:(UIButton *)sender
 {
-    ConvView *convView = [[ConvView alloc] init];
-    convView.hidesBottomBarWhenPushed = YES;
-    
-    [self.navigationController pushViewController:convView animated:YES];
+//    ConvView *convView = [[ConvView alloc] init];
+//    convView.hidesBottomBarWhenPushed = YES;
+//    
+//    [self.navigationController pushViewController:convView animated:YES];
+    CommunityView *communityView = [[CommunityView alloc] init];
+    communityView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:communityView animated:YES];
 }
 
 - (IBAction)clickCityCulture:(UIButton *)sender
