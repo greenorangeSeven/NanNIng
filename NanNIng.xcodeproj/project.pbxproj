@@ -142,8 +142,6 @@
 		1433173F19C14DEF00635B99 /* BBSReplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1433173E19C14DEF00635B99 /* BBSReplyModel.m */; };
 		1438271019C5D2720089CDCF /* BBSPostedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1438270E19C5D2720089CDCF /* BBSPostedView.m */; };
 		1438271119C5D2720089CDCF /* BBSPostedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1438270F19C5D2720089CDCF /* BBSPostedView.xib */; };
-		143B9A2019BE913A00BFD71D /* CommunityDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 143B9A1E19BE913A00BFD71D /* CommunityDetailView.m */; };
-		143B9A2119BE913A00BFD71D /* CommunityDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 143B9A1F19BE913A00BFD71D /* CommunityDetailView.xib */; };
 		1447B15319D2C06200492D55 /* alipayBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1447B15119D2C06200492D55 /* alipayBtn@2x.png */; };
 		1447B15419D2C06200492D55 /* alipayFeeBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1447B15219D2C06200492D55 /* alipayFeeBtn@2x.png */; };
 		14489DAF19B9624F0050CBED /* Commercial.m in Sources */ = {isa = PBXBuildFile; fileRef = 14489DAE19B9624F0050CBED /* Commercial.m */; };
@@ -307,6 +305,11 @@
 		14577D2719C2AA7A008655A0 /* BBSReplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14577D2519C2AA7A008655A0 /* BBSReplyView.m */; };
 		14577D2819C2AA7A008655A0 /* BBSReplyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14577D2619C2AA7A008655A0 /* BBSReplyView.xib */; };
 		14A7BFF819C92B5C009039DF /* ExpressCompany.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14A7BFF719C92B5C009039DF /* ExpressCompany.plist */; };
+		14B2EC9819D469630034DA8C /* CommunityDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B2EC9319D469630034DA8C /* CommunityDetailView.m */; };
+		14B2EC9919D469630034DA8C /* CommunityDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14B2EC9419D469630034DA8C /* CommunityDetailView.xib */; };
+		14B2EC9A19D469630034DA8C /* CommunityReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B2EC9619D469630034DA8C /* CommunityReplyCell.m */; };
+		14B2EC9B19D469630034DA8C /* CommunityReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14B2EC9719D469630034DA8C /* CommunityReplyCell.xib */; };
+		14B2EC9E19D469A50034DA8C /* CommercialReply.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B2EC9D19D469A50034DA8C /* CommercialReply.m */; };
 		14B4C04519D3043800B4F661 /* head_shopcar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B4C04419D3043700B4F661 /* head_shopcar@2x.png */; };
 		14B6D84819BF3B6000D309C0 /* ProjectCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B6D84319BF3B6000D309C0 /* ProjectCollectionView.m */; };
 		14B6D84919BF3B6000D309C0 /* ProjectCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14B6D84419BF3B6000D309C0 /* ProjectCollectionView.xib */; };
@@ -740,9 +743,6 @@
 		1438270D19C5D2720089CDCF /* BBSPostedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSPostedView.h; sourceTree = "<group>"; };
 		1438270E19C5D2720089CDCF /* BBSPostedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSPostedView.m; sourceTree = "<group>"; };
 		1438270F19C5D2720089CDCF /* BBSPostedView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBSPostedView.xib; sourceTree = "<group>"; };
-		143B9A1D19BE913A00BFD71D /* CommunityDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityDetailView.h; sourceTree = "<group>"; };
-		143B9A1E19BE913A00BFD71D /* CommunityDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityDetailView.m; sourceTree = "<group>"; };
-		143B9A1F19BE913A00BFD71D /* CommunityDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityDetailView.xib; sourceTree = "<group>"; };
 		1447B15119D2C06200492D55 /* alipayBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alipayBtn@2x.png"; sourceTree = "<group>"; };
 		1447B15219D2C06200492D55 /* alipayFeeBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alipayFeeBtn@2x.png"; sourceTree = "<group>"; };
 		14489DAD19B9624F0050CBED /* Commercial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commercial.h; sourceTree = "<group>"; };
@@ -1057,6 +1057,14 @@
 		14577D2519C2AA7A008655A0 /* BBSReplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSReplyView.m; sourceTree = "<group>"; };
 		14577D2619C2AA7A008655A0 /* BBSReplyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBSReplyView.xib; sourceTree = "<group>"; };
 		14A7BFF719C92B5C009039DF /* ExpressCompany.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ExpressCompany.plist; sourceTree = "<group>"; };
+		14B2EC9219D469630034DA8C /* CommunityDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityDetailView.h; sourceTree = "<group>"; };
+		14B2EC9319D469630034DA8C /* CommunityDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityDetailView.m; sourceTree = "<group>"; };
+		14B2EC9419D469630034DA8C /* CommunityDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityDetailView.xib; sourceTree = "<group>"; };
+		14B2EC9519D469630034DA8C /* CommunityReplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityReplyCell.h; sourceTree = "<group>"; };
+		14B2EC9619D469630034DA8C /* CommunityReplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityReplyCell.m; sourceTree = "<group>"; };
+		14B2EC9719D469630034DA8C /* CommunityReplyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityReplyCell.xib; sourceTree = "<group>"; };
+		14B2EC9C19D469A50034DA8C /* CommercialReply.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommercialReply.h; sourceTree = "<group>"; };
+		14B2EC9D19D469A50034DA8C /* CommercialReply.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommercialReply.m; sourceTree = "<group>"; };
 		14B4C04419D3043700B4F661 /* head_shopcar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head_shopcar@2x.png"; sourceTree = "<group>"; };
 		14B6D84219BF3B6000D309C0 /* ProjectCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectCollectionView.h; sourceTree = "<group>"; };
 		14B6D84319BF3B6000D309C0 /* ProjectCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectCollectionView.m; sourceTree = "<group>"; };
@@ -1487,8 +1495,8 @@
 				14B8F30E1994696000537505 /* TencentWeiboConnection.framework in Frameworks */,
 				14B8F30D1994696000537505 /* SinaWeiboConnection.framework in Frameworks */,
 				14B8F3181994696000537505 /* libTCWeiboSDK.a in Frameworks */,
-				14577D1D19C28B55008655A0 /* KeyboardManager.framework in Frameworks */,
 				14B8F3161994696000537505 /* libSinaWeiboSDK.a in Frameworks */,
+				14577D1D19C28B55008655A0 /* KeyboardManager.framework in Frameworks */,
 				14B8F0F51994636F00537505 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2461,6 +2469,8 @@
 				141BDCFC19B76050002C6295 /* Article.m */,
 				14489DAD19B9624F0050CBED /* Commercial.h */,
 				14489DAE19B9624F0050CBED /* Commercial.m */,
+				14B2EC9C19D469A50034DA8C /* CommercialReply.h */,
+				14B2EC9D19D469A50034DA8C /* CommercialReply.m */,
 				042EBF7219BEE95700561E71 /* Citys.h */,
 				042EBF7319BEE95700561E71 /* Citys.m */,
 				04646E1219C02B9800F71AE4 /* CityInfo.h */,
@@ -2598,9 +2608,12 @@
 				0476060F1998498E007BED4C /* CommunityCell.h */,
 				047606101998498E007BED4C /* CommunityCell.m */,
 				047606111998498E007BED4C /* CommunityCell.xib */,
-				143B9A1D19BE913A00BFD71D /* CommunityDetailView.h */,
-				143B9A1E19BE913A00BFD71D /* CommunityDetailView.m */,
-				143B9A1F19BE913A00BFD71D /* CommunityDetailView.xib */,
+				14B2EC9219D469630034DA8C /* CommunityDetailView.h */,
+				14B2EC9319D469630034DA8C /* CommunityDetailView.m */,
+				14B2EC9419D469630034DA8C /* CommunityDetailView.xib */,
+				14B2EC9519D469630034DA8C /* CommunityReplyCell.h */,
+				14B2EC9619D469630034DA8C /* CommunityReplyCell.m */,
+				14B2EC9719D469630034DA8C /* CommunityReplyCell.xib */,
 				044885DE19C29A9300EFFAB0 /* CBusinessPublishView.h */,
 				044885DF19C29A9300EFFAB0 /* CBusinessPublishView.m */,
 				044885E019C29A9300EFFAB0 /* CBusinessPublishView.xib */,
@@ -2977,7 +2990,6 @@
 				14B8F0FF1994636F00537505 /* InfoPlist.strings in Resources */,
 				14B4C04519D3043800B4F661 /* head_shopcar@2x.png in Resources */,
 				1447B15319D2C06200492D55 /* alipayBtn@2x.png in Resources */,
-				143B9A2119BE913A00BFD71D /* CommunityDetailView.xib in Resources */,
 				144ADE6C19B41854006980B9 /* ConvCell.xib in Resources */,
 				14B8F4981994732900537505 /* setting_info@2x.png in Resources */,
 				144ADE2719B4103E006980B9 /* MyInBoxView.xib in Resources */,
@@ -3034,6 +3046,7 @@
 				14B8F48A1994732900537505 /* feeTypeBg.png in Resources */,
 				144ADE6419B41732006980B9 /* SubtleCell.xib in Resources */,
 				14B8F4B51994732900537505 /* share@2x.png in Resources */,
+				14B2EC9919D469630034DA8C /* CommunityDetailView.xib in Resources */,
 				144ADDF519B40D40006980B9 /* NewsDetailView.xib in Resources */,
 				0446CE3F19951BE900D6C015 /* main_subtle@2x.png in Resources */,
 				144ADDBC19B40199006980B9 /* FeeHistoryView.xib in Resources */,
@@ -3067,6 +3080,7 @@
 				144ADE0319B40E9E006980B9 /* fee_history_tag@2x.png in Resources */,
 				04A142CE1995FC4800E44FEE /* lm_shuiguo@2x.png in Resources */,
 				1432767719B80E0C00C18B71 /* MyGoodsCell.xib in Resources */,
+				14B2EC9B19D469630034DA8C /* CommunityReplyCell.xib in Resources */,
 				04A142CB1995FC4800E44FEE /* lm_house@2x.png in Resources */,
 				14B8F45B1994732900537505 /* telorderbtn@2x.png in Resources */,
 				0446CE2D199516EB00D6C015 /* life_btn_bg@2x.png in Resources */,
@@ -3300,6 +3314,7 @@
 				144B156519B3140D00494428 /* RepairsItem.m in Sources */,
 				14B8F34F19946CE700537505 /* SettingModel.m in Sources */,
 				14B8F2BB1994696000537505 /* AFURLConnectionOperation.m in Sources */,
+				14B2EC9E19D469A50034DA8C /* CommercialReply.m in Sources */,
 				14B8F2FC1994696000537505 /* MWGridCell.m in Sources */,
 				144ADE5719B41659006980B9 /* GoodsDetailView.m in Sources */,
 				14B6D84A19BF3B6000D309C0 /* ProjectCollectionCell.m in Sources */,
@@ -3349,7 +3364,6 @@
 				14B8F2FF1994696000537505 /* MWPhotoBrowser.m in Sources */,
 				14B8F2E11994696000537505 /* PSTCollectionViewData.m in Sources */,
 				04646DE219BFDA2600F71AE4 /* VolnDetailView.m in Sources */,
-				143B9A2019BE913A00BFD71D /* CommunityDetailView.m in Sources */,
 				14B8F2E41994696000537505 /* PSTCollectionViewLayout.m in Sources */,
 				144B152819B313DD00494428 /* CommunityModel.m in Sources */,
 				04646DE419BFDA2600F71AE4 /* VolnView.m in Sources */,
@@ -3391,7 +3405,9 @@
 				14489DAF19B9624F0050CBED /* Commercial.m in Sources */,
 				14B8F35019946CE700537505 /* UserModel.m in Sources */,
 				14B8F2F41994696000537505 /* SDWebImageManager.m in Sources */,
+				14B2EC9A19D469630034DA8C /* CommunityReplyCell.m in Sources */,
 				14B8F2FB1994696000537505 /* MWCaptionView.m in Sources */,
+				14B2EC9819D469630034DA8C /* CommunityDetailView.m in Sources */,
 				144ADDBB19B40199006980B9 /* FeeHistoryView.m in Sources */,
 				14B8F2DD1994696000537505 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				144B151719B3137800494428 /* NSObject+SBJSON.m in Sources */,
@@ -3656,6 +3672,8 @@
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NanNIng/NanNIng-Prefix.pch";
@@ -3701,6 +3719,8 @@
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/Extend/QQConnectSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK",
 					"$(PROJECT_DIR)/NanNIng/ShareSDK/UI",
+					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
+					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
 					Framework,
 					"$(PROJECT_DIR)/NanNIng/IQKeyboardManager",
