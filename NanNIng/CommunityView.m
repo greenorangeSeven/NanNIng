@@ -274,18 +274,23 @@
             }
             [cell.delBtn addTarget:self action:@selector(delAction:) forControlEvents:UIControlEventTouchUpInside];
             cell.delBtn.tag = [indexPath row];
+            NSString *thumbStr = @"";
+            if ([commer.thumb count] >= 1) {
+                thumbStr = [commer.thumb objectAtIndex:0];
+            }
+            
             
             if (commer.imgData) {
                 cell.picIv.image = commer.imgData;
             }
             else
             {
-                if ([commer.thumb isEqualToString:@""]) {
+                if ([thumbStr isEqualToString:@""]) {
                     commer.imgData = [UIImage imageNamed:@"loadingpic2"];
                 }
                 else
                 {
-                    NSData * imageData = [_iconCache getImage:[TQImageCache parseUrlForCacheName:commer.thumb]];
+                    NSData * imageData = [_iconCache getImage:[TQImageCache parseUrlForCacheName:thumbStr]];
                     if (imageData) {
                         commer.imgData = [UIImage imageWithData:imageData];
                         cell.picIv.image = commer.imgData;
@@ -295,7 +300,7 @@
                         IconDownloader *downloader = [imageDownloadsInProgress objectForKey:[NSString stringWithFormat:@"%d", [indexPath row]]];
                         if (downloader == nil) {
                             ImgRecord *record = [ImgRecord new];
-                            record.url = commer.thumb;
+                            record.url = thumbStr;
                             [self startIconDownload:record forIndexPath:indexPath];
                         }
                     }
@@ -511,7 +516,7 @@
             c.imgData = iconDownloader.imgRecord.img;
             // cache it
             NSData * imageData = UIImagePNGRepresentation(c.imgData);
-            [_iconCache putImage:imageData withName:[TQImageCache parseUrlForCacheName:c.thumb]];
+            [_iconCache putImage:imageData withName:[TQImageCache parseUrlForCacheName:[c.thumb objectAtIndex:0]]];
             [self.tableView reloadData];
         }
     }

@@ -10,6 +10,9 @@
 
 
 @interface CommunityDetailView : UIViewController
+{
+    NSString *thumbStr;
+}
 
 @property (nonatomic, retain) NSArray *photos;
 @property (weak, nonatomic) Commercial *commer;

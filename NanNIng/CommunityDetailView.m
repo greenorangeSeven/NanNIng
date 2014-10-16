@@ -58,10 +58,12 @@
 
 - (void)shareAction:(id)sender
 {
+    
+    NSString *shareStr = [Tool flattenHTML:self.commer.content];
     NSDictionary *contentDic = [NSDictionary dictionaryWithObjectsAndKeys:
-                                self.commer.content, @"title",
-                                self.commer.content, @"summary",
-                                self.commer.thumb, @"thumb",
+                                shareStr, @"title",
+                                shareStr, @"summary",
+                                thumbStr , @"thumb",
                                 nil];
     [Tool shareAction:sender andShowView:self.view andContent:contentDic];
 }
@@ -69,10 +71,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    EGOImageView *imageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"nopic4.png"]];
-    imageView.imageURL = [NSURL URLWithString:self.commer.thumb];
-    imageView.frame = CGRectMake(0.0f, 0.0f, 208.0f, 177.0f);
-    [self.picIv addSubview:imageView];
+    thumbStr = @"";
+    if ([self.commer.thumb count] >= 1) {
+        thumbStr = [self.commer.thumb objectAtIndex:0];
+    }
+//    EGOImageView *imageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"nopic4.png"]];
+//    imageView.imageURL = [NSURL URLWithString:thumbStr];
+//    imageView.frame = CGRectMake(0.0f, 0.0f, 208.0f, 177.0f);
+//    [self.picIv addSubview:imageView];
+    
+    self.picIv.image = self.commer.imgData;
     
     //点击弹出事件注册
     UITapGestureRecognizer *picTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickPicAction)];
@@ -102,7 +110,7 @@
 - (void)clickPicAction
 {
     NSMutableArray *photos = [[NSMutableArray alloc] init];
-    [photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:self.commer.thumb]]];
+    [photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:thumbStr]]];
     
     self.photos = photos;
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];

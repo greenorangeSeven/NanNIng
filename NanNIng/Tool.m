@@ -419,6 +419,21 @@
     return [NSString stringWithFormat:@"%@",roundedOunces];
 }
 
+//过滤HTML标签
++ (NSString *)flattenHTML:(NSString *)html {
+    NSScanner *theScanner;
+    NSString *text = nil;
+    theScanner = [NSScanner scannerWithString:html];
+    while ([theScanner isAtEnd] == NO) {
+        [theScanner scanUpToString:@"<" intoString:NULL] ;
+        [theScanner scanUpToString:@">" intoString:&text] ;
+        html = [html stringByReplacingOccurrencesOfString:
+                [NSString stringWithFormat:@"%@>", text]
+                                               withString:@""];
+    }
+    return html;
+}
+
 + (void)shareAction:(UIButton *)sender andShowView:(UIView *)view andContent:(NSDictionary *)shareContent {
 //    Activity *activity = [[Activity alloc] init];
     //构造分享内容
@@ -426,7 +441,7 @@
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithUrl:[shareContent objectForKey:@"thumb"]]
                                                 title:[shareContent objectForKey:@"title"]
-                                                  url:@"http://www.best-world.net"
+                                                  url:@"http://www.nnzhsq.com"
                                           description:[shareContent objectForKey:@"summary"]
                                             mediaType:SSPublishContentMediaTypeNews];
     
@@ -1038,6 +1053,18 @@
         comm.contentHeight = [self getTextHeight:300 andUIFont:[UIFont fontWithName:@"Arial-BoldItalicMT" size:12] andText:comm.reply_content];
     }
     return replyArray;
+}
+
++ (NSMutableArray *)readJsonStrToComm:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *commJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( commJsonArray == nil || [commJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *commArray = [RMMapper mutableArrayOfClass:[CommService class] fromArrayOfDictionary:commJsonArray];
+    return commArray;
 }
 
 @end

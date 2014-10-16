@@ -33,17 +33,17 @@
         titleLabel.textAlignment = NSTextAlignmentCenter;
         self.navigationItem.titleView = titleLabel;
         
-        UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 31, 28)];
-        [lBtn addTarget:self action:@selector(myAction) forControlEvents:UIControlEventTouchUpInside];
-        [lBtn setImage:[UIImage imageNamed:@"navi_my"] forState:UIControlStateNormal];
-        UIBarButtonItem *btnMy = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
-        self.navigationItem.leftBarButtonItem = btnMy;
-        
-        UIButton *rBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 31, 28)];
-        [rBtn addTarget:self action:@selector(settingAction) forControlEvents:UIControlEventTouchUpInside];
-        [rBtn setImage:[UIImage imageNamed:@"navi_setting"] forState:UIControlStateNormal];
-        UIBarButtonItem *btnSetting = [[UIBarButtonItem alloc]initWithCustomView:rBtn];
-        self.navigationItem.rightBarButtonItem = btnSetting;
+//        UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 31, 28)];
+//        [lBtn addTarget:self action:@selector(myAction) forControlEvents:UIControlEventTouchUpInside];
+//        [lBtn setImage:[UIImage imageNamed:@"navi_my"] forState:UIControlStateNormal];
+//        UIBarButtonItem *btnMy = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
+//        self.navigationItem.leftBarButtonItem = btnMy;
+//        
+//        UIButton *rBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 31, 28)];
+//        [rBtn addTarget:self action:@selector(settingAction) forControlEvents:UIControlEventTouchUpInside];
+//        [rBtn setImage:[UIImage imageNamed:@"navi_setting"] forState:UIControlStateNormal];
+//        UIBarButtonItem *btnSetting = [[UIBarButtonItem alloc]initWithCustomView:rBtn];
+//        self.navigationItem.rightBarButtonItem = btnSetting;
     }
     return self;
 }
@@ -90,9 +90,6 @@
                                            advDatas = [Tool readJsonStrToADV:operation.responseString];
                                            
                                            int length = [advDatas count];
-                                           //点赞按钮初始化
-                                           Advertisement *adv = (Advertisement *)[advDatas objectAtIndex:advIndex];
-                                           [self.pointsBtn setTitle:[NSString stringWithFormat:@"点赞(%@)", adv.points] forState:UIControlStateNormal];
                                            
                                            NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:length+2];
                                            if (length > 1)
@@ -115,7 +112,7 @@
                                                SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:adv.pic tag:-1];
                                                [itemArray addObject:item];
                                            }
-                                           bannerView = [[SGFocusImageFrame alloc] initWithFrame:CGRectMake(0, 0, 320, 200) delegate:self imageItems:itemArray isAuto:NO];
+                                           bannerView = [[SGFocusImageFrame alloc] initWithFrame:CGRectMake(0, 0, 320, 187) delegate:self imageItems:itemArray isAuto:NO];
                                            [bannerView scrollToIndex:0];
                                            [self.advIv addSubview:bannerView];
                                        }
@@ -156,8 +153,6 @@
 {
     //    NSLog(@"%s \n scrollToIndex===>%d",__FUNCTION__,index);
     advIndex = index;
-    Advertisement *adv = (Advertisement *)[advDatas objectAtIndex:advIndex];
-    [self.pointsBtn setTitle:[NSString stringWithFormat:@"点赞( %@ )", adv.points] forState:UIControlStateNormal];
 }
 
 - (void)getInBoxRemind
@@ -246,7 +241,7 @@
 {
     CityView *cityView = [[CityView alloc] init];
     cityView.typeStr = @"1";
-    cityView.typeNameStr = @"城市文化";
+    cityView.typeNameStr = @"社区文化";
     cityView.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:cityView animated:YES];
 }
@@ -303,12 +298,21 @@
     [self.navigationController pushViewController:expressView animated:YES];
 }
 
+- (IBAction)settingAction:(id)sender {
+    [Tool pushToSettingView:self.navigationController];
+}
+
+- (IBAction)myAction:(id)sender {
+    [Tool pushToMyView:self.navigationController];
+}
+
 - (IBAction)shareAction:(id)sender {
     Advertisement *adv = [advDatas objectAtIndex:advIndex];
     if (adv) {
+        NSString *shareStr = [Tool flattenHTML:adv.content];
         NSDictionary *contentDic = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    adv.title , @"title",
-                                    adv.content, @"summary",
+                                    shareStr , @"title",
+                                    shareStr, @"summary",
                                     adv.pic, @"thumb",
                                     nil];
         [Tool shareAction:sender andShowView:self.view andContent:contentDic];
@@ -346,7 +350,6 @@
             status = [json objectForKey:@"status"];
             if ([status isEqualToString:@"1"]) {
                 adv.points = [NSString stringWithFormat:@"%d", [adv.points intValue] + 1];
-                [self.pointsBtn setTitle:[NSString stringWithFormat:@"点赞( %@ )", adv.points] forState:UIControlStateNormal];
             }
         }
     }

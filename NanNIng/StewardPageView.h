@@ -15,6 +15,7 @@
 #import "SGFocusImageItem.h"
 #import "ArticleView.h"
 #import "ADVDetailView.h"
+#import "CommunityServiceView.h"
 
 @interface StewardPageView : UIViewController<SGFocusImageFrameDelegate, UIActionSheetDelegate>
 {
@@ -35,5 +36,6 @@
 - (IBAction)expressAction:(id)sender;
 - (IBAction)arttileAction:(id)sender;
 - (IBAction)telAction:(id)sender;
+- (IBAction)serviceAction:(id)sender;
 
 @end

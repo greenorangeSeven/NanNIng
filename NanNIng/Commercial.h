@@ -12,7 +12,7 @@
 
 @property (nonatomic, retain) NSString *id;
 @property (nonatomic, retain) NSString *cid;
-@property (nonatomic, retain) NSString *thumb;
+@property (nonatomic, retain) NSArray *thumb;
 @property (nonatomic, retain) NSString *content;
 @property (nonatomic, retain) NSString *tel;
 @property (nonatomic, retain) NSString *addtime;

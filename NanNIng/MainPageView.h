@@ -26,7 +26,6 @@
 }
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIButton *pointsBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *advIv;
 
 #pragma mark -按钮点击事件
@@ -47,9 +46,7 @@
 - (IBAction)repairsAction:(id)sender;
 - (IBAction)noticeAction:(id)sender;
 - (IBAction)expressAction:(id)sender;
-
-- (IBAction)shareAction:(id)sender;
-- (IBAction)advDetailAction:(id)sender;
-- (IBAction)pointsAction:(id)sender;
+- (IBAction)settingAction:(id)sender;
+- (IBAction)myAction:(id)sender;
 
 @end

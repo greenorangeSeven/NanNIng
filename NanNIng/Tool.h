@@ -51,6 +51,7 @@
 #import "BBSModel.h"
 #import "BBSReplyModel.h"
 #import "Voln.h"
+#import "CommService.h"
 
 @interface Tool : NSObject
 
@@ -130,6 +131,7 @@
 + (NSString *)getCache:(NSString *)catalog andType:(int)type andID:(int)_id;
 //保留数值几位小数
 + (NSString *)notRounding:(float)price afterPoint:(int)position;
++ (NSString *)flattenHTML:(NSString *)html;
 + (void)shareAction:(UIButton *)sender andShowView:(UIView *)view andContent:(NSDictionary *)shareContent;
 
 + (NSString *)databasePath;
@@ -167,5 +169,6 @@
 + (CityInfo *)readJsonStrToCityInfo:(NSString *)str;
 + (NSMutableArray *)readJsonStrToBBSArray:(NSString *)str;
 + (NSMutableArray *)readJsonStrToCommercialReply:(NSString *)str;
++ (NSMutableArray *)readJsonStrToComm:(NSString *)str;
 
 @end

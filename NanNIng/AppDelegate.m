@@ -64,8 +64,8 @@ BMKMapManager* _mapManager;
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:
                                              mainPageNav,
-                                             stewardPageNav,
                                              lifePageNav,
+                                             stewardPageNav,
                                              cityPageNav,
                                              shopcarPageNav,
                                              nil];
@@ -204,10 +204,14 @@ BMKMapManager* _mapManager;
     if (alipay) {
         //保存支付宝信息
         UserModel *userModel = [UserModel Instance];
-        [userModel saveValue:alipay.DEFAULT_PARTNER ForKey:@"DEFAULT_PARTNER"];
-        [userModel saveValue:alipay.DEFAULT_SELLER ForKey:@"DEFAULT_SELLER"];
-        [userModel saveValue:alipay.PRIVATE ForKey:@"PRIVATE"];
-        [userModel saveValue:alipay.PUBLIC ForKey:@"PUBLIC"];
+//        [userModel saveValue:alipay.DEFAULT_PARTNER ForKey:@"DEFAULT_PARTNER"];
+//        [userModel saveValue:alipay.DEFAULT_SELLER ForKey:@"DEFAULT_SELLER"];
+//        [userModel saveValue:alipay.PRIVATE ForKey:@"PRIVATE"];
+//        [userModel saveValue:alipay.PUBLIC ForKey:@"PUBLIC"];
+        [userModel saveDefaultPartner:alipay.DEFAULT_PARTNER];
+        [userModel saveSeller:alipay.DEFAULT_SELLER];
+        [userModel savePrivate:alipay.PRIVATE];
+        [userModel savePublic:alipay.PUBLIC];
     }
 }
 
@@ -303,7 +307,7 @@ BMKMapManager* _mapManager;
      **/
     [ShareSDK connectSinaWeiboWithAppKey:@"1434319718"
                                appSecret:@"c1affea9508aa4d0f8ac8d580d092592"
-                             redirectUri:@"http://house.nwclhn.com"];
+                             redirectUri:@"www.nnzhsq.com"];
     
     /**
      连接腾讯微博开放平台应用以使用相关功能，此应用需要引用TencentWeiboConnection.framework
@@ -311,15 +315,15 @@ BMKMapManager* _mapManager;
      
      如果需要实现SSO，需要导入libWeiboSDK.a，并引入WBApi.h，将WBApi类型传入接口
      **/
-    [ShareSDK connectTencentWeiboWithAppKey:@"801525635"
-                                  appSecret:@"c1affea9508aa4d0f8ac8d580d092592"
-                                redirectUri:@"http://house.nwclhn.com"
+    [ShareSDK connectTencentWeiboWithAppKey:@"801543497"
+                                  appSecret:@"be5369e855e8cd050fc1407c554027c2"
+                                redirectUri:@"www.nnzhsq.com"
                                    wbApiCls:[WeiboApi class]];
     /**
      连接微信应用以使用相关功能，此应用需要引用WeChatConnection.framework和微信官方SDK
      http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
      **/
-    [ShareSDK connectWeChatWithAppId:@"wxd8f6b7ac215ffe1d" wechatCls:[WXApi class]];
+    [ShareSDK connectWeChatWithAppId:@"wx84cb50828a634137" wechatCls:[WXApi class]];
 }
 
 @end
