@@ -129,6 +129,7 @@
         Goods *good = [[Goods alloc] init];
         good.id = [resultSet stringForColumn:@"goodid"];
         good.title = [resultSet stringForColumn:@"title"];
+        good.attrsStr = [resultSet stringForColumn:@"attrs"];
         good.thumb = [resultSet stringForColumn:@"thumb"];
         good.price = [resultSet stringForColumn:@"price"];
         good.store_name = [resultSet stringForColumn:@"store_name"];
@@ -184,6 +185,8 @@
         cell.minusBtn.enabled = NO;
     }
     
+    cell.attrsLb.text = good.attrsStr;
+    
     [cell.minusBtn addTarget:self action:@selector(minusAction:) forControlEvents:UIControlEventTouchUpInside];
     cell.minusBtn.tag = indexRow;
     
@@ -198,7 +201,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 92;
+    return 113;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

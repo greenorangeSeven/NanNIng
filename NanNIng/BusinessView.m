@@ -119,7 +119,6 @@
                                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                        [shopData removeAllObjects];
                                        @try {
-                                           [shopData removeAllObjects];
                                            noDataLabel.hidden = YES;
                                            shopData = [Tool readJsonStrToShopArray:operation.responseString];
                                            if (shopData != nil && [shopData count] > 0) {

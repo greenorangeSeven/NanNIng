@@ -38,6 +38,7 @@
 #import "BusinessGoods.h"
 #import "Coupons.h"
 #import "Goods.h"
+#import "GoodsAttrs.h"
 #import "OrdersNum.h"
 #import "FeeHistory.h"
 #import "Article.h"

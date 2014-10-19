@@ -183,7 +183,7 @@
         float businessAmount = 0.0;
         OrderGood *good = [[OrderGood alloc] init];
         good.goods_id = [[NSNumber alloc] initWithInt:[_goods.id intValue]];
-        good.title = _goods.title;
+        good.title = [NSString stringWithFormat:@"%@  %@", _goods.title,  _goods.attrsStr];
         good.price = _goods.price;
         good.quantity = [[NSNumber alloc] initWithInt:1];
         businessAmount += [good.price floatValue];

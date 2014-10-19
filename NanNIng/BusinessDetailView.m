@@ -78,12 +78,38 @@
         UIBarButtonItem *btnSearch = [[UIBarButtonItem alloc]initWithCustomView:rBtn];
         self.navigationItem.rightBarButtonItem = btnSearch;
     }
+    
+    [self showCloseShopAlert];
 
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     [self.collectionView registerClass:[BusinessGoodCell class] forCellWithReuseIdentifier:BusinessGoodCellIdentifier];
     self.collectionView.backgroundColor = [UIColor colorWithRed:0.74 green:0.78 blue:0.81 alpha:1];
     [self reload];
+}
+
+- (void)showCloseShopAlert
+{
+    if ([self.shop.open_time length] > 0 && [self.shop.close_time length] > 0) {
+        //获得开店值
+        int openTimeVal = [[self.shop.open_time substringWithRange:NSMakeRange(0, 2)] intValue] *60 + [[self.shop.open_time substringWithRange:NSMakeRange(3, 2)] intValue];
+        //获得闭店值
+        int closeTimeVal = [[self.shop.close_time substringWithRange:NSMakeRange(0, 2)] intValue] *60 + [[self.shop.close_time substringWithRange:NSMakeRange(3, 2)] intValue];
+        //获得当前时间值
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"HH:mm"];
+        NSString *currentTimeStr = [formatter stringFromDate:[NSDate date]];
+        int currentTimeVal = [[currentTimeStr substringWithRange:NSMakeRange(0, 2)] intValue] *60 + [[currentTimeStr substringWithRange:NSMakeRange(3, 2)] intValue];
+        if (currentTimeVal < openTimeVal || currentTimeVal >= closeTimeVal ) {
+            NSString *alertStr = [NSString stringWithFormat:@"您访问的店铺营业时间为%@-%@，现正处于闭店时间，店主可能要晚些才能给您发货哦", self.shop.open_time, self.shop.close_time];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"闭店提醒"
+                                                         message:alertStr
+                                                        delegate:nil
+                                               cancelButtonTitle:@"确定"
+                                               otherButtonTitles:nil];
+            [av show];
+        }
+    }
 }
 
 //取数方法

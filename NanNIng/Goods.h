@@ -25,4 +25,10 @@
 
 @property (nonatomic, retain) NSNumber *number;
 
+//detail
+@property (nonatomic, retain) NSArray *attrs;
+@property (nonatomic, retain) NSArray *attrsArray;
+
+@property (nonatomic, retain) NSString *attrsStr;
+
 @end

@@ -146,6 +146,13 @@
 #define api_get_services_list @"/get_services_list"
 
 #define AreaListKey @"AreList"
+#define SecurityCode @"SecurityCode"
+#define ReSetSecurityCode @"ReSetSecurityCode"
+
+#define SMSURL @"http://61.156.38.47:8080/CPDXT/SendSms"
+#define SMSCorpID @"nnzhsq"
+#define SMSPWD @"a654321"
+
 
 #define servicephone @"4008974367"
 
@@ -166,7 +173,7 @@
 #define ProjectCollectionCellIdentifier @"ProjectCollectionCellIdentifier"
 #define CommunityReplyCellIdentifier @"CommunityReplyCellIdentifier"
 
-#define createshoppingcart @"create table shoppingcart (id integer primary key autoincrement not null,goodid text,title text,thumb text,price text,store_name text,business_id text,number int,user_id text)"
+#define createshoppingcart @"create table shoppingcart (id integer primary key autoincrement not null,goodid text,title text,attrs text,thumb text,price text,store_name text,business_id text,number int,user_id text)"
 
 
 #define Notification_RefreshMyRepairs @"Notification_RefreshMyRepairs"

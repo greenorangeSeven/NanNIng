@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "NSString+STRegex.h"
+#import "TBXML.h"
+#import "TBXML+HTTP.h"
+#import "TBXML+Compression.h"
 
 @interface RegisterView : UIViewController
 

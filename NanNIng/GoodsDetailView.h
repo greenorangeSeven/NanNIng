@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EGOImageView.h"
-
+#import "GoodsAttrs.h"
 #import "FMDatabase.h"
 #import "FMDatabaseAdditions.h"
 #import "FMDatabaseQueue.h"
@@ -17,6 +17,8 @@
 {
     Goods *goodDetail;
     MBProgressHUD *hud;
+    NSString *attrs0Str;
+    NSString *attrs1Str;
 }
 
 @property (weak, nonatomic) Goods *good;
@@ -26,8 +28,17 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLb;
 @property (weak, nonatomic) IBOutlet UILabel *titleLb;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIView *baseInfoView;
+@property (weak, nonatomic) IBOutlet UILabel *stocksLb;
+@property (weak, nonatomic) IBOutlet UIView *attrs0View;
+@property (weak, nonatomic) IBOutlet UIView *attrs1View;
+@property (weak, nonatomic) IBOutlet UILabel *attrs0KeyLb;
+@property (weak, nonatomic) IBOutlet UIView *attrs0ValView;
+@property (weak, nonatomic) IBOutlet UILabel *attrs1KeyLb;
+@property (weak, nonatomic) IBOutlet UIView *attrs1ValView;
 
 - (IBAction)toShoppingCartAction:(id)sender;
 - (IBAction)buyAction:(id)sender;
+- (IBAction)selectTabAction:(id)sender;
 
 @end

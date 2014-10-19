@@ -856,6 +856,7 @@
     return businessGoods;
 }
 
+
 + (Goods *)readJsonStrToGoodsInfo:(NSString *)str
 {
     NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
@@ -865,6 +866,11 @@
         return nil;
     }
     Goods *goodInfo = [RMMapper objectWithClass:[Goods class] fromDictionary:goodJsondDic];
+    if ([goodInfo.attrs count] > 0) {
+        NSMutableArray *goodsAttrs = [RMMapper mutableArrayOfClass:[GoodsAttrs class]
+                                        fromArrayOfDictionary:[goodJsondDic objectForKey:@"attrs"]];
+        goodInfo.attrsArray = goodsAttrs;
+    }
     return goodInfo;
 }
 

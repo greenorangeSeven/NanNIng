@@ -23,4 +23,7 @@
 @property (nonatomic, retain) NSString *content;
 @property int distance;
 
+@property (nonatomic, retain) NSString *open_time;
+@property (nonatomic, retain) NSString *close_time;
+
 @end
