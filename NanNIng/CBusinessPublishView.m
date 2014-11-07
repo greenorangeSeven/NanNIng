@@ -14,7 +14,7 @@
 
 #define ORIGINAL_MAX_WIDTH 640.0f
 
-@interface CBusinessPublishView ()<UIActionSheetDelegate, UIPickerViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, VPImageCropperDelegate>
+@interface CBusinessPublishView ()<UIActionSheetDelegate, UIPickerViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, VPImageCropperDelegate,UIAlertViewDelegate>
 {
     UIImage *picimage;
 }
@@ -59,12 +59,33 @@
 
 - (void)publishAction
 {
+    if ([[[UserModel Instance] getUserValueForKey:@"house_number"] isEqualToString:@""]) {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"温馨提醒"
+                                                     message:@"您的个人信息不完善，暂未能发布信息，请完善个人信息！"
+                                                    delegate:self
+                                           cancelButtonTitle:@"确定"
+                                           otherButtonTitles:nil];
+        [av show];
+        return;
+    }
+    NSString *titleStr = self.titleLb.text;
+    NSString *priceStr = self.priceLb.text;
     NSString *descStr = self.describeField.text;
     NSString *phoneStr = self.phoneField.text;
     
+    if (titleStr == nil || [titleStr length] == 0)
+    {
+        [Tool showCustomHUD:@"请填写标题" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+        return;
+    }
     if (descStr == nil || [descStr length] == 0)
     {
         [Tool showCustomHUD:@"请填写内容描述" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+        return;
+    }
+    if (priceStr == nil || [priceStr length] == 0)
+    {
+        [Tool showCustomHUD:@"请填写价格" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
         return;
     }
     if (picimage == nil) {
@@ -84,7 +105,8 @@
     [request setPostValue:appkey forKey:@"APPKey"];
     [request setPostValue:[usermodel getUserValueForKey:@"id"] forKey:@"userid"];
     [request setPostValue:[usermodel getUserValueForKey:@"cid"] forKey:@"cid"];
-    
+    [request setPostValue:titleStr forKey:@"title"];
+    [request setPostValue:priceStr forKey:@"price"];
     [request setPostValue:[NSString stringWithFormat:@"%i",self.typeSegment.selectedSegmentIndex+1] forKey:@"catid"];
     [request setPostValue:descStr forKey:@"content"];
     [request setPostValue:phoneStr forKey:@"tel"];
@@ -108,6 +130,7 @@
     }
     self.navigationItem.rightBarButtonItem.enabled = YES;
 }
+
 - (void)requestSubmit:(ASIHTTPRequest *)request
 {
     if (request.hud)
@@ -163,16 +186,24 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     //用户是否已认证，已认证后才能报修
-    if ([[usermodel getUserValueForKey:@"cid"] isEqualToString:@""]) {
-        self.navigationItem.rightBarButtonItem.enabled = NO;
+    if ([[usermodel getUserValueForKey:@"house_number"] isEqualToString:@""]) {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"温馨提醒"
-                                                     message:@"您的个人信息不完善，暂未能提交信息，请完善个人信息！"
-                                                    delegate:nil
+                                                     message:@"您的个人信息不完善，暂未能发布信息，请完善个人信息！"
+                                                    delegate:self
                                            cancelButtonTitle:@"确定"
                                            otherButtonTitles:nil];
         [av show];
     }
-     [Tool roundTextView:self.describeField andBorderWidth:1 andCornerRadius:3.0];
+    [Tool roundTextView:self.describeField andBorderWidth:1 andCornerRadius:3.0];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        UserInfoView *userinfoView = [[UserInfoView alloc] init];
+        userinfoView.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:userinfoView animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning

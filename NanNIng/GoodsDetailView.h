@@ -12,16 +12,20 @@
 #import "FMDatabase.h"
 #import "FMDatabaseAdditions.h"
 #import "FMDatabaseQueue.h"
+#import "SGFocusImageFrame.h"
+#import "SGFocusImageItem.h"
 
-@interface GoodsDetailView : UIViewController<UIWebViewDelegate>
+@interface GoodsDetailView : UIViewController<UIWebViewDelegate,SGFocusImageFrameDelegate>
 {
     Goods *goodDetail;
     MBProgressHUD *hud;
-    NSString *attrs0Str;
-    NSString *attrs1Str;
+    SGFocusImageFrame *bannerView;
+    
+    NSMutableArray *attrsKeyArray;
+    NSMutableArray *attrsValArray;
 }
 
-@property (weak, nonatomic) Goods *good;
+@property (weak, nonatomic) NSString *goodId;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *picIv;
@@ -31,11 +35,11 @@
 @property (weak, nonatomic) IBOutlet UIView *baseInfoView;
 @property (weak, nonatomic) IBOutlet UILabel *stocksLb;
 @property (weak, nonatomic) IBOutlet UIView *attrs0View;
-@property (weak, nonatomic) IBOutlet UIView *attrs1View;
-@property (weak, nonatomic) IBOutlet UILabel *attrs0KeyLb;
-@property (weak, nonatomic) IBOutlet UIView *attrs0ValView;
-@property (weak, nonatomic) IBOutlet UILabel *attrs1KeyLb;
-@property (weak, nonatomic) IBOutlet UIView *attrs1ValView;
+//@property (weak, nonatomic) IBOutlet UIView *attrs1View;
+//@property (weak, nonatomic) IBOutlet UILabel *attrs0KeyLb;
+//@property (weak, nonatomic) IBOutlet UIView *attrs0ValView;
+//@property (weak, nonatomic) IBOutlet UILabel *attrs1KeyLb;
+//@property (weak, nonatomic) IBOutlet UIView *attrs1ValView;
 
 - (IBAction)toShoppingCartAction:(id)sender;
 - (IBAction)buyAction:(id)sender;

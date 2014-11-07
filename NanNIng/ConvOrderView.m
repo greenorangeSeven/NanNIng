@@ -7,6 +7,7 @@
 //
 
 #import "ConvOrderView.h"
+#import "RouteSearchView.h"
 
 @interface ConvOrderView ()
 
@@ -134,13 +135,25 @@
 
 - (IBAction)mapPointAction:(id)sender {
     if (_shop) {
+        
         CLLocationCoordinate2D coor;
         coor.longitude = [_shop.longitude doubleValue];
         coor.latitude = [_shop.latitude doubleValue];
-        StoreMapPointView *pointView = [[StoreMapPointView alloc] init];
-        pointView.storeCoor = coor;
-        pointView.storeTitle = _shop.title;
-        [self.navigationController pushViewController:pointView animated:YES];
+        if (self.mycoor.latitude > 0) {
+            RouteSearchView *routeSearch = [[RouteSearchView alloc] init];
+            routeSearch.startCoor = self.mycoor;
+            routeSearch.endCoor = coor;
+            routeSearch.storeTitle = _shop.title;
+            [self.navigationController pushViewController:routeSearch animated:YES];
+        }
+        else
+        {
+            StoreMapPointView *pointView = [[StoreMapPointView alloc] init];
+            pointView.storeCoor = coor;
+            pointView.storeTitle = _shop.title;
+            [self.navigationController pushViewController:pointView animated:YES];
+        }
+        
     }
 }
 @end

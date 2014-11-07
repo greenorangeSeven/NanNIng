@@ -40,6 +40,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *advIv;
 
+@property (weak, nonatomic) NSString *advId;
 @property (weak, nonatomic) NSString *typeStr;
 @property (weak, nonatomic) NSString *typeNameStr;
 

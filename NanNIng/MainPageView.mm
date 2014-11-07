@@ -70,15 +70,86 @@
     scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width, self.view.frame.size.height);
     hud = [[MBProgressHUD alloc] initWithView:self.view];
     [self initMainADV];
-    [self getInBoxRemind];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushNewsView:) name:Notification_pushNewsView object:nil];
+//    [self getInBoxRemind];
 }
+
+- (void)pushNewsView:(NSNotification *)notification
+{
+    NoticeFrameView *noticeFrame = [[NoticeFrameView alloc] init];
+    noticeFrame.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:noticeFrame animated:YES];
+}
+
+//1广告2商品3商家
+//- (void)initMainADV
+//{
+//    //如果有网络连接
+//    if ([UserModel Instance].isNetworkRunning) {
+//        //        [Tool showHUD:@"数据加载" andView:self.view andHUD:hud];
+//        NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&spaceid=2", api_base_url, api_getadv, appkey];
+//        NSString *cid = [[UserModel Instance] getUserValueForKey:@"cid"];
+//        if (cid != nil && [cid length] > 0) {
+//            [tempUrl appendString:[NSString stringWithFormat:@"&cid=%@", cid]];
+//        }
+//        NSString *url = [NSString stringWithString:tempUrl];
+//        [[AFOSCClient sharedClient]getPath:url parameters:Nil
+//                                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                                       @try {
+//                                           advDatas = [Tool readJsonStrToADV:operation.responseString];
+//                                           
+//                                           int length = [advDatas count];
+//                                           
+//                                           NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:length+2];
+//                                           if (length > 1)
+//                                           {
+//                                               Advertisement *adv = [advDatas objectAtIndex:length-1];
+//                                               SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:adv.pic tag:-1];
+//                                               [itemArray addObject:item];
+//                                           }
+//                                           for (int i = 0; i < length; i++)
+//                                           {
+//                                               Advertisement *adv = [advDatas objectAtIndex:i];
+//                                               SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:adv.pic tag:-1];
+//                                               [itemArray addObject:item];
+//                                               
+//                                           }
+//                                           //添加第一张图 用于循环
+//                                           if (length >1)
+//                                           {
+//                                               Advertisement *adv = [advDatas objectAtIndex:0];
+//                                               SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:adv.pic tag:-1];
+//                                               [itemArray addObject:item];
+//                                           }
+//                                           bannerView = [[SGFocusImageFrame alloc] initWithFrame:CGRectMake(0, 0, 320, 187) delegate:self imageItems:itemArray isAuto:NO];
+//                                           [bannerView scrollToIndex:0];
+//                                           [self.advIv addSubview:bannerView];
+//                                       }
+//                                       @catch (NSException *exception) {
+//                                           [NdUncaughtExceptionHandler TakeException:exception];
+//                                       }
+//                                       @finally {
+//                                           //                                           if (hud != nil) {
+//                                           //                                               [hud hide:YES];
+//                                           //                                           }
+//                                       }
+//                                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                                       if ([UserModel Instance].isNetworkRunning == NO) {
+//                                           return;
+//                                       }
+//                                       if ([UserModel Instance].isNetworkRunning) {
+//                                           [Tool ToastNotification:@"错误 网络无连接" andView:self.view andLoading:NO andIsBottom:NO];
+//                                       }
+//                                   }];
+//    }
+//}
 
 - (void)initMainADV
 {
     //如果有网络连接
     if ([UserModel Instance].isNetworkRunning) {
         //        [Tool showHUD:@"数据加载" andView:self.view andHUD:hud];
-        NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&spaceid=2", api_base_url, api_getadv, appkey];
+        NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&spaceid=2", api_base_url, api_getadv2, appkey];
         NSString *cid = [[UserModel Instance] getUserValueForKey:@"cid"];
         if (cid != nil && [cid length] > 0) {
             [tempUrl appendString:[NSString stringWithFormat:@"&cid=%@", cid]];
@@ -87,20 +158,20 @@
         [[AFOSCClient sharedClient]getPath:url parameters:Nil
                                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                        @try {
-                                           advDatas = [Tool readJsonStrToADV:operation.responseString];
+                                           advDatas = [Tool readJsonStrToADV2:operation.responseString];
                                            
                                            int length = [advDatas count];
                                            
                                            NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:length+2];
                                            if (length > 1)
                                            {
-                                               Advertisement *adv = [advDatas objectAtIndex:length-1];
+                                               Advertisement2 *adv = [advDatas objectAtIndex:length-1];
                                                SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:adv.pic tag:-1];
                                                [itemArray addObject:item];
                                            }
                                            for (int i = 0; i < length; i++)
                                            {
-                                               Advertisement *adv = [advDatas objectAtIndex:i];
+                                               Advertisement2 *adv = [advDatas objectAtIndex:i];
                                                SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:adv.pic tag:-1];
                                                [itemArray addObject:item];
                                                
@@ -108,7 +179,7 @@
                                            //添加第一张图 用于循环
                                            if (length >1)
                                            {
-                                               Advertisement *adv = [advDatas objectAtIndex:0];
+                                               Advertisement2 *adv = [advDatas objectAtIndex:0];
                                                SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:adv.pic tag:-1];
                                                [itemArray addObject:item];
                                            }
@@ -129,23 +200,56 @@
                                            return;
                                        }
                                        if ([UserModel Instance].isNetworkRunning) {
-                                           [Tool ToastNotification:@"错误 网络无连接" andView:self.view andLoading:NO andIsBottom:NO];
+//                                           [Tool ToastNotification:@"错误 网络无连接" andView:self.view andLoading:NO andIsBottom:NO];
                                        }
                                    }];
     }
 }
 
+
 //顶部图片滑动点击委托协议实现事件
 - (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame didSelectItem:(SGFocusImageItem *)item
 {
     NSLog(@"%s \n click===>%@",__FUNCTION__,item.title);
-    Advertisement *adv = (Advertisement *)[advDatas objectAtIndex:advIndex];
+    Advertisement2 *adv = (Advertisement2 *)[advDatas objectAtIndex:advIndex];
     if (adv) {
-        ADVDetailView *advDetail = [[ADVDetailView alloc] init];
-        advDetail.hidesBottomBarWhenPushed = YES;
-        advDetail.adv = adv;
-        [self.navigationController pushViewController:advDetail animated:YES];
+        if ([adv.type_id isEqualToString:@"1"]) {
+            ADVDetailView *advDetail = [[ADVDetailView alloc] init];
+            advDetail.hidesBottomBarWhenPushed = YES;
+            advDetail.adv = adv;
+            [self.navigationController pushViewController:advDetail animated:YES];
+        }
+        else if ([adv.type_id isEqualToString:@"2"])
+        {
+            GoodsDetailView *goodsDetail = [[GoodsDetailView alloc] init];
+            goodsDetail.goodId = adv.toid;
+            goodsDetail.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:goodsDetail animated:YES];
+        }
+        else if ([adv.type_id isEqualToString:@"3"])
+        {
+            [self pushViewToShopDetail:adv.toid];
+        }
     }
+}
+
+- (void)pushViewToShopDetail:(NSString *)shopId
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@?APPKey=%@&id=%@", api_base_url, api_shopinfo, appkey, shopId];
+    NSURL *url = [ NSURL URLWithString : urlStr];
+    // 构造 ASIHTTPRequest 对象
+    ASIHTTPRequest *request = [ ASIHTTPRequest requestWithURL :url];
+    // 开始同步请求
+    [request startSynchronous ];
+    NSError *error = [request error ];
+    assert (!error);
+    // 如果请求成功，返回 Response
+    NSString *response = [request responseString ];
+    Shop *shop = [Tool readJsonStrToShopinfo:response];
+    BusinessDetailView *businessDetailView = [[BusinessDetailView alloc] init];
+    businessDetailView.shop = shop;
+    businessDetailView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:businessDetailView animated:YES];
 }
 
 //顶部图片自动滑动委托协议实现事件
@@ -155,42 +259,42 @@
     advIndex = index;
 }
 
-- (void)getInBoxRemind
-{
-    if ([[UserModel Instance] isLogin]) {
-        //如果有网络连接
-        if ([UserModel Instance].isNetworkRunning) {
-            NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&userid=%@", api_base_url, api_getinboxremindy, appkey, [[UserModel Instance] getUserValueForKey:@"id"]];
-            NSString *cid = [[UserModel Instance] getUserValueForKey:@"cid"];
-            if (cid != nil && [cid length] > 0) {
-                [tempUrl appendString:[NSString stringWithFormat:@"&cid=%@", cid]];
-            }
-            NSString *url = [NSString stringWithString:tempUrl];
-            [[AFOSCClient sharedClient]getPath:url parameters:Nil
-                                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                           @try {
-                                               if (operation.responseString) {
-                                                   [[UserModel Instance] saveValue:operation.responseString ForKey:@"inboxnum"];
-                                               }
-                                               
-                                           }
-                                           @catch (NSException *exception) {
-                                               [NdUncaughtExceptionHandler TakeException:exception];
-                                           }
-                                           @finally {
-                                               
-                                           }
-                                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                           if ([UserModel Instance].isNetworkRunning == NO) {
-                                               return;
-                                           }
-                                           if ([UserModel Instance].isNetworkRunning) {
-                                               [Tool ToastNotification:@"错误 网络无连接" andView:self.view andLoading:NO andIsBottom:NO];
-                                           }
-                                       }];
-        }
-    }
-}
+//- (void)getInBoxRemind
+//{
+//    if ([[UserModel Instance] isLogin]) {
+//        //如果有网络连接
+//        if ([UserModel Instance].isNetworkRunning) {
+//            NSMutableString *tempUrl = [NSMutableString stringWithFormat:@"%@%@?APPKey=%@&userid=%@", api_base_url, api_getinboxremindy, appkey, [[UserModel Instance] getUserValueForKey:@"id"]];
+//            NSString *cid = [[UserModel Instance] getUserValueForKey:@"cid"];
+//            if (cid != nil && [cid length] > 0) {
+//                [tempUrl appendString:[NSString stringWithFormat:@"&cid=%@", cid]];
+//            }
+//            NSString *url = [NSString stringWithString:tempUrl];
+//            [[AFOSCClient sharedClient]getPath:url parameters:Nil
+//                                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                                           @try {
+//                                               if (operation.responseString) {
+//                                                   [[UserModel Instance] saveValue:operation.responseString ForKey:@"inboxnum"];
+//                                               }
+//                                               
+//                                           }
+//                                           @catch (NSException *exception) {
+//                                               [NdUncaughtExceptionHandler TakeException:exception];
+//                                           }
+//                                           @finally {
+//                                               
+//                                           }
+//                                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                                           if ([UserModel Instance].isNetworkRunning == NO) {
+//                                               return;
+//                                           }
+//                                           if ([UserModel Instance].isNetworkRunning) {
+////                                               [Tool ToastNotification:@"错误 网络无连接" andView:self.view andLoading:NO andIsBottom:NO];
+//                                           }
+//                                       }];
+//        }
+//    }
+//}
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -240,8 +344,9 @@
 - (IBAction)clickCityCulture:(UIButton *)sender
 {
     CityView *cityView = [[CityView alloc] init];
-    cityView.typeStr = @"1";
+    cityView.typeStr = @"3";
     cityView.typeNameStr = @"社区文化";
+    cityView.advId = @"9";
     cityView.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:cityView animated:YES];
 }
@@ -304,55 +409,6 @@
 
 - (IBAction)myAction:(id)sender {
     [Tool pushToMyView:self.navigationController];
-}
-
-- (IBAction)shareAction:(id)sender {
-    Advertisement *adv = [advDatas objectAtIndex:advIndex];
-    if (adv) {
-        NSString *shareStr = [Tool flattenHTML:adv.content];
-        NSDictionary *contentDic = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    shareStr , @"title",
-                                    shareStr, @"summary",
-                                    adv.pic, @"thumb",
-                                    nil];
-        [Tool shareAction:sender andShowView:self.view andContent:contentDic];
-    }
-}
-
-- (IBAction)advDetailAction:(id)sender {
-    Advertisement *adv = (Advertisement *)[advDatas objectAtIndex:advIndex];
-    if (adv) {
-        ADVDetailView *advDetail = [[ADVDetailView alloc] init];
-        advDetail.hidesBottomBarWhenPushed = YES;
-        advDetail.adv = adv;
-        [self.navigationController pushViewController:advDetail animated:YES];
-    }
-}
-
-- (IBAction)pointsAction:(id)sender {
-    Advertisement *adv = (Advertisement *)[advDatas objectAtIndex:advIndex];
-    if (adv) {
-        NSString *pointslUrl = [NSString stringWithFormat:@"%@%@?APPKey=%@&model=poster&id=%@", api_base_url, api_points, appkey, adv.id];
-        NSURL *url = [ NSURL URLWithString : pointslUrl];
-        // 构造 ASIHTTPRequest 对象
-        ASIHTTPRequest *request = [ ASIHTTPRequest requestWithURL :url];
-        // 开始同步请求
-        [request startSynchronous ];
-        NSError *error = [request error ];
-        assert (!error);
-        // 如果请求成功，返回 Response
-        NSString *response = [request responseString ];
-        NSData *data = [response dataUsingEncoding:NSUTF8StringEncoding];
-        NSError *err;
-        NSString *status = @"0";
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&err];
-        if (json) {
-            status = [json objectForKey:@"status"];
-            if ([status isEqualToString:@"1"]) {
-                adv.points = [NSString stringWithFormat:@"%d", [adv.points intValue] + 1];
-            }
-        }
-    }
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

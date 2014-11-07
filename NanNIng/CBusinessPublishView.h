@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface CBusinessPublishView : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *titleLb;
+@property (weak, nonatomic) IBOutlet UITextField *priceLb;
 @property (weak, nonatomic) IBOutlet UITextView *describeField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneField;
 @property (weak, nonatomic) IBOutlet UIButton *selectPhoneBtn;

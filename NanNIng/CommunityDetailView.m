@@ -86,6 +86,8 @@
     UITapGestureRecognizer *picTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickPicAction)];
 	[self.picIv addGestureRecognizer:picTap];
     
+    self.titleLb.text = self.commer.title;
+    self.priceLb.text = [NSString stringWithFormat:@"价格:%@", self.commer.price];;
     self.summaryLb.text = self.commer.content;
     self.summaryLb.frame = CGRectMake(self.summaryLb.frame.origin.x, self.summaryLb.frame.origin.y, self.summaryLb.frame.size.width, self.commer.contentHeight);
     

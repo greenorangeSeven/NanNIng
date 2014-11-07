@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Advertisement.h"
+#import "Advertisement2.h"
 
 @interface ADVDetailView : UIViewController<UIActionSheetDelegate>
 {
     MBProgressHUD *hud;
+    Advertisement *advInfo;
 }
 
-@property (weak, nonatomic) Advertisement *adv;
+@property (weak, nonatomic) Advertisement2 *adv;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end

@@ -93,11 +93,53 @@ BMKMapManager* _mapManager;
     [self addSkipBackupAttributeToItemAtURL:dbURLPath];
     [self addSkipBackupAttributeToPath:directory];
     
+    [BPush setupChannel:launchOptions]; // 必须
+    [BPush setDelegate:self]; // 必须。参数对象必须实现onMethod: response:方法，本示例中为self
+    // [BPush setAccessToken:@"3.ad0c16fa2c6aa378f450f54adb08039.2592000.1367133742.282335-602025"];  // 可选。api key绑定时不需要，也可在其它时机调用
+    [application registerForRemoteNotificationTypes:
+     UIRemoteNotificationTypeAlert
+     | UIRemoteNotificationTypeBadge
+     | UIRemoteNotificationTypeSound];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:self.tabBarController ];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    
+    [BPush registerDeviceToken:deviceToken]; // 必须
+    [BPush bindChannel]; // 必须。可以在其它时机调用，只有在该方法返回（通过onMethod:response:回调）绑定成功时，app才能接收到Push消息。一个app绑定成功至少一次即可（如果access token变更请重新绑定）。
+}
+
+// 必须，如果正确调用了setDelegate，在bindChannel之后，结果在这个回调中返回。
+// 若绑定失败，请进行重新绑定，确保至少绑定成功一次
+- (void) onMethod:(NSString*)method response:(NSDictionary*)data
+{
+    if ([BPushRequestMethod_Bind isEqualToString:method])
+    {
+        NSDictionary* res = [[NSDictionary alloc] initWithDictionary:data];
+        
+        NSString *appid = [res valueForKey:BPushRequestAppIdKey];
+        NSString *userid = [res valueForKey:BPushRequestUserIdKey];
+        NSString *channelid = [res valueForKey:BPushRequestChannelIdKey];
+        int returnCode = [[res valueForKey:BPushRequestErrorCodeKey] intValue];
+        NSString *requestid = [res valueForKey:BPushRequestRequestIdKey];
+    }
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    [BPush handleNotification:userInfo]; // 可选
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    //userInfo包含推送消息值及消息附加值
+    [self.tabBarController setSelectedIndex:0];
+    [[NSNotificationCenter defaultCenter] postNotificationName:Notification_pushNewsView object:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -108,8 +150,7 @@ BMKMapManager* _mapManager;
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -305,8 +346,8 @@ BMKMapManager* _mapManager;
      连接新浪微博开放平台应用以使用相关功能，此应用需要引用SinaWeiboConnection.framework
      http://open.weibo.com上注册新浪微博开放平台应用，并将相关信息填写到以下字段
      **/
-    [ShareSDK connectSinaWeiboWithAppKey:@"1434319718"
-                               appSecret:@"c1affea9508aa4d0f8ac8d580d092592"
+    [ShareSDK connectSinaWeiboWithAppKey:@"776664121"
+                               appSecret:@"6bc2b43a27d9fa93307bced928a1f461"
                              redirectUri:@"www.nnzhsq.com"];
     
     /**
@@ -317,7 +358,7 @@ BMKMapManager* _mapManager;
      **/
     [ShareSDK connectTencentWeiboWithAppKey:@"801543497"
                                   appSecret:@"be5369e855e8cd050fc1407c554027c2"
-                                redirectUri:@"www.nnzhsq.com"
+                                redirectUri:@"http://www.nnzhsq.com"
                                    wbApiCls:[WeiboApi class]];
     /**
      连接微信应用以使用相关功能，此应用需要引用WeChatConnection.framework和微信官方SDK

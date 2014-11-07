@@ -17,11 +17,13 @@
 @property (nonatomic, retain) NSArray *photos;
 @property (weak, nonatomic) Commercial *commer;
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLb;
 @property (weak, nonatomic) IBOutlet UIImageView *picIv;
 @property (weak, nonatomic) IBOutlet UILabel *summaryLb;
 @property (weak, nonatomic) IBOutlet UILabel *hitsLb;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *priceLb;
 
 //异步加载图片专用
 @property (nonatomic, retain) NSMutableDictionary *imageDownloadsInProgress;

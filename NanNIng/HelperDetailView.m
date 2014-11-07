@@ -66,7 +66,7 @@
 
 - (void)loadData
 {
-    NSString *html = [NSString stringWithFormat:@"<body>%@<div id='web_title'>%@</div>%@<div id='web_img'><img src='%@' height='250' width='250' hspace='35'/></div></body><div id='web_body'>%@</div></body>", HTML_Style, info.title, HTML_Splitline, info.thumb,info.content];
+    NSString *html = [NSString stringWithFormat:@"<body>%@<div id='web_title'>%@</div>%@<div id='web_img'><img src='%@' width='300' hspace='5'/></div></body><div id='web_body'>%@</div></body>", HTML_Style, info.title, HTML_Splitline, info.thumb,info.content];
     NSString *result = [Tool getHTMLString:html];
     [self.webView loadHTMLString:result baseURL:nil];
     
@@ -86,7 +86,7 @@
     //如果有网络连接
     if ([UserModel Instance].isNetworkRunning)
     {
-        NSString *url = [NSString stringWithFormat:@"%@%@?APPKey=%@&id=%@", api_base_url, api_get_help_info, appkey,_art.id];
+        NSString *url = [NSString stringWithFormat:@"%@%@?APPKey=%@&id=%@", api_base_url, api_get_help_info, appkey,_artId];
         [[AFOSCClient sharedClient]getPath:url parameters:Nil
                                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                        @try {

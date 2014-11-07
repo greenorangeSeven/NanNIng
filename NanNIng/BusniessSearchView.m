@@ -106,17 +106,20 @@
                                            noDataLabel.hidden = YES;
                                            shopData = [Tool readJsonStrToShopArray:operation.responseString];
                                            if (shopData != nil && [shopData count] > 0) {
-                                               //计算当前位置与商家距离
-                                               for (int i = 0; i < [shopData count]; i++) {
-                                                   Shop *temp =[shopData objectAtIndex:(i)];
-                                                   CLLocationCoordinate2D coor;
-                                                   coor.longitude = [temp.longitude doubleValue];
-                                                   coor.latitude = [temp.latitude doubleValue];
-                                                   BMKMapPoint shopPoint = BMKMapPointForCoordinate(coor);
-                                                   CLLocationDistance distanceTmp = BMKMetersBetweenMapPoints(_myPoint,shopPoint);
-                                                   temp.distance =(int)distanceTmp;
-                                               }
-                                               [self startArraySort:@"distance" isAscending:YES];
+                                               if(_myPoint.x > 0)
+                                               {
+                                                   //计算当前位置与商家距离
+                                                   for (int i = 0; i < [shopData count]; i++) {
+                                                       Shop *temp =[shopData objectAtIndex:(i)];
+                                                       CLLocationCoordinate2D coor;
+                                                       coor.longitude = [temp.longitude doubleValue];
+                                                       coor.latitude = [temp.latitude doubleValue];
+                                                       BMKMapPoint shopPoint = BMKMapPointForCoordinate(coor);
+                                                       CLLocationDistance distanceTmp = BMKMetersBetweenMapPoints(_myPoint,shopPoint);
+                                                       temp.distance =(int)distanceTmp;
+                                                   }
+                                                   [self startArraySort:@"distance" isAscending:YES];
+                                               }  
                                            }
                                            else
                                            {
@@ -165,19 +168,25 @@
         
         EGOImageView *imageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"loadingpic4.png"]];
         imageView.imageURL = [NSURL URLWithString:shop.logo];
-        imageView.frame = CGRectMake(0.0f, 0.0f, 116.0f, 61.0f);
+        imageView.frame = CGRectMake(0.0f, 0.0f, 116.0f, 76.0f);
         [cell.logo addSubview:imageView];
         
         cell.shopTitleLb.text = shop.name;
         cell.summaryLb.text = shop.summary;
         
-        if (shop.distance > 1000) {
-            float disf = ((float)shop.distance)/1000;
-            cell.distanceLb.text = [NSString stringWithFormat:@"距您%.2f千米", disf];
+        if (shop.distance == 0) {
+            cell.distanceLb.hidden = YES;
         }
         else
         {
-            cell.distanceLb.text = [NSString stringWithFormat:@"距您%d米", shop.distance];
+            if (shop.distance > 1000) {
+                float disf = ((float)shop.distance)/1000;
+                cell.distanceLb.text = [NSString stringWithFormat:@"距您%.2f千米", disf];
+            }
+            else
+            {
+                cell.distanceLb.text = [NSString stringWithFormat:@"距您%d米", shop.distance];
+            }
         }
         [Tool roundView:cell.cellbackgroudView andCornerRadius:3.0];
         
@@ -201,13 +210,19 @@
         cell.adressLb.text = [NSString stringWithFormat:@"地址:%@", shop.address];;
         cell.telLb.text = [NSString stringWithFormat:@"电话:%@", shop.tel];
         
-        if (shop.distance > 1000) {
-            float disf = ((float)shop.distance)/1000;
-            cell.distanceLb.text = [NSString stringWithFormat:@"距您%.2f千米", disf];
+        if (shop.distance == 0) {
+            cell.distanceLb.hidden = YES;
         }
         else
         {
-            cell.distanceLb.text = [NSString stringWithFormat:@"距您%d米", shop.distance];
+            if (shop.distance > 1000) {
+                float disf = ((float)shop.distance)/1000;
+                cell.distanceLb.text = [NSString stringWithFormat:@"距您%.2f千米", disf];
+            }
+            else
+            {
+                cell.distanceLb.text = [NSString stringWithFormat:@"距您%d米", shop.distance];
+            }
         }
         [Tool roundView:cell.cellbackgroudView andCornerRadius:3.0];
         

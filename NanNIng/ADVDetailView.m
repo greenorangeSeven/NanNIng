@@ -49,7 +49,7 @@
 }
 
 - (IBAction)shareAction:(id)sender {
-    NSString *shareStr = [Tool flattenHTML:_adv.content];
+    NSString *shareStr = [Tool flattenHTML:advInfo.content];
     NSDictionary *contentDic = [NSDictionary dictionaryWithObjectsAndKeys:
                                 shareStr , @"title",
                                 shareStr, @"summary",
@@ -62,14 +62,12 @@
 {
     [super viewDidLoad];
     //WebView的背景颜色去除
+    hud = [[MBProgressHUD alloc] initWithView:self.view];
+    
     [Tool clearWebViewBackground:self.webView];
     //    [self.webView setScalesPageToFit:YES];
     [self.webView sizeToFit];
-    
-    NSString *html = [NSString stringWithFormat:@"<body>%@<div id='web_title'>%@</div>%@<div id='web_body'>%@</div></body>", HTML_Style, self.adv.title, HTML_Splitline, self.adv.content];
-    NSString *result = [Tool getHTMLString:html];
-    [self.webView loadHTMLString:result baseURL:nil];
-    
+
     self.webView.opaque = YES;
     for (UIView *subView in [self.webView subviews])
     {
@@ -80,11 +78,47 @@
     }
     
     self.view.backgroundColor = [Tool getBackgroundColor];
+    
+    [self getAdvInfo];
+    
     //适配iOS7uinavigationbar遮挡的问题
     if(IS_IOS7)
     {
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+}
+
+- (void)getAdvInfo
+{
+    //如果有网络连接
+    [Tool showHUD:@"努力加载中" andView:self.view andHUD:hud];
+    if ([UserModel Instance].isNetworkRunning) {
+        NSString *url = [NSString stringWithFormat:@"%@%@?APPKey=%@&id=%@", api_base_url, api_getadvinfo, appkey, _adv.id];
+        [[AFOSCClient sharedClient]getPath:url parameters:Nil
+                                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                       @try {
+                                           advInfo = [Tool readJsonStrToAdvertisementinfo:operation.responseString];
+                                           NSString *html = [NSString stringWithFormat:@"<body>%@<div id='web_title'>%@</div>%@<div id='web_body'>%@</div></body>", HTML_Style, self.adv.title, HTML_Splitline, advInfo.content];
+                                           NSString *result = [Tool getHTMLString:html];
+                                           [self.webView loadHTMLString:result baseURL:nil];
+                                       }
+                                       @catch (NSException *exception) {
+                                           [NdUncaughtExceptionHandler TakeException:exception];
+                                       }
+                                       @finally {
+                                           if (hud != nil) {
+                                               [hud hide:YES];
+                                           }
+                                       }
+                                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                       if ([UserModel Instance].isNetworkRunning == NO) {
+                                           return;
+                                       }
+                                       if ([UserModel Instance].isNetworkRunning) {
+                                           [Tool ToastNotification:@"错误 网络无连接" andView:self.view andLoading:NO andIsBottom:NO];
+                                       }
+                                   }];
     }
 }
 

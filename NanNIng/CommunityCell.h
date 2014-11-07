@@ -20,5 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *telBtn;
 @property (weak, nonatomic) IBOutlet UIButton *delBtn;
 @property (weak, nonatomic) IBOutlet UILabel *guanzhuLb;
+@property (weak, nonatomic) IBOutlet UILabel *priceLb;
 
 @end

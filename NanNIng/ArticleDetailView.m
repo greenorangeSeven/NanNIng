@@ -64,7 +64,7 @@
     //    [self.webView setScalesPageToFit:YES];
     [self.webView sizeToFit];
     
-    NSString *html = [NSString stringWithFormat:@"<body>%@<div id='web_title'>%@</div>%@<div id='web_body'>%@</div></body>", HTML_Style, self.art.title, HTML_Splitline, self.art.content];
+    NSString *html = [NSString stringWithFormat:@"<body>%@<div id='web_title'>%@</div>%@<div id='web_img'><img src='%@' width='300' hspace='5'/></div><div id='web_body'>%@</div></body>", HTML_Style, self.art.title, HTML_Splitline, self.art.thumb, self.art.content];
     NSString *result = [Tool getHTMLString:html];
     [self.webView loadHTMLString:result baseURL:nil];
     

@@ -14,6 +14,7 @@
 #import "SGFocusImageFrame.h"
 #import "SGFocusImageItem.h"
 #import "ADVDetailView.h"
+#import "Advertisement2.h"
 #import "CommunityView.h"
 
 @interface MainPageView : UIViewController<SGFocusImageFrameDelegate, UIActionSheetDelegate>

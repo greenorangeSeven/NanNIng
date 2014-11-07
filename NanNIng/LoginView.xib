@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -53,12 +53,24 @@
                             <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" secureTextEntry="YES"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5bU-YS-Tkm">
-                            <rect key="frame" x="62" y="269" width="196" height="40"/>
+                            <rect key="frame" x="62" y="258" width="196" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                             <state key="normal" title="立  即  登  录" backgroundImage="savebtnbg.png"/>
                             <connections>
                                 <action selector="loginAction:" destination="-1" eventType="touchUpInside" id="VC2-xv-Q0S"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Iwv-Z3-iTV">
+                            <rect key="frame" x="196" y="323" width="104" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="忘记密码">
+                                <color key="titleColor" red="0.070588235289999995" green="0.56470588239999997" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="setPwdAction:" destination="-1" eventType="touchUpInside" id="FwL-P0-Ik5"/>
                             </connections>
                         </button>
                     </subviews>

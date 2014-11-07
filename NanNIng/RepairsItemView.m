@@ -76,8 +76,11 @@
                                            }
                                            if([repairsItemData count] > 0)
                                            {
-                                               RepairsItem *item = [repairsItemData objectAtIndex:0];
-                                               self.timeLb.text = [Tool TimestampToDateStr:item.time andFormatterStr:@"YYYY年MM月dd日 HH:mm"];
+//                                               RepairsItem *item = [repairsItemData objectAtIndex:0];
+                                               NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                                               [formatter setDateFormat:@"YYYY年MM月dd日"];
+                                               NSString *timestamp = [formatter stringFromDate:[NSDate date]];
+                                               self.timeLb.text = timestamp;
                                            }
                                            [self.repairItemTable reloadData];
                                        }

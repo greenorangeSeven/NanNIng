@@ -36,15 +36,18 @@
 #import "AFXMLRequestOperation.h"
 
 #define appkey @"Pyb0BO876aoMFb7b0JFaF5y9cHt80QSm"
-#define api_base_url @"http://121.40.84.65:8900/api"
+#define api_base_url @"http://appm.nnzhsq.com/api"
 #define api_register @"/register"
 #define api_login @"/login"
+#define api_changepwd @"/changePwd"
+#define api_resetpwd @"/resetPwd"
 #define api_getuserinfo @"/get_member_info"
 #define api_getregion @"/get_region"
 #define api_community @"/community"
 #define api_editinfo @"/edit_member_info"
 #define api_upload_avatar @"/upload_avatar"
 #define api_getadv @"/get_adv"
+#define api_getadv2 @"/get_app_home_adv"
 #define api_getadvinfo @"/get_adv_info"
 #define api_getnoticelist @"/get_notice_list"
 #define api_getactivitylist @"/get_activity_list"
@@ -63,6 +66,7 @@
 #define api_getAlipay @"/getAlipay"
 #define api_getinboxremindy @"/inbox_remind"
 #define api_shoplist @"/get_shops_list"
+#define api_shopinfo @"/get_shops_info"
 #define api_shopcate @"/get_shops_cate"
 #define api_shopsgoods @"/get_shops_goods"
 #define api_tjgoods @"/get_tj_goods"
@@ -91,23 +95,23 @@
 #define api_send_order @"/send_order"
 
 //商品付款返回url
-#define api_goods_return @"http://121.40.84.65:8900/api/order_returnurl"
+#define api_goods_return @"http://appm.nnzhsq.com/api/order_returnurl"
 //商品付款通知url
-#define api_goods_notify @"http://121.40.84.65:8900/api/order_notifyurl"
+#define api_goods_notify @"http://appm.nnzhsq.com/api/order_notifyurl"
 
 //物业缴费订单提交地址
 #define api_pay_property_fee @"/pay_property_fee"
 //物业缴费返回url
-#define api_property_return @"http://121.40.84.65:8900/api/property_returnurl"
+#define api_property_return @"http://appm.nnzhsq.com/api/property_returnurl"
 //物业缴费通知url
-#define api_property_notify @"http://121.40.84.65:8900/api/property_notifyurl"
+#define api_property_notify @"http://appm.nnzhsq.com/api/property_notifyurl"
 
 //停车缴费订单提交地址
 #define api_pay_park_fee @"/pay_park_fee"
 //停车缴费返回url
-#define api_park_return @"http://121.40.84.65:8900/api/park_returnurl"
+#define api_park_return @"http://appm.nnzhsq.com/api/park_returnurl"
 //停车缴费通知url
-#define api_park_notify @"http://121.40.84.65:8900/api/park_notifyurl"
+#define api_park_notify @"http://appm.nnzhsq.com/api/park_notifyurl"
 
 //物业缴费历史
 #define api_pay_property_fee_record @"/pay_property_fee_record"
@@ -149,12 +153,12 @@
 #define SecurityCode @"SecurityCode"
 #define ReSetSecurityCode @"ReSetSecurityCode"
 
-#define SMSURL @"http://61.156.38.47:8080/CPDXT/SendSms"
-#define SMSCorpID @"nnzhsq"
-#define SMSPWD @"a654321"
+#define SMSURL @"http://sms.3g6.com.cn/ws/Send.aspx"
+#define SMSCorpID @"LPZSDK01542"
+#define SMSPWD @"wdl@771"
 
-
-#define servicephone @"4008974367"
+#define servicephone @"0771-5907008"
+#define servicephone2 @"4008974367"
 
 #define SettingTableIdentifier @"SettingTableIdentifier"
 #define MyRepairsCellIdentifier @"MyRepairsCellIdentifier"
@@ -181,6 +185,7 @@
 #define Notification_RefreshSetting @"Notification_RefreshSetting"
 #define Notification_RefreshBBS @"Notification_RefreshBBS"
 #define Notification_ADDBBS @"Notification_ADDBBS"
+#define Notification_pushNewsView @"Notification_pushNewsView"
 
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 

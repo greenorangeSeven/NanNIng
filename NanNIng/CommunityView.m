@@ -255,10 +255,11 @@
             
             Commercial *commer = [commercials objectAtIndex:[indexPath row]];
             
-            cell.commNameLb.text = commer.comm_name;
+            cell.commNameLb.text = commer.title;
             cell.contentLb.text = commer.content;
             commer.timeStr = [Tool intervalSinceNow:[Tool TimestampToDateStr:commer.addtime andFormatterStr:@"yyyy-MM-dd HH:mm:ss"]];
             cell.timeLb.text = commer.timeStr;
+            cell.priceLb.text = [NSString stringWithFormat:@"价格:%@", commer.price];
             
             [cell.telBtn addTarget:self action:@selector(telAction:) forControlEvents:UIControlEventTouchUpInside];
             cell.telBtn.tag = [indexPath row];

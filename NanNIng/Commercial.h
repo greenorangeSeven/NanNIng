@@ -20,6 +20,8 @@
 @property (nonatomic, retain) NSString *status;
 @property (nonatomic, retain) NSString *comm_name;
 @property (nonatomic, retain) NSString *hits;
+@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSString *price;
 
 @property int contentHeight;
 

@@ -25,6 +25,7 @@
     MBProgressHUD *hud;
     NSString *catid;
     UILabel *noDataLabel;
+    CLLocationCoordinate2D mycoor;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

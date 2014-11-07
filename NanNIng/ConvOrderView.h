@@ -18,6 +18,7 @@
 }
 
 @property (weak, nonatomic) Shop *shop;
+@property  CLLocationCoordinate2D mycoor;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLb;

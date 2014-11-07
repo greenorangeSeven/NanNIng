@@ -29,11 +29,11 @@
         UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
         self.navigationItem.leftBarButtonItem = btnBack;
         
-        UIButton *rBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 58, 26)];
-        [rBtn addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
-        [rBtn setImage:[UIImage imageNamed:@"conv_order_share"] forState:UIControlStateNormal];
-        UIBarButtonItem *btnShare = [[UIBarButtonItem alloc]initWithCustomView:rBtn];
-        self.navigationItem.rightBarButtonItem = btnShare;
+//        UIButton *rBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 58, 26)];
+//        [rBtn addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
+//        [rBtn setImage:[UIImage imageNamed:@"conv_order_share"] forState:UIControlStateNormal];
+//        UIBarButtonItem *btnShare = [[UIBarButtonItem alloc]initWithCustomView:rBtn];
+//        self.navigationItem.rightBarButtonItem = btnShare;
     }
     return self;
 }
@@ -65,7 +65,7 @@
     self.navigationItem.titleView = titleLabel;
     if (self.catalog == 1) {
         self.webView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.frame.size.height);
-        self.menuView.hidden = YES;
+//        self.menuView.hidden = YES;
         titleLabel.text = @"通知详情";
     }
     else if (self.catalog == 2)

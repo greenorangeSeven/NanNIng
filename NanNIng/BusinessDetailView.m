@@ -36,7 +36,7 @@
 
 - (void)mapPointAction
 {
-    if (_shop) {
+    if (shop2) {
         CLLocationCoordinate2D coor;
         coor.longitude = [_shop.longitude doubleValue];
         coor.latitude = [_shop.latitude doubleValue];
@@ -78,7 +78,7 @@
         UIBarButtonItem *btnSearch = [[UIBarButtonItem alloc]initWithCustomView:rBtn];
         self.navigationItem.rightBarButtonItem = btnSearch;
     }
-    
+    shop2 = self.shop;
     [self showCloseShopAlert];
 
     self.collectionView.dataSource = self;
@@ -295,7 +295,7 @@
     Goods *good = (Goods *)[goods objectAtIndex:[indexPath row]];
     if (good) {
         GoodsDetailView *goodsDetail = [[GoodsDetailView alloc] init];
-        goodsDetail.good = good;
+        goodsDetail.goodId = good.id;
         [self.navigationController pushViewController:goodsDetail animated:YES];
     }
 }

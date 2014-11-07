@@ -28,6 +28,7 @@
     NSString *orderByStr;
     SGFocusImageFrame *bannerView;
     int couponIndex;
+    Shop *shop2;
 }
 
 @property (weak, nonatomic) Shop *shop;

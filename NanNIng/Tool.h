@@ -25,6 +25,7 @@
 #import "BuildModel.h"
 #import "HouseModel.h"
 #import "Advertisement.h"
+#import "Advertisement2.h"
 #import "News.h"
 #import "RepairsCate.h"
 #import "RepairsList.h"
@@ -145,6 +146,8 @@
 + (NSMutableArray *)readJsonStrToCommunityArray:(NSString *)str;
 + (NSMutableArray *)readJsonStrToCommunityArray2:(NSString *)str;
 + (NSMutableArray *)readJsonStrToADV:(NSString *)str;
++ (NSMutableArray *)readJsonStrToADV2:(NSString *)str;
++ (Advertisement *)readJsonStrToAdvertisementinfo:(NSString *)str;
 + (NSMutableArray *)readJsonStrToNews:(NSString *)str;
 + (NSMutableArray *)readJsonStrToRepairsCate:(NSString *)str;
 + (NSMutableArray *)readJsonStrToMyRepairs:(NSString *)str;
@@ -153,6 +156,7 @@
 + (NSMutableArray *)readJsonStrToPropertyCarFeeInfo:(NSString *)str;
 + (NSMutableArray *)readJsonStrToMyOutBox:(NSString *)str;
 + (NSMutableArray *)readJsonStrToShopArray:(NSString *)str;
++ (Shop *)readJsonStrToShopinfo:(NSString *)str;
 + (NSMutableArray *)readJsonStrToShopsCate:(NSString *)str;
 + (BusinessGoods *)readJsonStrBusinessGoods:(NSString *)str;
 + (NSMutableArray *)readJsonStrToVolnArray:(NSString *)str;

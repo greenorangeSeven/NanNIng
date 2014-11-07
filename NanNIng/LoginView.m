@@ -7,6 +7,7 @@
 //
 
 #import "LoginView.h"
+#import "ReSetPwdView.h"
 
 @interface LoginView ()
 
@@ -82,6 +83,11 @@
     [Tool showHUD:@"登录中..." andView:self.view andHUD:request.hud];
 }
 
+- (IBAction)setPwdAction:(id)sender {
+    ReSetPwdView *resetView = [[ReSetPwdView alloc] init];
+    [self.navigationController pushViewController:resetView animated:YES];
+}
+
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
     if (request.hud) {
@@ -138,6 +144,9 @@
             [userModel saveValue:user.checkin ForKey:@"checkin"];
             [userModel saveValue:user.comm_name ForKey:@"comm_name"];
             [userModel saveValue:user.build_name ForKey:@"build_name"];
+            
+            NSArray *tags = [[NSArray alloc] initWithObjects:user.cid, [NSString stringWithFormat:@"userid%@", user.id], nil];
+            [BPush setTags:tags];
             
             UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"登录提醒"
                                                          message:errorMessage

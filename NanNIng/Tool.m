@@ -202,7 +202,7 @@
     }
     else if (cha/86400>1&&cha/864000<1)
     {
-        timeString = [NSString stringWithFormat:@"%f", cha/86400];
+        timeString = [NSString stringWithFormat:@"%f", cha/86400 + 1];
         timeString = [timeString substringToIndex:timeString.length-7];
         timeString=[NSString stringWithFormat:@"%@天前", timeString];
     }
@@ -441,7 +441,7 @@
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithUrl:[shareContent objectForKey:@"thumb"]]
                                                 title:[shareContent objectForKey:@"title"]
-                                                  url:@"http://www.nnzhsq.com"
+                                                  url:@"http://www.nnzhsq.com/app/"
                                           description:[shareContent objectForKey:@"summary"]
                                             mediaType:SSPublishContentMediaTypeNews];
     
@@ -710,6 +710,30 @@
     return advs;
 }
 
++ (Advertisement *)readJsonStrToAdvertisementinfo:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *advJsonDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( advJsonDic == nil ) {
+        return nil;
+    }
+    Advertisement *advInfo = [RMMapper objectWithClass:[Advertisement class] fromDictionary:advJsonDic];
+    return advInfo;
+}
+
++ (NSMutableArray *)readJsonStrToADV2:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *advJsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( advJsonArray == nil || [advJsonArray count] <= 0) {
+        return nil;
+    }
+    NSMutableArray *advs = [RMMapper mutableArrayOfClass:[Advertisement2 class] fromArrayOfDictionary:advJsonArray];
+    return advs;
+}
+
 + (NSMutableArray *)readJsonStrToNews:(NSString *)str
 {
     NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
@@ -804,6 +828,18 @@
     }
     NSMutableArray *shops = [RMMapper mutableArrayOfClass:[Shop class] fromArrayOfDictionary:shopJsonArray];
     return shops;
+}
+
++ (Shop *)readJsonStrToShopinfo:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *shopJsonDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( shopJsonDic == nil ) {
+        return nil;
+    }
+    Shop *shopInfo = [RMMapper objectWithClass:[Shop class] fromDictionary:shopJsonDic];
+    return shopInfo;
 }
 
 + (NSMutableArray *)readJsonStrToShopsCate:(NSString *)str

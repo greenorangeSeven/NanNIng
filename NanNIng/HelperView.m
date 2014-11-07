@@ -9,6 +9,7 @@
 #import "HelperView.h"
 #import "HelperCell.h"
 #import "HelperDetailView.h"
+#import "ADVDetailView.h"
 
 @interface HelperView ()<SGFocusImageFrameDelegate, UIActionSheetDelegate,UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate,MBProgressHUDDelegate,IconDownloaderDelegate>
 
@@ -93,28 +94,28 @@
         [[AFOSCClient sharedClient]getPath:url parameters:Nil
                                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                        @try {
-                                           advDatas = [Tool readJsonStrToADV:operation.responseString];
+                                           advDatas = [Tool readJsonStrToCitys:operation.responseString];
                                            
                                            int length = [advDatas count];
                                            NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:length+2];
                                            if (length > 1)
                                            {
-                                               Advertisement *adv = [advDatas objectAtIndex:length-1];
-                                               SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:adv.pic tag:-1];
+                                               Citys *adv = [advDatas objectAtIndex:length-1];
+                                               SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:adv.thumb tag:-1];
                                                [itemArray addObject:item];
                                            }
                                            for (int i = 0; i < length; i++)
                                            {
-                                               Advertisement *adv = [advDatas objectAtIndex:i];
-                                               SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:adv.pic tag:-1];
+                                               Citys *adv = [advDatas objectAtIndex:i];
+                                               SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:adv.thumb tag:-1];
                                                [itemArray addObject:item];
                                                
                                            }
                                            //添加第一张图 用于循环
                                            if (length >1)
                                            {
-                                               Advertisement *adv = [advDatas objectAtIndex:0];
-                                               SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:adv.pic tag:-1];
+                                               Citys *adv = [advDatas objectAtIndex:0];
+                                               SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithTitle:@"" image:adv.thumb tag:-1];
                                                [itemArray addObject:item];
                                            }
                                            bannerView = [[SGFocusImageFrame alloc] initWithFrame:CGRectMake(0, 0, 320, 200) delegate:self imageItems:itemArray isAuto:NO];
@@ -144,6 +145,14 @@
 - (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame didSelectItem:(SGFocusImageItem *)item
 {
     NSLog(@"%s \n click===>%@",__FUNCTION__,item.title);
+    Citys *adv = (Citys *)[advDatas objectAtIndex:advIndex];
+    if (adv) {
+        HelperDetailView *helperDetailView = [[HelperDetailView alloc] init];
+        helperDetailView.artId = adv.id;
+        [self.navigationController pushViewController:helperDetailView animated:YES];
+        
+    }
+    
 }
 
 //顶部图片自动滑动委托协议实现事件
@@ -421,7 +430,7 @@
         if (art)
         {
             HelperDetailView *helperDetailView = [[HelperDetailView alloc] init];
-            helperDetailView.art = art;
+            helperDetailView.artId = art.id;
             [self.navigationController pushViewController:helperDetailView animated:YES];
         }
     }

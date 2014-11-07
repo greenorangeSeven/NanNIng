@@ -31,13 +31,23 @@
     usermodel = [UserModel Instance];
     
     //用户是否已认证，已认证后才能报修
-    if (![[usermodel getUserValueForKey:@"checkin"] isEqualToString:@"1"]) {
+//    if (![[usermodel getUserValueForKey:@"checkin"] isEqualToString:@"1"]) {
+//        self.submitBtn.enabled = NO;
+//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"温馨提醒"
+//                                                     message:@"您的入住信息暂未审核通过，暂未能提交报修信息，请联系客户服务中心！"
+//                                                    delegate:nil
+//                                           cancelButtonTitle:@"确定"
+//                                           otherButtonTitles:nil];
+//        [av show];
+//    }
+    
+    if ([[usermodel getUserValueForKey:@"house_number"] isEqualToString:@""]) {
         self.submitBtn.enabled = NO;
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"温馨提醒"
-                                                     message:@"您的入住信息暂未审核通过，暂未能提交报修信息，请联系客户服务中心！"
-                                                    delegate:nil
-                                           cancelButtonTitle:@"确定"
-                                           otherButtonTitles:nil];
+                                                     message:@"您的个人信息不完善，暂未能在线报修，请完善个人信息！"
+                                                    delegate:self
+                                           cancelButtonTitle:nil
+                                           otherButtonTitles:@"确定", nil];
         [av show];
     }
     

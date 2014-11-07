@@ -209,6 +209,9 @@
                 [userModel saveValue:selectHouseStr ForKey:@"house_number"];
                 [userModel saveValue:[userModel getUserValueForKey:@"selectCommunityStr"] ForKey:@"comm_name"];
                 [userModel saveValue:[userModel getUserValueForKey:@"selectBuildStr"] ForKey:@"build_name"];
+                
+                NSArray *tags = [[NSArray alloc] initWithObjects:[userModel getUserValueForKey:@"cid"], [NSString stringWithFormat:@"userid%@", [userModel getUserValueForKey:@"id"]], nil];
+                [BPush setTags:tags];
             }
             
             [userModel saveValue:self.nameTf.text ForKey:@"name"];

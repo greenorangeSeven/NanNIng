@@ -22,7 +22,7 @@
 @property (nonatomic, retain) NSString *store_name;
 @property (nonatomic, retain) NSString *tel;
 @property (nonatomic, retain) NSString *business_id;
-
+@property (nonatomic, retain) NSArray *piclist;
 @property (nonatomic, retain) NSNumber *number;
 
 //detail

@@ -160,12 +160,14 @@
             while ([goodSet next]) {
                 OrderGood *good = [[OrderGood alloc] init];
                 good.goods_id = [NSNumber numberWithInt:[[goodSet stringForColumn:@"goodid"] intValue]];
-                good.title = [goodSet stringForColumn:@"title"];
+//                good.title = [goodSet stringForColumn:@"title"];
+                good.title = [NSString stringWithFormat:@"%@  %@", [goodSet stringForColumn:@"title"],  [goodSet stringForColumn:@"title"]];
                 good.price = [goodSet stringForColumn:@"price"];
                 good.quantity = [NSNumber numberWithInteger:[goodSet intForColumn:@"number"]];
                 businessAmount += [good.price floatValue] * [goodSet intForColumn:@"number"];
                 [goodArray addObject:good];
             }
+            self.countPrice = businessAmount;
             business.goodlist = goodArray;
             business.amount = [NSNumber numberWithFloat:businessAmount];
             [orderBusinessArray addObject:business];
@@ -188,7 +190,7 @@
         good.quantity = [[NSNumber alloc] initWithInt:1];
         businessAmount += [good.price floatValue];
         [goodArray addObject:good];
-        
+        self.countPrice = businessAmount;
         business.goodlist = goodArray;
         business.amount = [NSNumber numberWithFloat:businessAmount];
         [orderBusinessArray addObject:business];
@@ -260,7 +262,8 @@
             pro.out_no = num.serial_no;
             pro.subject = @"订单付款";
             pro.body = @"订单在线付款";
-            pro.price = 0.01;
+//            pro.price = 0.01;
+            pro.price = self.countPrice;
 //            pro.partnerID = [usermodel getUserValueForKey:@"DEFAULT_PARTNER"];
 //            pro.partnerPrivKey = [usermodel getUserValueForKey:@"PRIVATE"];
 //            pro.sellerID = [usermodel getUserValueForKey:@"DEFAULT_SELLER"];
