@@ -39,19 +39,19 @@
     [super viewDidLoad];
     usermodel = [UserModel Instance];
     //用户是否已认证，已认证后才能报修
-//    if (![[usermodel getUserValueForKey:@"checkin"] isEqualToString:@"1"]) {
-//        self.payfeeBtn.enabled = NO;
-//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"温馨提醒"
-//                                                     message:@"您的入住信息暂未审核通过，暂未能在线缴费，请联系客户服务中心！"
-//                                                    delegate:nil
-//                                           cancelButtonTitle:@"确定"
-//                                           otherButtonTitles:nil];
-//        [av show];
-//    }
-//    else
-//    {
-//        [self getPropertyFee];
-//    }
+    //    if (![[usermodel getUserValueForKey:@"checkin"] isEqualToString:@"1"]) {
+    //        self.payfeeBtn.enabled = NO;
+    //        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"温馨提醒"
+    //                                                     message:@"您的入住信息暂未审核通过，暂未能在线缴费，请联系客户服务中心！"
+    //                                                    delegate:nil
+    //                                           cancelButtonTitle:@"确定"
+    //                                           otherButtonTitles:nil];
+    //        [av show];
+    //    }
+    //    else
+    //    {
+    //        [self getPropertyFee];
+    //    }
     if ([[usermodel getUserValueForKey:@"house_number"] isEqualToString:@""]) {
         self.payfeeBtn.enabled = NO;
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"温馨提醒"
@@ -115,7 +115,7 @@
                                            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                                            [formatter setDateFormat:@"YYYY-MM"];
                                            NSString *currentMonthStr = [formatter stringFromDate:[NSDate date]];
-                                           int currentMonth = [[currentMonthStr substringWithRange:NSMakeRange(0, 4)] intValue] *12 + [[currentMonthStr substringWithRange:NSMakeRange(5, 2)] intValue];         
+                                           int currentMonth = [[currentMonthStr substringWithRange:NSMakeRange(0, 4)] intValue] *12 + [[currentMonthStr substringWithRange:NSMakeRange(5, 2)] intValue];
                                            if ( (currentMonth - endFeeMonth) > 0)
                                            {
                                                arrearage = monthFee * (currentMonth - endFeeMonth);
@@ -182,17 +182,37 @@
 }
 
 - (IBAction)showPresetAction:(id)sender {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n\n"
-                                                             delegate:self
-                                                    cancelButtonTitle:nil
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"确  定", nil];
-    actionSheet.tag = 0;
-    [actionSheet showInView:self.parentView];
-    UIPickerView *catePicker = [[UIPickerView alloc] init];
-    catePicker.delegate = self;
-    catePicker.showsSelectionIndicator = YES;
-    [actionSheet addSubview:catePicker];
+    if (IS_IOS8) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@""
+                                                                       message:@"\n\n\n\n\n\n\n\n\n\n"
+                                                                preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIPickerView *catePicker = [[UIPickerView alloc] init];
+        catePicker.delegate = self;
+        catePicker.showsSelectionIndicator = YES;
+        [alert.view addSubview:catePicker];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定"
+                                                  style:UIAlertActionStyleDefault
+                                                handler:^(UIAlertAction *action) {
+                                                    
+                                                }]];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    else
+    {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n\n"
+                                                                 delegate:self
+                                                        cancelButtonTitle:nil
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:@"确  定", nil];
+        actionSheet.tag = 0;
+        [actionSheet showInView:self.parentView];
+        UIPickerView *catePicker = [[UIPickerView alloc] init];
+        catePicker.delegate = self;
+        catePicker.showsSelectionIndicator = YES;
+        [actionSheet addSubview:catePicker];
+    }
 }
 
 #pragma mark 付费按钮事件处理
@@ -267,12 +287,12 @@
             pro.out_no = num.trade_no;
             pro.subject = @"南宁微动力物业费";
             pro.body = @"南宁微动力物业费在线缴纳";
-//            pro.price = 0.01;
+            //            pro.price = 0.01;
             double sumMoney = arrearage + presetValue;
             pro.price = sumMoney;
-//            pro.partnerID = [usermodel getUserValueForKey:@"DEFAULT_PARTNER"];
-//            pro.partnerPrivKey = [usermodel getUserValueForKey:@"PRIVATE"];
-//            pro.sellerID = [usermodel getUserValueForKey:@"DEFAULT_SELLER"];
+            //            pro.partnerID = [usermodel getUserValueForKey:@"DEFAULT_PARTNER"];
+            //            pro.partnerPrivKey = [usermodel getUserValueForKey:@"PRIVATE"];
+            //            pro.sellerID = [usermodel getUserValueForKey:@"DEFAULT_SELLER"];
             pro.partnerID = [usermodel getDefaultPartner];
             pro.partnerPrivKey = [usermodel getPrivate];
             pro.sellerID = [usermodel getSeller];

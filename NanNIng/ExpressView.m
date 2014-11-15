@@ -51,7 +51,7 @@
     }
     [Tool roundView:self.bgView andCornerRadius:3.0];
     if (!IS_IPHONE_5) {
-        self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width, self.view.frame.size.height - 40);
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width, self.view.frame.size.height);
     }
     
     if ([[[UserModel Instance] getUserValueForKey:@"house_number"] isEqualToString:@""]) {
@@ -78,7 +78,7 @@
     self.inboxNumLb.text = [usermodel getUserValueForKey:@"inboxnum"];
     //邮件提醒事件注册
     UITapGestureRecognizer *inboxTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(inboxClick)];
-	[self.inboxBtnLb addGestureRecognizer:inboxTap];
+    [self.inboxBtnLb addGestureRecognizer:inboxTap];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -189,17 +189,37 @@
 }
 
 - (IBAction)selectTypeAction:(id)sender {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n\n"
-                                                             delegate:self
-                                                    cancelButtonTitle:nil
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"确  定", nil];
-    actionSheet.tag = 0;
-    [actionSheet showInView:self.view];
-    UIPickerView *catePicker = [[UIPickerView alloc] init];
-    catePicker.delegate = self;
-    catePicker.showsSelectionIndicator = YES;
-    [actionSheet addSubview:catePicker];
+    if (IS_IOS8) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@""
+                                                                       message:@"\n\n\n\n\n\n\n\n\n\n"
+                                                                preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIPickerView *catePicker = [[UIPickerView alloc] init];
+        catePicker.delegate = self;
+        catePicker.showsSelectionIndicator = YES;
+        [alert.view addSubview:catePicker];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定"
+                                                  style:UIAlertActionStyleDefault
+                                                handler:^(UIAlertAction *action) {
+                                                    
+                                                }]];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    else
+    {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n\n"
+                                                                 delegate:self
+                                                        cancelButtonTitle:nil
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:@"确  定", nil];
+        actionSheet.tag = 0;
+        [actionSheet showInView:self.view];
+        UIPickerView *catePicker = [[UIPickerView alloc] init];
+        catePicker.delegate = self;
+        catePicker.showsSelectionIndicator = YES;
+        [actionSheet addSubview:catePicker];
+    }
 }
 
 - (IBAction)telAction:(id)sender {

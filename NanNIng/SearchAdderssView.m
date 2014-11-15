@@ -119,6 +119,27 @@
         return;
     }
     
+    if (IS_IOS8) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@""
+                                                                       message:@"\n\n\n\n\n\n\n\n\n\n"
+                                                                preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIPickerView *communityPicker = [[UIPickerView alloc] init];
+        communityPicker.delegate = self;
+        communityPicker.showsSelectionIndicator = YES;
+        communityPicker.tag = 1;
+        [alert.view addSubview:communityPicker];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定"
+                                                  style:UIAlertActionStyleDefault
+                                                handler:^(UIAlertAction *action) {
+                                                    self.selectBuildBtn.enabled = YES;
+                                                    [self.selectCommunityBtn setTitle:selectCommunityStr forState:UIControlStateNormal];
+                                                }]];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    else
+    {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n\n\n"
                                                              delegate:self
                                                     cancelButtonTitle:nil
@@ -131,6 +152,7 @@
     communityPicker.showsSelectionIndicator = YES;
     communityPicker.tag = 1;
     [actionSheet addSubview:communityPicker];
+    }
 }
 
 - (IBAction)selectBuildAction:(id)sender {
@@ -140,6 +162,27 @@
         selectBuildId = build.id;
         selectBuildStr = build.name;
     }
+    if (IS_IOS8) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@""
+                                                                       message:@"\n\n\n\n\n\n\n\n\n\n"
+                                                                preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIPickerView *buildPicker = [[UIPickerView alloc] init];
+        buildPicker.delegate = self;
+        buildPicker.showsSelectionIndicator = YES;
+        buildPicker.tag = 2;
+        [alert.view addSubview:buildPicker];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定"
+                                                  style:UIAlertActionStyleDefault
+                                                handler:^(UIAlertAction *action) {
+                                                    self.selectHouseBtn.enabled = YES;
+                                                    [self.selectBuildBtn setTitle:selectBuildStr forState:UIControlStateNormal];
+                                                }]];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    else
+    {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n\n\n"
                                                              delegate:self
                                                     cancelButtonTitle:nil
@@ -152,6 +195,7 @@
     buildPicker.showsSelectionIndicator = YES;
     buildPicker.tag = 2;
     [actionSheet addSubview:buildPicker];
+    }
 }
 
 - (IBAction)selectHouseAction:(id)sender {
@@ -160,6 +204,26 @@
         selectHouseId = house.id;
         selectHouseStr = house.house_number;
     }
+    if (IS_IOS8) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@""
+                                                                       message:@"\n\n\n\n\n\n\n\n\n\n"
+                                                                preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIPickerView *housePicker = [[UIPickerView alloc] init];
+        housePicker.delegate = self;
+        housePicker.showsSelectionIndicator = YES;
+        housePicker.tag = 3;
+        [alert.view addSubview:housePicker];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定"
+                                                  style:UIAlertActionStyleDefault
+                                                handler:^(UIAlertAction *action) {
+                                                    [self.selectHouseBtn setTitle:selectHouseStr forState:UIControlStateNormal];
+                                                }]];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    else
+    {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n\n\n"
                                                              delegate:self
                                                     cancelButtonTitle:nil
@@ -172,6 +236,7 @@
     housePicker.showsSelectionIndicator = YES;
     housePicker.tag = 3;
     [actionSheet addSubview:housePicker];
+    }
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
