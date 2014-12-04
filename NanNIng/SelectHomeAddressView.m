@@ -219,18 +219,18 @@
     }
     else
     {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n\n"
-                                                             delegate:self
-                                                    cancelButtonTitle:nil
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"确  定", nil];
-    actionSheet.tag = 1;
-    [actionSheet showInView:self.view];
-    UIPickerView *communityPicker = [[UIPickerView alloc] init];
-    communityPicker.delegate = self;
-    communityPicker.showsSelectionIndicator = YES;
-    communityPicker.tag = 1;
-    [actionSheet addSubview:communityPicker];
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n\n"
+                                                                 delegate:self
+                                                        cancelButtonTitle:nil
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:@"确  定", nil];
+        actionSheet.tag = 1;
+        [actionSheet showInView:self.view];
+        UIPickerView *communityPicker = [[UIPickerView alloc] init];
+        communityPicker.delegate = self;
+        communityPicker.showsSelectionIndicator = YES;
+        communityPicker.tag = 1;
+        [actionSheet addSubview:communityPicker];
     }
 }
 
@@ -262,18 +262,18 @@
     }
     else
     {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n\n"
-                                                             delegate:self
-                                                    cancelButtonTitle:nil
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"确  定", nil];
-    actionSheet.tag = 2;
-    [actionSheet showInView:self.view];
-    UIPickerView *buildPicker = [[UIPickerView alloc] init];
-    buildPicker.delegate = self;
-    buildPicker.showsSelectionIndicator = YES;
-    buildPicker.tag = 2;
-    [actionSheet addSubview:buildPicker];
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n\n"
+                                                                 delegate:self
+                                                        cancelButtonTitle:nil
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:@"确  定", nil];
+        actionSheet.tag = 2;
+        [actionSheet showInView:self.view];
+        UIPickerView *buildPicker = [[UIPickerView alloc] init];
+        buildPicker.delegate = self;
+        buildPicker.showsSelectionIndicator = YES;
+        buildPicker.tag = 2;
+        [actionSheet addSubview:buildPicker];
     }
 }
 
@@ -303,18 +303,18 @@
     }
     else
     {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n\n"
-                                                             delegate:self
-                                                    cancelButtonTitle:nil
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"确  定", nil];
-    actionSheet.tag = 3;
-    [actionSheet showInView:self.view];
-    UIPickerView *housePicker = [[UIPickerView alloc] init];
-    housePicker.delegate = self;
-    housePicker.showsSelectionIndicator = YES;
-    housePicker.tag = 3;
-    [actionSheet addSubview:housePicker];
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n\n"
+                                                                 delegate:self
+                                                        cancelButtonTitle:nil
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:@"确  定", nil];
+        actionSheet.tag = 3;
+        [actionSheet showInView:self.view];
+        UIPickerView *housePicker = [[UIPickerView alloc] init];
+        housePicker.delegate = self;
+        housePicker.showsSelectionIndicator = YES;
+        housePicker.tag = 3;
+        [actionSheet addSubview:housePicker];
     }
 }
 
