@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 BMKMapManager* _mapManager;
 
@@ -17,6 +18,9 @@ BMKMapManager* _mapManager;
 @synthesize shopCarPage;
 @synthesize tabBarController;
 @synthesize cityPage;
+@synthesize appId, channelId, userId;
+
+#define SUPPORT_IOS8 0
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -93,13 +97,21 @@ BMKMapManager* _mapManager;
     [self addSkipBackupAttributeToItemAtURL:dbURLPath];
     [self addSkipBackupAttributeToPath:directory];
     
-    [BPush setupChannel:launchOptions]; // 必须
-    [BPush setDelegate:self]; // 必须。参数对象必须实现onMethod: response:方法，本示例中为self
-    // [BPush setAccessToken:@"3.ad0c16fa2c6aa378f450f54adb08039.2592000.1367133742.282335-602025"];  // 可选。api key绑定时不需要，也可在其它时机调用
-    [application registerForRemoteNotificationTypes:
-     UIRemoteNotificationTypeAlert
-     | UIRemoteNotificationTypeBadge
-     | UIRemoteNotificationTypeSound];
+    [BPush setupChannel:launchOptions];
+    [BPush setDelegate:self];
+    
+    [application setApplicationIconBadgeNumber:0];
+#if SUPPORT_IOS8
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        UIUserNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:myTypes categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    }else
+#endif
+    {
+        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
+    }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:self.tabBarController ];
@@ -108,38 +120,61 @@ BMKMapManager* _mapManager;
     return YES;
 }
 
+#if SUPPORT_IOS8
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    //register to receive notifications
+    [application registerForRemoteNotifications];
+}
+#endif
+
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     
-    [BPush registerDeviceToken:deviceToken]; // 必须
-    [BPush bindChannel]; // 必须。可以在其它时机调用，只有在该方法返回（通过onMethod:response:回调）绑定成功时，app才能接收到Push消息。一个app绑定成功至少一次即可（如果access token变更请重新绑定）。
+    NSLog(@"test:%@",deviceToken);
+    [BPush registerDeviceToken: deviceToken];
 }
 
-// 必须，如果正确调用了setDelegate，在bindChannel之后，结果在这个回调中返回。
-// 若绑定失败，请进行重新绑定，确保至少绑定成功一次
-- (void) onMethod:(NSString*)method response:(NSDictionary*)data
-{
-    if ([BPushRequestMethod_Bind isEqualToString:method])
-    {
-        NSDictionary* res = [[NSDictionary alloc] initWithDictionary:data];
-        
+- (void) onMethod:(NSString*)method response:(NSDictionary*)data {
+    NSLog(@"On method:%@", method);
+    NSLog(@"data:%@", [data description]);
+    NSDictionary* res = [[NSDictionary alloc] initWithDictionary:data];
+    if ([BPushRequestMethod_Bind isEqualToString:method]) {
         NSString *appid = [res valueForKey:BPushRequestAppIdKey];
         NSString *userid = [res valueForKey:BPushRequestUserIdKey];
         NSString *channelid = [res valueForKey:BPushRequestChannelIdKey];
+        //NSString *requestid = [res valueForKey:BPushRequestRequestIdKey];
         int returnCode = [[res valueForKey:BPushRequestErrorCodeKey] intValue];
-        NSString *requestid = [res valueForKey:BPushRequestRequestIdKey];
+        
+        if (returnCode == BPushErrorCode_Success) {
+            // 在内存中备份，以便短时间内进入可以看到这些值，而不需要重新bind
+            self.appId = appid;
+            self.channelId = channelid;
+            self.userId = userid;
+        }
+    } else if ([BPushRequestMethod_Unbind isEqualToString:method]) {
+        int returnCode = [[res valueForKey:BPushRequestErrorCodeKey] intValue];
+
     }
 }
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-{
-    [BPush handleNotification:userInfo]; // 可选
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    //userInfo包含推送消息值及消息附加值
-    [self.tabBarController setSelectedIndex:0];
-    [[NSNotificationCenter defaultCenter] postNotificationName:Notification_pushNewsView object:nil];
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"Receive Notify: %@", [userInfo JSONString]);
+    NSString *alert = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+    if (application.applicationState == UIApplicationStateActive) {
+        // Nothing to do if applicationState is Inactive, the iOS already displayed an alert view.
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Did receive a Remote Notification"
+                                                            message:[NSString stringWithFormat:@"The application received this remote notification while it was running:\n%@", alert]
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+//        [alertView show];
+    }
+    [application setApplicationIconBadgeNumber:0];
+    
+    [BPush handleNotification:userInfo];
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -274,69 +309,30 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
     setxattr([path fileSystemRepresentation], "com.apple.MobileBackup", &b, 1, 0, 0);
 }
 
-
-//支付宝独立客户端回调函数
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    NSString * query = [[url query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"uoe:%@",query);
-	[self parse:url application:application];
-	return YES;
-}
-
-- (void)parse:(NSURL *)url application:(UIApplication *)application {
-    
-    //结果处理
-    AlixPayResult* result = [self handleOpenURL:url];
-    
-	if (result)
-    {
-		
-		if (result.statusCode == 9000)
-        {
-			/*
-			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
-			 */
-            
-            //交易成功
-            //UserModel *userModel = [UserModel Instance];
-            NSString* key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB";
-            id<DataVerifier> verifier;
-            verifier = CreateRSADataVerifier(key);
-            if ([verifier verifyString:result.resultString withSign:result.signString])
-            {
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"buyOK" object:nil];
-            }
-            
-        }
-        else
-        {
-            //交易失败
-        }
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    //如果极简 SDK 不可用,会跳转支付宝钱包进行支付,需要将支付宝钱包的支付结果回传给 SDK
+    if ([url.host isEqualToString:@"safepay"]) {
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic)
+         {
+             NSString *resultState = resultDic[@"resultStatus"];
+             if([resultState isEqualToString:ORDER_PAY_OK])
+             {
+                 [[NSNotificationCenter defaultCenter] postNotificationName:ORDER_PAY_NOTIC object:nil];
+             }
+         }];
     }
-    else
-    {
-        //失败
+    if ([url.host isEqualToString:@"platformapi"])
+    {//支付宝钱包快登授权返回 authCode
+        [[AlipaySDK defaultService] processAuthResult:url standbyCallback:^(NSDictionary *resultDic)
+         {
+             NSString *resultState = resultDic[@"resultStatus"];
+             if([resultState isEqualToString:ORDER_PAY_OK])
+             {
+                 [[NSNotificationCenter defaultCenter] postNotificationName:ORDER_PAY_NOTIC object:nil];
+             }
+         }];
     }
-    
-}
-
-- (AlixPayResult *)resultFromURL:(NSURL *)url {
-	NSString * query = [[url query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-#if ! __has_feature(objc_arc)
-    return [[[AlixPayResult alloc] initWithString:query] autorelease];
-#else
-	return [[AlixPayResult alloc] initWithString:query];
-#endif
-}
-
-- (AlixPayResult *)handleOpenURL:(NSURL *)url {
-	AlixPayResult * result = nil;
-	
-	if (url != nil && [[url host] compare:@"safepay"] == 0) {
-		result = [self resultFromURL:url];
-	}
-    
-	return result;
+    return YES;
 }
 
 //初始化分享

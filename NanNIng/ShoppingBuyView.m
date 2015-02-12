@@ -18,6 +18,7 @@
 #import "PrintObject.h"
 #import "PayOrder.h"
 #import "AlipayUtils.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface ShoppingBuyView () <UIAlertViewDelegate>
 
@@ -72,7 +73,7 @@
 
 - (void)buyOK
 {
-   
+    
     FMDatabase* database=[FMDatabase databaseWithPath:[Tool databasePath]];
     if (![database open]) {
         NSLog(@"Open database failed");
@@ -98,7 +99,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     
-   [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -160,7 +161,7 @@
             while ([goodSet next]) {
                 OrderGood *good = [[OrderGood alloc] init];
                 good.goods_id = [NSNumber numberWithInt:[[goodSet stringForColumn:@"goodid"] intValue]];
-//                good.title = [goodSet stringForColumn:@"title"];
+                //                good.title = [goodSet stringForColumn:@"title"];
                 good.title = [NSString stringWithFormat:@"%@  %@", [goodSet stringForColumn:@"title"],  [goodSet stringForColumn:@"title"]];
                 good.price = [goodSet stringForColumn:@"price"];
                 good.quantity = [NSNumber numberWithInteger:[goodSet intForColumn:@"number"]];
@@ -262,16 +263,25 @@
             pro.out_no = num.serial_no;
             pro.subject = @"订单付款";
             pro.body = @"订单在线付款";
-//            pro.price = 0.01;
+            //            pro.price = 0.01;
             pro.price = self.countPrice;
-//            pro.partnerID = [usermodel getUserValueForKey:@"DEFAULT_PARTNER"];
-//            pro.partnerPrivKey = [usermodel getUserValueForKey:@"PRIVATE"];
-//            pro.sellerID = [usermodel getUserValueForKey:@"DEFAULT_SELLER"];
+            //            pro.partnerID = [usermodel getUserValueForKey:@"DEFAULT_PARTNER"];
+            //            pro.partnerPrivKey = [usermodel getUserValueForKey:@"PRIVATE"];
+            //            pro.sellerID = [usermodel getUserValueForKey:@"DEFAULT_SELLER"];
             pro.partnerID = [usermodel getDefaultPartner];
             pro.partnerPrivKey = [usermodel getPrivate];
             pro.sellerID = [usermodel getSeller];
             
-            [AlipayUtils doPay:pro NotifyURL:api_goods_notify AndScheme:@"NanNIngAlipay" seletor:nil target:nil];
+            NSString *orderString = [AlipayUtils getPayStr:pro NotifyURL:api_goods_notify];
+            [[AlipaySDK defaultService] payOrder:orderString fromScheme:@"NanNIngAlipay" callback:^(NSDictionary *resultDic)
+             {
+                 NSString *resultState = resultDic[@"resultStatus"];
+                 if([resultState isEqualToString:ORDER_PAY_OK])
+                 {
+                     [self buyOK];
+                 }
+             }];
+            
         }
             break;
         case 0:

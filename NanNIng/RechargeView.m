@@ -119,7 +119,7 @@
 - (IBAction)shenfenzhengAction:(id)sender {
     RechargeDetailView *detailView = [[RechargeDetailView alloc] init];
     detailView.titleStr = @"身份证";
-    detailView.urlStr = @"http://m.46644.com/tool/idcard/?tpltype=weixin";
+    detailView.urlStr = @"http://idquery.duapp.com/index.php?mobi=true&bd_ts=3723632&bd_framework=1&bd_vip=1&bd_source_light=101283";
     [self.navigationController pushViewController:detailView animated:YES];
 }
 

@@ -149,6 +149,11 @@
 //社区服务
 #define api_get_services_list @"/get_services_list"
 
+//订单支付通知
+#define ORDER_PAY_NOTIC @"ORDER_PAY_NOTIC"
+//订单支付成功状态码
+#define ORDER_PAY_OK @"9000"
+
 #define AreaListKey @"AreList"
 #define SecurityCode @"SecurityCode"
 #define ReSetSecurityCode @"ReSetSecurityCode"

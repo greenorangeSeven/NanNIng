@@ -7,14 +7,11 @@
 //
 
 #import "StewardFeeView.h"
-#import "DataSigner.h"
-#import "AlixPayResult.h"
-#import "DataVerifier.h"
-#import "AlixPayOrder.h"
 #import "AlipayUtils.h"
 #import "PayOrder.h"
 #import "OrdersNum.h"
 #import "FeeHistoryView.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface StewardFeeView ()
 
@@ -298,7 +295,16 @@
             pro.partnerPrivKey = [usermodel getPrivate];
             pro.sellerID = [usermodel getSeller];
             
-            [AlipayUtils doPay:pro NotifyURL:api_property_notify AndScheme:@"NanNIngAlipay" seletor:nil target:nil];
+            NSString *orderString = [AlipayUtils getPayStr:pro NotifyURL:api_property_notify];
+            
+            [[AlipaySDK defaultService] payOrder:orderString fromScheme:@"NanNIngAlipay" callback:^(NSDictionary *resultDic)
+             {
+                 NSString *resultState = resultDic[@"resultStatus"];
+                 if([resultState isEqualToString:ORDER_PAY_OK])
+                 {
+                     [self updatePayedTable];
+                 }
+             }];
         }
             break;
         case 0:
@@ -307,6 +313,12 @@
         }
             break;
     }
+}
+
+#pragma mark 刷新列表(当程序支付时在后台被kill掉时供appdelegate调用)
+- (void)updatePayedTable
+{
+    [Tool showCustomHUD:@"支付成功" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:2];
 }
 
 #pragma -mark 显示我的缴费历史

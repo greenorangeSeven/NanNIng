@@ -14,14 +14,13 @@
 #import "SettingView.h"
 #import "CityPageView.h"
 #import "ShoppingCartView.h"
-
 #import "BMapKit.h"
 #import <sys/xattr.h>
 #import "WXApi.h"
 #import "WeiboApi.h"
-#import "AlixPayResult.h"
-#import "DataVerifier.h"
 #import "BPush.h"
+#import "JSONKit.h"
+#import "OpenUDID.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, BMKGeneralDelegate>
 
@@ -33,5 +32,9 @@
 @property (strong, nonatomic) LifePageView *lifePage;
 @property (strong, nonatomic) CityPageView *cityPage;
 @property (strong, nonatomic) ShoppingCartView *shopCarPage;
+
+@property (strong, nonatomic) NSString *appId;
+@property (strong, nonatomic) NSString *channelId;
+@property (strong, nonatomic) NSString *userId;
 
 @end

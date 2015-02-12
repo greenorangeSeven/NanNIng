@@ -10,6 +10,7 @@
 #import "PayOrder.h"
 #import "AlipayUtils.h"
 #import "FeeHistoryView.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface ParkFeeView ()
 {
@@ -45,7 +46,7 @@
     faceEGOImageView.frame = CGRectMake(0.0f, 0.0f, 50.0f, 50.0f);
     [self.faceIv addSubview:faceEGOImageView];
     [self getParkFee];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlertView) name:Notification_ShowPackAlertView object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlertView) name:Notification_ShowPackAlertView object:nil];
 }
 
 - (void)getParkFee
@@ -56,7 +57,7 @@
         [[AFOSCClient sharedClient]getPath:url parameters:Nil
                                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                        @try {
-//                                           PropertyFeeInfo *feeInfo = [Tool readJsonStrToPropertyFeeInfo:operation.responseString];
+                                           //                                           PropertyFeeInfo *feeInfo = [Tool readJsonStrToPropertyFeeInfo:operation.responseString];
                                            NSData *data = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
                                            NSError *error;
                                            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
@@ -260,17 +261,25 @@
             pro.out_no = num.trade_no;
             pro.subject = @"南宁微动力停车费";
             pro.body = @"南宁微动力停车费在线缴纳";
-//            pro.price = 0.01;
+            //            pro.price = 0.01;
             double sumMoney = shouldMoney + presetMoney;
             pro.price = sumMoney;
-//            pro.partnerID = [usermodel getUserValueForKey:@"DEFAULT_PARTNER"];
-//            pro.partnerPrivKey = [usermodel getUserValueForKey:@"PRIVATE"];
-//            pro.sellerID = [usermodel getUserValueForKey:@"DEFAULT_SELLER"];
+            //            pro.partnerID = [usermodel getUserValueForKey:@"DEFAULT_PARTNER"];
+            //            pro.partnerPrivKey = [usermodel getUserValueForKey:@"PRIVATE"];
+            //            pro.sellerID = [usermodel getUserValueForKey:@"DEFAULT_SELLER"];
             pro.partnerID = [usermodel getDefaultPartner];
             pro.partnerPrivKey = [usermodel getPrivate];
             pro.sellerID = [usermodel getSeller];
             
-            [AlipayUtils doPay:pro NotifyURL:api_park_notify AndScheme:@"NanNIngAlipay" seletor:nil target:nil];
+            NSString *orderString = [AlipayUtils getPayStr:pro NotifyURL:api_park_notify];
+            [[AlipaySDK defaultService] payOrder:orderString fromScheme:@"NanNIngAlipay" callback:^(NSDictionary *resultDic)
+             {
+                 NSString *resultState = resultDic[@"resultStatus"];
+                 if([resultState isEqualToString:ORDER_PAY_OK])
+                 {
+                     [self updatePayedTable];
+                 }
+             }];
         }
             break;
         case 0:
@@ -279,6 +288,12 @@
         }
             break;
     }
+}
+
+#pragma mark 刷新列表(当程序支付时在后台被kill掉时供appdelegate调用)
+- (void)updatePayedTable
+{
+    [Tool showCustomHUD:@"支付成功" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:2];
 }
 
 #pragma -mark 显示我的缴费历史
