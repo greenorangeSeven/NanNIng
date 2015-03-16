@@ -75,16 +75,16 @@
     if ([self.commer.thumb count] >= 1) {
         thumbStr = [self.commer.thumb objectAtIndex:0];
     }
-//    EGOImageView *imageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"nopic4.png"]];
-//    imageView.imageURL = [NSURL URLWithString:thumbStr];
-//    imageView.frame = CGRectMake(0.0f, 0.0f, 208.0f, 177.0f);
-//    [self.picIv addSubview:imageView];
+    //    EGOImageView *imageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"nopic4.png"]];
+    //    imageView.imageURL = [NSURL URLWithString:thumbStr];
+    //    imageView.frame = CGRectMake(0.0f, 0.0f, 208.0f, 177.0f);
+    //    [self.picIv addSubview:imageView];
     
     self.picIv.image = self.commer.imgData;
     
     //点击弹出事件注册
     UITapGestureRecognizer *picTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickPicAction)];
-	[self.picIv addGestureRecognizer:picTap];
+    [self.picIv addGestureRecognizer:picTap];
     
     self.titleLb.text = self.commer.title;
     self.priceLb.text = [NSString stringWithFormat:@"价格:%@", self.commer.price];;
@@ -243,70 +243,89 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return replyArray.count;
+    if([replyArray count] == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return replyArray.count;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if([replyArray count] == 0)
+    {
+        return 40.0;
+    }
+    else
+    {
     CommercialReply *reply = [replyArray objectAtIndex:[indexPath row]];
     int height = 82 + reply.contentHeight - 21;
     return height;
+    }
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    CommunityReplyCell *cell = [tableView dequeueReusableCellWithIdentifier:CommunityReplyCellIdentifier];
-    if (!cell)
-    {
-        NSArray *objects = [[NSBundle mainBundle] loadNibNamed:@"CommunityReplyCell" owner:self options:nil];
-        for (NSObject *o in objects)
+    if ([replyArray count] > 0) {
+        CommunityReplyCell *cell = [tableView dequeueReusableCellWithIdentifier:CommunityReplyCellIdentifier];
+        if (!cell)
         {
-            if ([o isKindOfClass:[CommunityReplyCell class]])
+            NSArray *objects = [[NSBundle mainBundle] loadNibNamed:@"CommunityReplyCell" owner:self options:nil];
+            for (NSObject *o in objects)
             {
-                cell = (CommunityReplyCell *)o;
-                break;
-            }
-        }
-    }
-    CommercialReply *bbs = [replyArray objectAtIndex:[indexPath row]];
-    //内容
-    cell.contentLb.text = bbs.reply_content;
-    cell.nickNameLb.text = bbs.nickname;
-    cell.timeLb.text = bbs.timeStr;
-    CGRect contentLb = cell.contentLb.frame;
-    cell.contentLb.frame = CGRectMake(contentLb.origin.x, contentLb.origin.y, contentLb.size.width, bbs.contentHeight);
-    
-    //头像
-    if (bbs.imgData) {
-        cell.faceIV.image = bbs.imgData;
-    }
-    else
-    {
-        if ([bbs.avatar isEqualToString:@""]) {
-            bbs.imgData = [UIImage imageNamed:@"userface"];
-        }
-        else
-        {
-            NSData * imageData = [_iconCache getImage:[TQImageCache parseUrlForCacheName:bbs.avatar]];
-            if (imageData)
-            {
-                bbs.imgData = [UIImage imageWithData:imageData];
-                cell.faceIV.image = bbs.imgData;
-            }
-            else
-            {
-                IconDownloader *downloader = [_imageDownloadsInProgress objectForKey:[NSString stringWithFormat:@"%d", [indexPath row]]];
-                if (downloader == nil) {
-                    ImgRecord *record = [ImgRecord new];
-                    record.url = bbs.avatar;
-                    [self startIconDownload:record forIndexPath:indexPath];
+                if ([o isKindOfClass:[CommunityReplyCell class]])
+                {
+                    cell = (CommunityReplyCell *)o;
+                    break;
                 }
             }
         }
+        CommercialReply *bbs = [replyArray objectAtIndex:[indexPath row]];
+        //内容
+        cell.contentLb.text = bbs.reply_content;
+        cell.nickNameLb.text = bbs.nickname;
+        cell.timeLb.text = bbs.timeStr;
+        CGRect contentLb = cell.contentLb.frame;
+        cell.contentLb.frame = CGRectMake(contentLb.origin.x, contentLb.origin.y, contentLb.size.width, bbs.contentHeight);
+        
+        //头像
+        if (bbs.imgData) {
+            cell.faceIV.image = bbs.imgData;
+        }
+        else
+        {
+            if ([bbs.avatar isEqualToString:@""]) {
+                bbs.imgData = [UIImage imageNamed:@"userface"];
+            }
+            else
+            {
+                NSData * imageData = [_iconCache getImage:[TQImageCache parseUrlForCacheName:bbs.avatar]];
+                if (imageData)
+                {
+                    bbs.imgData = [UIImage imageWithData:imageData];
+                    cell.faceIV.image = bbs.imgData;
+                }
+                else
+                {
+                    IconDownloader *downloader = [_imageDownloadsInProgress objectForKey:[NSString stringWithFormat:@"%d", [indexPath row]]];
+                    if (downloader == nil) {
+                        ImgRecord *record = [ImgRecord new];
+                        record.url = bbs.avatar;
+                        [self startIconDownload:record forIndexPath:indexPath];
+                    }
+                }
+            }
+        }
+        return cell;
     }
-    return cell;
+    else
+    {
+        return [[DataSingleton Instance] getLoadMoreCell:tableView andIsLoadOver:NO andLoadOverString:@"暂无回复" andLoadingString:@"暂无回复" andIsLoading:NO];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -315,6 +334,10 @@
 }
 
 - (IBAction)replyBtn:(id)sender {
+    if ([UserModel Instance].isLogin == NO) {
+        [Tool showCustomHUD:@"请先登录!" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+        return;
+    }
     NSString *contentStr = self.replyTV.text;
     if (contentStr == nil || [contentStr length] == 0)
     {
@@ -375,7 +398,7 @@
         {
             [Tool showCustomHUD:@"回复成功" andView:self.view  andImage:@"37x-Checkmark.png" andAfterDelay:3];
             CommercialReply *reply = [[CommercialReply alloc] init];
-
+            
             NSString *rname = @"匿名用户";
             UserModel *usermodel = [UserModel Instance];
             if ([[usermodel getUserValueForKey:@"nickname"] isEqualToString:@""] == NO)

@@ -140,6 +140,8 @@
 + (void)pushToSettingView:(UINavigationController *)navigationController;
 + (void)pushToMyView:(UINavigationController *)navigationController;
 
++ (BOOL)testWeiXinInstall;
+
 + (User *)readJsonStrToUser:(NSString *)str;
 + (AlipayInfo *)readJsonStrToAliPay:(NSString *)str;
 + (NSMutableArray *)readJsonStrToRegionArray:(NSString *)str;

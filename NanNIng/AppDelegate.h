@@ -21,6 +21,7 @@
 #import "BPush.h"
 #import "JSONKit.h"
 #import "OpenUDID.h"
+#import <ShareSDK/ShareSDK.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, BMKGeneralDelegate>
 
